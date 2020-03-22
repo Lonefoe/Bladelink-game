@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCombat : MonoBehaviour
+public class PlayerCombat : MonoBehaviour, IDamageable<int>
 {
     // Cached references
     Animator animator;
@@ -57,6 +57,10 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
+    public void TakeDamage(int damage)
+    {
+        // Take damage
+    }
 
         // Triggered by an animation event
     public void ResetCombo()

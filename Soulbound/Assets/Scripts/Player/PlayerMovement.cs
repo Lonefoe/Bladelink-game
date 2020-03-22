@@ -29,11 +29,12 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump"))                                // Jump logic
         {
             jump = true;
-            animator.SetBool("isInAir", true);                          // Tells the animator that we're in air
+
         }
 
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));          // Transfers our input to Speed variable inside of animator
-
+        animator.SetBool("isInAir", !controller.m_Grounded);            // We take the grounded property from controller and send it to animator
+        
     }
 
     public void OnLand ()
@@ -46,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);     // We call for a function from the character controller
-        jump = false;                                                           // Resetting the jump variable
+        jump = false;                                                          // Resetting the jump variable
 
     }
 
