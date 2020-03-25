@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 public class CharacterController : MonoBehaviour
@@ -153,7 +151,8 @@ public class CharacterController : MonoBehaviour
 		if (m_FacingRight)
 		{
 			m_Rigidbody2D.AddForce(new Vector2(launchForce, 0f));
-		} else
+		}
+		else
 		{
 			m_Rigidbody2D.AddForce(new Vector2(-launchForce, 0f));
 		}

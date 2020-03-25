@@ -42,10 +42,22 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: FarBackground
+  - name: Background06
+    uniqueID: 1228196093
+    locked: 0
+  - name: Background05
+    uniqueID: 3406824279
+    locked: 0
+  - name: Background04
+    uniqueID: 622035511
+    locked: 0
+  - name: Background03
+    uniqueID: 2181201411
+    locked: 0
+  - name: Background02
     uniqueID: 2273430177
     locked: 0
-  - name: CloseBackground
+  - name: Background01
     uniqueID: 2103674935
     locked: 0
   - name: Player

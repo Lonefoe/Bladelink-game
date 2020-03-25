@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour, IDamageable<int>
 {
@@ -21,7 +19,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int>
 
     private void Awake()
     {
-            // Setting up references
+        // Setting up references
         animator = GetComponent<Animator>();
         movement = GetComponent<PlayerMovement>();
         controller = GetComponent<CharacterController>();
@@ -38,11 +36,11 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int>
                 chainAttack = false;                            // Can't attack until we've hit the slash frame of the animation
             }
         }
-        
+
     }
 
-        // All of the attack functionality
-        // Triggered by an animation event
+    // All of the attack functionality
+    // Triggered by an animation event
     void Attack()
     {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
@@ -62,7 +60,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int>
         // Take damage
     }
 
-        // Triggered by an animation event
+    // Triggered by an animation event
     public void ResetCombo()
     {
         comboPoint = 0;          // Reset combo points
@@ -70,7 +68,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int>
         chainAttack = true;      // Make sure we can start a new attack
     }
 
-         // Gizmos in the editor
+    // Gizmos in the editor
     private void OnDrawGizmosSelected()
     {
         if (attackPoint == null)
