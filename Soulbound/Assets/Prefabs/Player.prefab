@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 230706688692319733}
   - component: {fileID: 1500401441653569082}
   - component: {fileID: 6175439251986646123}
+  - component: {fileID: 3747368193666487877}
   - component: {fileID: 2793365201235559372}
   - component: {fileID: 111904524015332663}
   m_Layer: 9
@@ -167,7 +168,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1455490705
-  m_SortingLayer: 2
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -3316437661583186769, guid: 833c412f353965541afca17dc72ac2df,
     type: 3}
@@ -276,6 +277,18 @@ MonoBehaviour:
   OnCrouchEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3747368193666487877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8584758829728493051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dc099dddfd2d8c40b2e43a8574ea128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2793365201235559372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,6 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 40
+  landEffectPrefab: {fileID: 0}
 --- !u!114 &111904524015332663
 MonoBehaviour:
   m_ObjectHideFlags: 0

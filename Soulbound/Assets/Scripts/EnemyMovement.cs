@@ -18,20 +18,13 @@ public class EnemyMovement : MonoBehaviour
         controller = GetComponent<CharacterController>();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         animator.SetFloat("Speed", Mathf.Abs(moveSpeed));
 
     }
 
-
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         if (direction == 1)
         {
@@ -41,12 +34,16 @@ public class EnemyMovement : MonoBehaviour
         {
             controller.Move(-moveSpeed * Time.fixedDeltaTime, false, false);
         }
-
     }
 
-    public void ChangeDirection(int dir)
+    public void ChangeDirection(Vector2 targetPos)
     {
-        direction = dir;
+        if (transform.position.x <= targetPos.x)
+        {
+            direction = 1;
+        }
+        else direction = -1;
+
     }
 
 }

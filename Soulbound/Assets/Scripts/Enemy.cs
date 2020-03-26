@@ -12,10 +12,6 @@ public class Enemy : MonoBehaviour, IDamageable<int>
     [SerializeField] private int damage = 35;
     private int currentHealth;
 
-    [Header("Detection")]
-    [SerializeField] private float detectRadius = 4f;
-    [SerializeField] private LayerMask playerLayer;
-
 
     void Awake ()
     {
@@ -51,14 +47,6 @@ public class Enemy : MonoBehaviour, IDamageable<int>
     {
         animator.SetTrigger("Death");
         GetComponent<Collider2D>().enabled = false;
-    }
-
-
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position, detectRadius);
-        
     }
 
 }

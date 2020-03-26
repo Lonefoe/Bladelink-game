@@ -7,7 +7,8 @@ public class PlayerMovement : MonoBehaviour
     CharacterController controller;
     Animator animator;
 
-    // Properties
+    public PlayerMovement Instance { get; private set; }
+
     [SerializeField] private float moveSpeed = 40f;
     [SerializeField] private GameObject landEffectPrefab;
     private float horizontalMove = 0f;
@@ -16,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         // Set our references
+        Instance = this;
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
     }

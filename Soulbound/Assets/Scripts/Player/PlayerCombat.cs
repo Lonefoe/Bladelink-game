@@ -7,7 +7,8 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int>
     PlayerMovement movement;
     CharacterController controller;
 
-    // Properties
+    public PlayerCombat Instance { get; private set; }
+
     public int attackDamage = 20;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackRange = 0.5f;
@@ -20,6 +21,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int>
     private void Awake()
     {
         // Setting up references
+        Instance = this;
         animator = GetComponent<Animator>();
         movement = GetComponent<PlayerMovement>();
         controller = GetComponent<CharacterController>();
