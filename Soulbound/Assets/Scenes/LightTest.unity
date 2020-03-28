@@ -667,6 +667,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &298669352 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7471020235066023549, guid: 8ce65c4933f5b174ea7d8170c33b548e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1344058992}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &324972726
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -682,7 +688,7 @@ PrefabInstance:
     - target: {fileID: 1168922667060781196, guid: 8ce65c4933f5b174ea7d8170c33b548e,
         type: 3}
       propertyPath: targetRange
-      value: 3
+      value: 2.96
       objectReference: {fileID: 0}
     - target: {fileID: 2356603173716905840, guid: 8ce65c4933f5b174ea7d8170c33b548e,
         type: 3}
@@ -24586,32 +24592,17 @@ PrefabInstance:
     - target: {fileID: 1168922667060781196, guid: 8ce65c4933f5b174ea7d8170c33b548e,
         type: 3}
       propertyPath: targetRange
-      value: 2.4
+      value: 3.25
       objectReference: {fileID: 0}
-    - target: {fileID: 2356603173716905840, guid: 8ce65c4933f5b174ea7d8170c33b548e,
+    - target: {fileID: 1168922667060781196, guid: 8ce65c4933f5b174ea7d8170c33b548e,
         type: 3}
-      propertyPath: m_Offset.x
-      value: -0.0082130805
-      objectReference: {fileID: 0}
-    - target: {fileID: 2356603173716905840, guid: 8ce65c4933f5b174ea7d8170c33b548e,
+      propertyPath: attackPoint
+      value: 
+      objectReference: {fileID: 298669352}
+    - target: {fileID: 1168922667060781196, guid: 8ce65c4933f5b174ea7d8170c33b548e,
         type: 3}
-      propertyPath: m_Offset.y
-      value: 0.633411
-      objectReference: {fileID: 0}
-    - target: {fileID: 2356603173716905840, guid: 8ce65c4933f5b174ea7d8170c33b548e,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 0.42585137
-      objectReference: {fileID: 0}
-    - target: {fileID: 2356603173716905840, guid: 8ce65c4933f5b174ea7d8170c33b548e,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 1.1380888
-      objectReference: {fileID: 0}
-    - target: {fileID: 2356603173716905841, guid: 8ce65c4933f5b174ea7d8170c33b548e,
-        type: 3}
-      propertyPath: m_FlipX
-      value: 1
+      propertyPath: playerLayer.m_Bits
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 2356603173716905841, guid: 8ce65c4933f5b174ea7d8170c33b548e,
         type: 3}
@@ -24697,6 +24688,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5388339173156662529, guid: 8ce65c4933f5b174ea7d8170c33b548e,
+        type: 3}
+      propertyPath: attackRange
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 6094197210466387073, guid: 8ce65c4933f5b174ea7d8170c33b548e,
         type: 3}
@@ -27391,6 +27387,11 @@ PrefabInstance:
       propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 6175439251986646123, guid: 03082345f12bcee47bde94d019cc875b,
+        type: 3}
+      propertyPath: m_JumpForce
+      value: 450
+      objectReference: {fileID: 0}
     - target: {fileID: 6694896727286374470, guid: 03082345f12bcee47bde94d019cc875b,
         type: 3}
       propertyPath: m_Icon
@@ -27405,6 +27406,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.y
       value: 0.8917302
+      objectReference: {fileID: 0}
+    - target: {fileID: 6822307498350103564, guid: 03082345f12bcee47bde94d019cc875b,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.26
       objectReference: {fileID: 0}
     - target: {fileID: 8584758829728493051, guid: 03082345f12bcee47bde94d019cc875b,
         type: 3}

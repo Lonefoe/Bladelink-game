@@ -4,35 +4,47 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-
-    CharacterController controller;
-    Animator animator;
+    Enemy enemy;
 
     [SerializeField] private float moveSpeed = 25f;
+    private float moveSpeedMultiplier = 1f;
+    private float horizontalMove;
     private int direction = 1;
+
+    public float MoveSpeedMultiplier
+    {
+        get
+        {
+            return moveSpeedMultiplier;
+        }
+        set
+        {
+            moveSpeedMultiplier = value;
+        }
+    }
 
     // Reference setup
     private void Awake()
     {
-        animator = GetComponent<Animator>();
-        controller = GetComponent<CharacterController>();
+        enemy = GetComponent<Enemy>();
     }
 
     void Update()
     {
-        animator.SetFloat("Speed", Mathf.Abs(moveSpeed));
-
+        enemy.Animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
     }
 
     private void FixedUpdate()
     {
+        horizontalMove = moveSpeed * moveSpeedMultiplier;
+
         if (direction == 1)
         {
-            controller.Move(moveSpeed * Time.fixedDeltaTime, false, false);
+            enemy.Controller.Move(horizontalMove * Time.fixedDeltaTime, false, false);
         }
         else if (direction == -1)
         {
-            controller.Move(-moveSpeed * Time.fixedDeltaTime, false, false);
+            enemy.Controller.Move(-horizontalMove * Time.fixedDeltaTime, false, false);
         }
     }
 
@@ -43,7 +55,6 @@ public class EnemyMovement : MonoBehaviour
             direction = 1;
         }
         else direction = -1;
-
     }
 
 }

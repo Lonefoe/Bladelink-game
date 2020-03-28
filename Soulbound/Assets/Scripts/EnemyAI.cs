@@ -4,27 +4,21 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    private EnemyMovement movement;
-
-    private enum State
-    {
-        Patrolling,
-        Chasing,
-    }
+    private Enemy enemy;
 
     [SerializeField] private Path path;
     private List<Transform> pathPoints = new List<Transform>();
     [SerializeField] private int startPathIndex = 1;
     private int currentPathIndex;   // Current index we're moving towards
-    private int direction = 1;
 
     private State state;
-    [SerializeField] private float targetRange = 1f;
-   
+    [SerializeField] private float targetRange = 4f;
+    private float attackRange = 0.8f;
+
 
     private void Awake()
     {
-        movement = GetComponent<EnemyMovement>();
+        enemy = GetComponent<Enemy>();
     }
 
     private void Start()
@@ -51,6 +45,7 @@ public class EnemyAI : MonoBehaviour
             case State.Chasing:
                 Chase();
                 break;
+
         }
     }
 
@@ -60,7 +55,7 @@ public class EnemyAI : MonoBehaviour
         var enemyPos = new Vector2(transform.position.x, 0);
         var pointPos = new Vector2(pathPoints[currentPathIndex].position.x, 0);
 
-        movement.ChangeDirection(pathPoints[currentPathIndex].position);
+        enemy.Movement.ChangeDirection(pathPoints[currentPathIndex].position);
 
         if (Vector2.Distance(enemyPos, pointPos) < 0.2f)
         {
@@ -71,7 +66,17 @@ public class EnemyAI : MonoBehaviour
 
     private void Chase()
     {
-        movement.ChangeDirection(Player.Instance.GetPosition());
+        enemy.Movement.ChangeDirection(Player.Instance.GetPosition());
+
+        if (Vector2.Distance(transform.position, Player.Instance.GetPosition()) < attackRange)
+        {
+            if (!enemy.Attack.Attacking)
+            {
+                enemy.Animator.SetTrigger("Attack");
+                enemy.Movement.MoveSpeedMultiplier = 0f;
+            }
+        }
+
     }
 
     private int GetNextPointIndex()
@@ -91,10 +96,18 @@ public class EnemyAI : MonoBehaviour
         
     }
 
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, targetRange);
     }
 
+}
+
+public enum State
+{
+    Patrolling,
+    Chasing,
+    Dead,
 }
