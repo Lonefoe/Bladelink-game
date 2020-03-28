@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class Player : MonoBehaviour, IDamageable<int>
 {
@@ -11,10 +12,12 @@ public class Player : MonoBehaviour, IDamageable<int>
     public static Player Instance { get; private set; }
     public static PlayerMovement Movement { get; private set; }
     public static PlayerCombat Combat { get; private set; }
-    
+
+    SpriteRenderer renderer;
 
     [SerializeField] private int maxHealth = 100;
     private int currentHealth;
+    private Vector2 startingPosition;
 
     private void Awake()
     {
@@ -24,11 +27,13 @@ public class Player : MonoBehaviour, IDamageable<int>
         Controller = GetComponent<CharacterController>();
         Movement = GetComponent<PlayerMovement>();
         Combat = GetComponent<PlayerCombat>();
+        renderer = GetComponent<SpriteRenderer>();
     }
 
     void Start()
     {
         currentHealth = maxHealth;
+        startingPosition = transform.position;
     }
 
     public Vector2 GetPosition()
@@ -39,7 +44,7 @@ public class Player : MonoBehaviour, IDamageable<int>
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        Animator.SetTrigger("Hurt");
+        StartCoroutine(Flasher(Color.red, renderer.color));
 
         if (currentHealth <= 0)
         {
@@ -49,8 +54,26 @@ public class Player : MonoBehaviour, IDamageable<int>
 
     public void Die()
     {
-        Destroy(gameObject);
+        Movement.enabled = false;
+        Invoke("Respawn", 1f);
+    }
 
+    void Respawn()
+    {
+        transform.position = startingPosition;
+        Movement.enabled = true;
+        currentHealth = maxHealth;
+    }
+
+    IEnumerator Flasher(Color collideColor, Color normalColor)
+    { 
+        for (int i = 0; i < 3; i++)
+        {
+            renderer.color = collideColor;
+            yield return new WaitForSeconds(.1f);
+            renderer.color = normalColor;
+            yield return new WaitForSeconds(.1f);
+        }
     }
 
 }

@@ -1,12 +1,19 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
+    InputMaster inputMaster;
 
     [SerializeField] private float moveSpeed = 40f;
     private float horizontalMove = 0f;
     private bool jump = false;
+
+    private void Awake()
+    {
+        inputMaster = new InputMaster();
+    }
 
     // We handle everything input-based in here
     void Update()
@@ -30,6 +37,16 @@ public class PlayerMovement : MonoBehaviour
         Player.Controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);     // We call for a function from the character controller
         jump = false;                                                          // Resetting the jump variable
 
+    }
+
+    private void OnEnable()
+    {
+        inputMaster.Enable();
+    }
+
+    private void OnDisable()
+    {
+        inputMaster.Disable();
     }
 
 }
