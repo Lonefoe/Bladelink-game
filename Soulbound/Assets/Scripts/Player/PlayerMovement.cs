@@ -34,4 +34,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void StopImmediately()
+    {
+        Player.Rigidbody.velocity = Vector2.zero;
+        enabled = false;
+    }
+
 }

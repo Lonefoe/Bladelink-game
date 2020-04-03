@@ -45,6 +45,7 @@ public class Player : MonoBehaviour, IDamageable<int>
     {
         currentHealth -= damage;
         StartCoroutine(Flasher(Color.red, renderer.color));
+        AudioManager.Instance.PlayOneShot("Hit");
 
         if (currentHealth <= 0)
         {
@@ -54,7 +55,7 @@ public class Player : MonoBehaviour, IDamageable<int>
 
     public void Die()
     {
-        Movement.enabled = false;
+        Movement.StopImmediately();
         Invoke("Respawn", 1f);
     }
 
@@ -73,6 +74,26 @@ public class Player : MonoBehaviour, IDamageable<int>
             yield return new WaitForSeconds(.1f);
             renderer.color = normalColor;
             yield return new WaitForSeconds(.1f);
+        }
+    }
+
+    public void PlayFootstep()
+    {
+        int num = Random.Range(1, 4);
+
+        switch (num)
+        {
+            case 1:
+              AudioManager.Instance.Play("Footstep01");
+                break;
+
+            case 2:
+                AudioManager.Instance.Play("Footstep02");
+                break;
+
+            case 3:
+                AudioManager.Instance.Play("Footstep03");
+                break;
         }
     }
 

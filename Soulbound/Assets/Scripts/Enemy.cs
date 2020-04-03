@@ -10,11 +10,8 @@ public class Enemy : MonoBehaviour, IDamageable<int>
     public EnemyAI AI { get; private set; }
     public EnemyAttack Attack { get; private set; }
 
-    public EnemyStats Stats = new EnemyStats();
 
-    [Header("Stats")]
-    [SerializeField] private int maxHealth = 100;
-    [SerializeField] private int damage = 35;
+    public EnemyStats Stats = new EnemyStats();
     private int currentHealth;
 
 
@@ -31,8 +28,7 @@ public class Enemy : MonoBehaviour, IDamageable<int>
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxHealth;
-        Stats.Initiate(maxHealth, damage);
+        currentHealth = Stats.maxHealth;
 
     }
 
@@ -42,6 +38,7 @@ public class Enemy : MonoBehaviour, IDamageable<int>
     {
         currentHealth -= damage;
         Animator.SetTrigger("Hurt");
+        AudioManager.Instance.PlayOneShot("Hit");
 
         if (currentHealth <= 0)
         {

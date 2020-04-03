@@ -68,7 +68,7 @@ public class EnemyAI : MonoBehaviour
     {
         enemy.Movement.ChangeDirection(Player.Instance.GetPosition());
 
-        if (Vector2.Distance(transform.position, Player.Instance.GetPosition()) < attackRange)
+        if (Vector2.Distance(enemy.Attack.attackPoint.position, Player.Instance.GetPosition()) < attackRange)
         {
             if (!enemy.Attack.Attacking)
             {
@@ -101,6 +101,9 @@ public class EnemyAI : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, targetRange);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawRay(transform.position, Vector2.up);
     }
 
 }

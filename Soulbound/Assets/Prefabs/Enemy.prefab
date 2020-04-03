@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2356603173716905842}
   - component: {fileID: 2356603173716905841}
-  - component: {fileID: 2233954962222862907}
-  - component: {fileID: 1218197851617212375}
+  - component: {fileID: 2939545015420295668}
+  - component: {fileID: 4106147468906510319}
   - component: {fileID: 2356603173716905843}
   - component: {fileID: 6492090777013913026}
   - component: {fileID: 5615805108078649544}
@@ -93,8 +93,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &2233954962222862907
-BoxCollider2D:
+--- !u!70 &2939545015420295668
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,24 +102,14 @@ BoxCollider2D:
   m_GameObject: {fileID: 2356603173716905855}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3888b84d38a2e0e4eb7fbd31847fe34c, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0024394915, y: 0.73719406}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1.5, y: 1.5}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.38202143, y: 0.9037318}
-  m_EdgeRadius: 0
---- !u!58 &1218197851617212375
+  m_Offset: {x: 0.0019847297, y: 0.69700575}
+  m_Size: {x: 0.36884877, y: 1.0427371}
+  m_Direction: 0
+--- !u!58 &4106147468906510319
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,9 +122,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.008941453, y: 0.28459397}
+  m_Offset: {x: -0.009841764, y: 0.27470842}
   serializedVersion: 2
-  m_Radius: 0.22363314
+  m_Radius: 0.21663131
 --- !u!50 &2356603173716905843
 Rigidbody2D:
   serializedVersion: 4
@@ -215,8 +205,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 626346e66d7934c4490e77abb0f53a86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  damage: 35
+  Stats:
+    maxHealth: 100
+    damage: 35
 --- !u!114 &6161147256025897127
 MonoBehaviour:
   m_ObjectHideFlags: 0

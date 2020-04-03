@@ -17,6 +17,7 @@ public class InputManager : MonoBehaviour
     [HideInInspector] public bool jumpPressed;
 
     [HideInInspector] public bool attackPressed;
+    [HideInInspector] public bool throwPressed;
 
     //=====================================================
     // STATE
@@ -74,6 +75,7 @@ public class InputManager : MonoBehaviour
         jumpPressed = jumpPressed || inputMaster.Player.Jump.triggered;
 
         attackPressed = attackPressed || inputMaster.Player.Attack.triggered;
+        throwPressed = throwPressed || inputMaster.Player.Throw.triggered;
     }
 
 
@@ -89,7 +91,9 @@ public class InputManager : MonoBehaviour
         // Reset jump button
         jumpPressed = false;
 
+        // Reset attack buttons
         attackPressed = false;
+        throwPressed = false;
 
         readyToClear = false;
     }

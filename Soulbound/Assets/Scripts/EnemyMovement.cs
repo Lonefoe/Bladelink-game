@@ -57,4 +57,9 @@ public class EnemyMovement : MonoBehaviour
         else direction = -1;
     }
 
+    public int GetDirection()
+    {
+        return direction;
+    }
+
 }

@@ -100,9 +100,9 @@ GameObject:
   m_Component:
   - component: {fileID: 200908981002760659}
   - component: {fileID: 3644032822948898199}
-  - component: {fileID: 6187122394431678335}
-  - component: {fileID: 3128062052082876668}
   - component: {fileID: 230706688692319733}
+  - component: {fileID: 8140429666713284917}
+  - component: {fileID: 8668615799537590337}
   - component: {fileID: 1500401441653569082}
   - component: {fileID: 6175439251986646123}
   - component: {fileID: 3747368193666487877}
@@ -183,48 +183,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &6187122394431678335
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8584758829728493051}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.000014364719, y: -0.012448385}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.5625, y: 1.15625}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.24458534, y: 0.70876896}
-  m_EdgeRadius: 0
---- !u!58 &3128062052082876668
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8584758829728493051}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.0016298294, y: -0.40857244}
-  serializedVersion: 2
-  m_Radius: 0.13644862
 --- !u!95 &230706688692319733
 Animator:
   serializedVersion: 3
@@ -244,6 +202,48 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!70 &8140429666713284917
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8584758829728493051}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.002644658, y: -0.057518303}
+  m_Size: {x: 0.25072873, y: 0.83263576}
+  m_Direction: 0
+--- !u!61 &8668615799537590337
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8584758829728493051}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0025074482, y: -0.45550784}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.5625, y: 1.15625}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.2606855, y: 0.18431634}
+  m_EdgeRadius: 0
 --- !u!50 &1500401441653569082
 Rigidbody2D:
   serializedVersion: 4
@@ -259,7 +259,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -283,7 +283,7 @@ MonoBehaviour:
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 1280
+    m_Bits: 256
   m_GroundCheck: {fileID: 3494430065993938186}
   m_CeilingCheck: {fileID: 1717774612814786657}
   m_CrouchDisableCollider: {fileID: 0}
@@ -343,9 +343,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDamage: 20
+  throwForce: 18
   attackPoint: {fileID: 1839703025070307345}
   attackRange: 0.43
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
-  launchForce: 145
+  launchForce: 85
+  swordPrefab: {fileID: 1575309502313035274, guid: 80cbbb3b7d1163149acdc03f0997637b,
+    type: 3}

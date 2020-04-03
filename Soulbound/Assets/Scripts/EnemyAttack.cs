@@ -6,7 +6,7 @@ public class EnemyAttack : MonoBehaviour
 {
     Enemy enemy;
 
-    [SerializeField] private Transform attackPoint;
+    public Transform attackPoint;
     [SerializeField] private float attackRange = 0.8f;
     [SerializeField] private LayerMask playerLayer;
     private bool attacking = false;
