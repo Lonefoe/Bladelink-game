@@ -19,6 +19,8 @@ public class InputManager : MonoBehaviour
     [HideInInspector] public bool attackPressed;
     [HideInInspector] public bool throwPressed;
 
+    [HideInInspector] public bool pauseButtonPressed;
+
     //=====================================================
     // STATE
     //=====================================================
@@ -76,6 +78,8 @@ public class InputManager : MonoBehaviour
 
         attackPressed = attackPressed || inputMaster.Player.Attack.triggered;
         throwPressed = throwPressed || inputMaster.Player.Throw.triggered;
+
+        pauseButtonPressed = pauseButtonPressed || inputMaster.Player.PauseGame.triggered;
     }
 
 
@@ -94,6 +98,9 @@ public class InputManager : MonoBehaviour
         // Reset attack buttons
         attackPressed = false;
         throwPressed = false;
+
+        // Reset game variables
+        pauseButtonPressed = false;
 
         readyToClear = false;
     }
