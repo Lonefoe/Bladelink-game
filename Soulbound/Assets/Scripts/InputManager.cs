@@ -2,7 +2,7 @@
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 
-[DefaultExecutionOrder(-90)]
+[DefaultExecutionOrder(-110)]
 public class InputManager : MonoBehaviour
 {
     public static InputManager Instance { get; private set; }
@@ -48,13 +48,13 @@ public class InputManager : MonoBehaviour
 
         inputMaster = new InputMaster();
 
-        ProcessPlayerInput();
-
     }
 
     private void Update()
     {
         ClearInput();
+
+        if (GameManager.Instance.IsGamePaused() == true) return;
 
         ProcessPlayerInput();
     }

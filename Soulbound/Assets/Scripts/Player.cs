@@ -38,13 +38,7 @@ public class Player : MonoBehaviour, IDamageable<int>
 
     void Update()
     {
-        if (InputManager.Instance.pauseButtonPressed && GameManager.Instance.IsGamePaused() == false)
-        {
-            GameManager.Instance.Pause();
-        } else if (InputManager.Instance.pauseButtonPressed && GameManager.Instance.IsGamePaused() == true)
-        {
-            GameManager.Instance.Resume();
-        }
+
     }
 
     public Vector2 GetPosition()

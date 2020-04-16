@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     [SerializeField] private float gravityMultiplier = 1f;      // Tweaker for gravity, multiplies the WORLD gravity
+    [SerializeField] private bool pauseInEditor = false;
     private bool gamePaused = false;
 
     private void Awake()
@@ -24,28 +25,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (pauseInEditor == true)
+        {
+            gamePaused = true;
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            gamePaused = false;
+        }
+        
+    }
+
     private void Start()
     {
         // Tweaking the world gravity
         Physics2D.gravity *= gravityMultiplier;
 
-    }
-
-    public void Pause()
-    {
-        if (!gamePaused)
-        {
-            gamePaused = true;
-            Time.timeScale = 0;
-        }
-    }
-    public void Resume()
-    {
-        if (gamePaused)
-        {
-            gamePaused = false;
-            Time.timeScale = 1;
-        }
     }
 
     public bool IsGamePaused()
