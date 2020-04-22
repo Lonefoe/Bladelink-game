@@ -13,7 +13,6 @@ public class Sword : MonoBehaviour
 	private bool isReturning = false;
 	private bool waitingForReturn = false;
 	private int direction = 1;
-    [SerializeField] private float flySpeed = 10f;
 
 	private void Awake()
 	{
@@ -46,7 +45,7 @@ public class Sword : MonoBehaviour
 		//
 		if (!isReturning && !waitingForReturn)
 		{
-			if (m_Rigidbody2D.velocity.x < Mathf.Abs(0.2f))
+			if (Mathf.Abs(m_Rigidbody2D.velocity.x) < 1f)
 			{
 				Player.Combat.CanReturn = true;
 				waitingForReturn = true;

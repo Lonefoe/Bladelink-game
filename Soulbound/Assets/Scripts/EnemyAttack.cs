@@ -10,18 +10,6 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] private float attackRange = 0.8f;
     [SerializeField] private LayerMask playerLayer;
     private bool attacking = false;
-
-    public bool Attacking
-    {
-        get
-        {
-            return attacking;
-        }
-        set
-        {
-            attacking = value;
-        }
-    }
     
 
     private void Awake()
@@ -53,6 +41,11 @@ public class EnemyAttack : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
+    public bool IsAttacking()
+    {
+        return attacking;
     }
 
 }

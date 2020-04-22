@@ -17,11 +17,9 @@ public class Fog : MonoBehaviour
     {
         Vector4 gradientBottom = FogData.Instance.fogGradient.colorKeys[1].color;
         gradientBottom.w = FogData.Instance.fogGradient.alphaKeys[1].alpha;
-        Debug.Log(gradientBottom);
 
         Vector4 gradientTop = FogData.Instance.fogGradient.colorKeys[0].color;
         gradientTop.w = FogData.Instance.fogGradient.alphaKeys[0].alpha;
-        Debug.Log(gradientTop);
 
         material.SetVector("Color_EC11A50F", gradientBottom);
         material.SetVector("Color_5EAD343A", gradientTop);

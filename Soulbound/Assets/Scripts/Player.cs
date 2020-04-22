@@ -38,7 +38,7 @@ public class Player : MonoBehaviour, IDamageable<int>
 
     void Update()
     {
-
+        UIManager.Instance.healthSlider.value = currentHealth;
     }
 
     public Vector2 GetPosition()

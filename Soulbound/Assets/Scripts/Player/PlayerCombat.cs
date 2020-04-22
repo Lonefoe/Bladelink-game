@@ -30,7 +30,8 @@ public class PlayerCombat : MonoBehaviour
 
     private void Update()
     {
-        if (InputManager.Instance.attackPressed)
+        // ATTACK
+        if (InputManager.Instance.attackPressed && mySword == null)
         {
             if (chainAttack)
             {
@@ -88,7 +89,7 @@ public class PlayerCombat : MonoBehaviour
             canReturn = false;
 
             // Throw the sword
-            if (Player.Controller.FacingRight) mySword.GetComponent<Sword>().Throw(transform.right * throwForce);
+            if (Player.Controller.IsFacingRight()) mySword.GetComponent<Sword>().Throw(transform.right * throwForce);
             else mySword.GetComponent<Sword>().Throw(-transform.right * throwForce);
         }
         else if (canReturn == true)

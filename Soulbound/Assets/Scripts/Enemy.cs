@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDamageable<int>
 {
@@ -14,6 +15,7 @@ public class Enemy : MonoBehaviour, IDamageable<int>
     public EnemyStats Stats = new EnemyStats();
     private int currentHealth;
 
+    public event Action onDeathEvent;
 
     void Awake ()
     {
@@ -49,6 +51,7 @@ public class Enemy : MonoBehaviour, IDamageable<int>
     // Is called when our health drops below zero
     public void Die()
     {
+        onDeathEvent();
         Animator.SetTrigger("Death");
         Collider2D[] colliders = GetComponents<Collider2D>();
         foreach (Collider2D col in colliders)

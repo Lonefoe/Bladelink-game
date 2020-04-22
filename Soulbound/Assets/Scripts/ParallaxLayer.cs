@@ -3,14 +3,15 @@
 public class ParallaxLayer : MonoBehaviour
 {
     private Vector3 startPos;
+    private GameObject parallaxCam;
 
     [Range(0, 1)] public float ySpeedMultiplier = 1f;
-    public GameObject parallaxCam;
+    
 
     private void Start()
     {
         startPos = transform.position;
-
+        parallaxCam = GameLevel.Instance.virtualCamera;
     }
 
     void LateUpdate()

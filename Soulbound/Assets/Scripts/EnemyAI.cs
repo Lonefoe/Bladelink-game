@@ -23,6 +23,8 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
+        enemy.onDeathEvent += OnPlayerDeath;
+
         state = State.Patrolling;
         pathPoints = path.GetPoints();
         currentPathIndex = startPathIndex;
@@ -30,6 +32,8 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
+        if (state == State.Dead) return;
+
         if (Vector2.Distance(transform.position, Player.Instance.GetPosition()) < targetRange)
         {
             state = State.Chasing;
@@ -45,7 +49,6 @@ public class EnemyAI : MonoBehaviour
             case State.Chasing:
                 Chase();
                 break;
-
         }
     }
 
@@ -70,7 +73,7 @@ public class EnemyAI : MonoBehaviour
 
         if (Vector2.Distance(enemy.Attack.attackPoint.position, Player.Instance.GetPosition()) < attackRange)
         {
-            if (!enemy.Attack.Attacking)
+            if (!enemy.Attack.IsAttacking())
             {
                 enemy.Animator.SetTrigger("Attack");
                 enemy.Movement.MoveSpeedMultiplier = 0f;
@@ -96,6 +99,10 @@ public class EnemyAI : MonoBehaviour
         
     }
 
+    private void OnPlayerDeath()
+    {
+        state = State.Dead;
+    }
 
     private void OnDrawGizmosSelected()
     {

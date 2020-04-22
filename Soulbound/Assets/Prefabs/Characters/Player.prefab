@@ -263,8 +263,8 @@ MonoBehaviour:
   OnLandEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2793365201235559372}
-        m_MethodName: OnLand
+      - m_Target: {fileID: 3747368193666487877}
+        m_MethodName: PlayFootstep
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -316,7 +316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDamage: 20
-  throwForce: 18
+  throwForce: 115
   attackPoint: {fileID: 1839703025070307345}
   attackRange: 0.43
   enemyLayer:
