@@ -4,8 +4,6 @@ using UnityEngine;
 [DefaultExecutionOrder(-10)]
 public class FogData : Singleton<FogData>
 {
-
-    public static FogData Instance { get; private set; }
     private Fog[] fogs;
 
     [Header("Attributes")]
@@ -21,7 +19,6 @@ public class FogData : Singleton<FogData>
 
     private void Awake()
     {
-        Instance = this;
         fogs = FindObjectsOfType<Fog>();
     }
 

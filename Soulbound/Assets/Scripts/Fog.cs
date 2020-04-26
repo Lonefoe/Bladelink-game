@@ -5,12 +5,14 @@ public class Fog : MonoBehaviour
 {
     private Material material;
 
+    [SerializeField] private float fogInfluence = 1;
+
     private void Awake()
     {
         material = GetComponent<Renderer>().material;
 
         SetAttributes();
-
+        
     }
 
     public void SetAttributes()
@@ -27,6 +29,7 @@ public class Fog : MonoBehaviour
         material.SetVector("Color_681391DF", FogData.Instance.tint);
         material.SetFloat("Vector1_412E45B4", FogData.Instance.fogBack);
         material.SetFloat("Vector1_279BB8A8", FogData.Instance.fogFront);
+        material.SetFloat("Vector1_43C85B16", fogInfluence);
     }
 
 }

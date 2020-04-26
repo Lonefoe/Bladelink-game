@@ -39,30 +39,36 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background 6
+    uniqueID: 3846718813
+    locked: 0
+  - name: Background 5
+    uniqueID: 2477088925
+    locked: 0
+  - name: Background 4
+    uniqueID: 2206271291
+    locked: 0
+  - name: Background 3
+    uniqueID: 3453801499
+    locked: 0
+  - name: Background 2
+    uniqueID: 3239087973
+    locked: 0
+  - name: Background 1
+    uniqueID: 2273430177
+    locked: 0
+  - name: Near Background
+    uniqueID: 2103674935
+    locked: 0
+  - name: Exterior
+    uniqueID: 1708721435
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Background06
-    uniqueID: 1228196093
-    locked: 0
-  - name: Background05
-    uniqueID: 3406824279
-    locked: 0
-  - name: Background04
-    uniqueID: 622035511
-    locked: 0
-  - name: Background03
-    uniqueID: 2181201411
-    locked: 0
-  - name: Background02
-    uniqueID: 2273430177
-    locked: 0
-  - name: Background01
-    uniqueID: 2103674935
-    locked: 0
-  - name: Player
-    uniqueID: 2839476591
-    locked: 0
   - name: Foreground
-    uniqueID: 1708721435
+    uniqueID: 3117153863
+    locked: 0
+  - name: Near Foreground
+    uniqueID: 1296326913
     locked: 0

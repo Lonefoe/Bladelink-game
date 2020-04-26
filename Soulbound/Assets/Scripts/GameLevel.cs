@@ -2,15 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameLevel : MonoBehaviour
+public class GameLevel : Singleton<GameLevel>
 {
-    public static GameLevel Instance;
-
     public GameObject virtualCamera;
 
-    void Awake()
-    {
-        Instance = this;
-    }
 
 }
