@@ -12,11 +12,11 @@ public class Player : MonoBehaviour, IDamageable<int>
     public static Player Instance { get; private set; }
     public static PlayerMovement Movement { get; private set; }
     public static PlayerCombat Combat { get; private set; }
+    public static SpriteRenderer Renderer { get; private set; }
 
-    SpriteRenderer renderer;
-
-    [SerializeField] private int maxHealth = 100;
-    private int currentHealth;
+    [SerializeField] PlayerStats Stats = new PlayerStats();    
+    public static int currentHealth;
+    public static float currentSoulPoints;
     private Vector2 startingPosition;
 
     private void Awake()
@@ -27,18 +27,20 @@ public class Player : MonoBehaviour, IDamageable<int>
         Controller = GetComponent<CharacterController>();
         Movement = GetComponent<PlayerMovement>();
         Combat = GetComponent<PlayerCombat>();
-        renderer = GetComponent<SpriteRenderer>();
+        Renderer = GetComponent<SpriteRenderer>();
     }
 
     void Start()
     {
-        currentHealth = maxHealth;
+        currentHealth = Stats.maxHealth;
+        currentSoulPoints = Stats.maxSoulPoints;
         startingPosition = transform.position;
     }
 
     void Update()
     {
         UIManager.Instance.healthSlider.value = currentHealth;
+        UIManager.Instance.soulPointsText.text = currentSoulPoints.ToString("f2");
     }
 
     public Vector2 GetPosition()
@@ -49,7 +51,7 @@ public class Player : MonoBehaviour, IDamageable<int>
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        StartCoroutine(Flasher(Color.red, renderer.color));
+        StartCoroutine(Flasher(Color.red, Renderer.color));
         AudioManager.Instance.PlayOneShot("Hit");
 
         if (currentHealth <= 0)
@@ -60,24 +62,24 @@ public class Player : MonoBehaviour, IDamageable<int>
 
     public void Die()
     {
-        Movement.StopImmediately();
+        Movement.DisableMovement();
         Invoke("Respawn", 1f);
     }
 
     void Respawn()
     {
         transform.position = startingPosition;
-        Movement.enabled = true;
-        currentHealth = maxHealth;
+        Movement.EnableMovement();
+        currentHealth = Stats.maxHealth;
     }
 
     IEnumerator Flasher(Color collideColor, Color normalColor)
     { 
         for (int i = 0; i < 3; i++)
         {
-            renderer.color = collideColor;
+            Renderer.color = collideColor;
             yield return new WaitForSeconds(.1f);
-            renderer.color = normalColor;
+            Renderer.color = normalColor;
             yield return new WaitForSeconds(.1f);
         }
     }

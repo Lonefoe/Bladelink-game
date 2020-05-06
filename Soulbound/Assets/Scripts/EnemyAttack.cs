@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utilities;
 
 public class EnemyAttack : MonoBehaviour
 {
@@ -10,22 +12,24 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] private float attackRange = 0.8f;
     [SerializeField] private LayerMask playerLayer;
     private bool attacking = false;
-    
+
+    public event Action onAttackEvent;
 
     private void Awake()
     {
         enemy = GetComponent<Enemy>();
     }
 
-
+    // Called by an animation event
     public virtual void Attack()
     {
         attacking = true;
-        Collider2D hitPlayer = Physics2D.OverlapCircle(attackPoint.position, attackRange / 2, playerLayer);
-        enemy.Movement.MoveSpeedMultiplier = 0f;
+        Collider2D hitPlayer = Physics2D.OverlapCircle(attackPoint.position, 0.5f, playerLayer);
+        onAttackEvent();
 
         if (hitPlayer != null && hitPlayer.gameObject == Player.Instance.gameObject)
         {
+            if (Player.Combat.IsDeflecting() && Utils.AreCharactersFacing(Player.Controller, enemy.Controller)) return;
             Player.Instance.TakeDamage(enemy.Stats.damage);
         }
 
@@ -34,7 +38,7 @@ public class EnemyAttack : MonoBehaviour
     public void ResetAttack()
     {
         attacking = false;
-        enemy.Movement.MoveSpeedMultiplier = 1f;
+        enemy.Movement.EnableMovement();
     }
 
     private void OnDrawGizmosSelected()

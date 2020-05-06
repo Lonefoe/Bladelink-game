@@ -7,6 +7,11 @@ public class PlayerMovement : MonoBehaviour
     private float horizontalMove = 0f;
     private bool jump = false;
 
+    private void Awake()
+    {
+        InputManager.controls.Player.Jump.performed += ctx => Jump();
+    }
+
     // We handle everything input-based in here
     void Update()
     {
@@ -15,29 +20,30 @@ public class PlayerMovement : MonoBehaviour
         Player.Animator.SetFloat("Speed", Mathf.Abs(horizontalMove));          // Transfers our input to Speed variable inside of animator
         Player.Animator.SetBool("isInAir", !Player.Controller.m_Grounded);     // We take the grounded property from controller and send it to animator
 
-        Jump();
     }
 
     // Where we call the movement logic from the controller
     void FixedUpdate()
     {
-        Player.Controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);     // We call for a function from the character controller
+        Player.Controller.Move(horizontalMove * Time.fixedDeltaTime, false, false);     // We call for a function from the character controller
         jump = false;                                                          // Resetting the jump variable
 
     }
 
     void Jump()
     {
-        if (InputManager.Instance.jumpPressed)
-        {
             jump = true;
-        }
     }
 
-    public void StopImmediately()
+    public void DisableMovement()
     {
         Player.Rigidbody.velocity = Vector2.zero;
         enabled = false;
+    }
+
+    public void EnableMovement()
+    {
+        enabled = true;
     }
 
 }

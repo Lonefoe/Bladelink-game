@@ -4,6 +4,7 @@ public class ParallaxLayer : MonoBehaviour
 {
     [SerializeField] float multiplier = 0.0f;
     [SerializeField] bool horizontalOnly = true;
+    [SerializeField] float verticalMultiplier = 1f;
 
     private Transform cameraTransform;
 

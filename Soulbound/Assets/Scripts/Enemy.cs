@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
+using Senses;
 
 public class Enemy : MonoBehaviour, IDamageable<int>
 {
@@ -10,10 +12,13 @@ public class Enemy : MonoBehaviour, IDamageable<int>
     public EnemyMovement Movement { get; private set; }
     public EnemyAI AI { get; private set; }
     public EnemyAttack Attack { get; private set; }
-
+    public SpriteRenderer Renderer { get; private set; }
+    public SenseManager Senses = new SenseManager();
 
     public EnemyStats Stats = new EnemyStats();
     private int currentHealth;
+    private int currentPoise = 0;
+    private bool dead = false;
 
     public event Action onDeathEvent;
 
@@ -25,13 +30,13 @@ public class Enemy : MonoBehaviour, IDamageable<int>
         Movement = GetComponent<EnemyMovement>();
         AI = GetComponent<EnemyAI>();
         Attack = GetComponent<EnemyAttack>();
+        Renderer = GetComponent<SpriteRenderer>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = Stats.maxHealth;
-
     }
 
 
@@ -39,7 +44,15 @@ public class Enemy : MonoBehaviour, IDamageable<int>
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        Animator.SetTrigger("Hurt");
+        Senses.Report(Sense.Damage);
+        StartCoroutine(Flasher(Color.red, Renderer.color));
+
+        currentPoise += damage;
+        if (!Attack.IsAttacking())
+        {
+            if (currentPoise >= Stats.poise) { currentPoise = 0; Animator.SetTrigger("Hurt"); }
+        }
+
         AudioManager.Instance.PlayOneShot("Hit");
 
         if (currentHealth <= 0)
@@ -52,13 +65,42 @@ public class Enemy : MonoBehaviour, IDamageable<int>
     public void Die()
     {
         onDeathEvent();
+        dead = true;
         Animator.SetTrigger("Death");
         Collider2D[] colliders = GetComponents<Collider2D>();
         foreach (Collider2D col in colliders)
         {
             col.enabled = false;
         }
+        Player.currentSoulPoints += UnityEngine.Random.Range(0.5f, 1f);
+    }
 
+    public bool IsDead()
+    {
+        return dead;
+    }
+
+    public bool IsPlayerInRange(float range)
+    {
+        if (Vector2.Distance(transform.position, Player.Instance.GetPosition()) < range) { return true; }
+        else { return false; }
+
+    }
+
+    public Vector2 GetPosition()
+    {
+        return transform.position;
+    }
+
+    IEnumerator Flasher(Color collideColor, Color normalColor)
+    {
+        for (int i = 0; i < 1; i++)
+        {
+            Renderer.material.SetFloat("Flash", 1);
+            yield return new WaitForSeconds(.1f);
+            Renderer.material.SetFloat("Flash", 0);
+            yield return new WaitForSeconds(.1f);
+        }
     }
 
 }

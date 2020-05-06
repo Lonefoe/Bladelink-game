@@ -30,14 +30,9 @@ public class AudioManager : MonoBehaviour
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
+            if (s.autoplay) s.source.Play();
         }
 
-    }
-
-    private void Start()
-    {
-        Play("MainTheme");
-        Play("Wind");
     }
 
     public void Play (string name)

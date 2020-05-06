@@ -1,18 +1,28 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Senses;
 
 public class EnemyAI : MonoBehaviour
 {
     private Enemy enemy;
 
+    [Header("Pathing")]
     [SerializeField] private Path path;
     private List<Transform> pathPoints = new List<Transform>();
     [SerializeField] private int startPathIndex = 1;
     private int currentPathIndex;   // Current index we're moving towards
 
-    private State state;
-    [SerializeField] private float targetRange = 4f;
+    [Header("Waiting")]
+    [SerializeField] private float startWaitTime = 0;
+    private float waitTime;    
+
+    private State state = State.Patrolling;
+
+    [Header("Range")]
+    [SerializeField] private EnemySight sight;
+    [SerializeField] private float chaseRange = 8f;
     private float attackRange = 0.8f;
 
 
@@ -23,22 +33,27 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
-        enemy.onDeathEvent += OnPlayerDeath;
+        enemy.onDeathEvent += OnDeath;
+        enemy.Senses.onTakeDamageEvent += OnTakeDamage;
 
         state = State.Patrolling;
         pathPoints = path.GetPoints();
         currentPathIndex = startPathIndex;
+        waitTime = startWaitTime;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if (state == State.Dead) return;
 
-        if (Vector2.Distance(transform.position, Player.Instance.GetPosition()) < targetRange)
-        {
-            state = State.Chasing;
-        }
-        else state = State.Patrolling;
+         if (sight.CanSeePlayer())
+         {
+             state = State.Chasing;
+         }
+         else if (state == State.Chasing && !enemy.IsPlayerInRange(chaseRange))
+         {
+             state = State.Patrolling;
+         } 
 
         switch (state)
         {
@@ -58,12 +73,15 @@ public class EnemyAI : MonoBehaviour
         var enemyPos = new Vector2(transform.position.x, 0);
         var pointPos = new Vector2(pathPoints[currentPathIndex].position.x, 0);
 
-        enemy.Movement.ChangeDirection(pathPoints[currentPathIndex].position);
-
         if (Vector2.Distance(enemyPos, pointPos) < 0.2f)
         {
-            currentPathIndex = GetNextPointIndex();
+            if (waitTime > 0) { enemy.Movement.StopForFrame(); waitTime -= Time.deltaTime; return; }
+
+            currentPathIndex = GetNextPointIndex(); // Update the current path index with the next index to go to
+            waitTime = startWaitTime;
         }
+
+        enemy.Movement.ChangeDirection(pathPoints[currentPathIndex].position);
 
     }
 
@@ -71,12 +89,11 @@ public class EnemyAI : MonoBehaviour
     {
         enemy.Movement.ChangeDirection(Player.Instance.GetPosition());
 
-        if (Vector2.Distance(enemy.Attack.attackPoint.position, Player.Instance.GetPosition()) < attackRange)
+        if (enemy.IsPlayerInRange(attackRange))
         {
             if (!enemy.Attack.IsAttacking())
             {
                 enemy.Animator.SetTrigger("Attack");
-                enemy.Movement.MoveSpeedMultiplier = 0f;
             }
         }
 
@@ -99,18 +116,26 @@ public class EnemyAI : MonoBehaviour
         
     }
 
-    private void OnPlayerDeath()
+    public void SetState(State _state)
+    {
+        state = _state;
+    }
+
+    void OnDeath()
     {
         state = State.Dead;
     }
 
+    void OnTakeDamage()
+    {
+        state = State.Chasing;
+    }
+
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, targetRange);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, chaseRange);
 
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawRay(transform.position, Vector2.up);
     }
 
 }

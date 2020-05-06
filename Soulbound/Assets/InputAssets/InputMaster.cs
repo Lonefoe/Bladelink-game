@@ -24,7 +24,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""id"": ""e8a20f29-1b26-4f1b-8a55-caecba73011d"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press""
                 },
                 {
                     ""name"": ""Jump"",
@@ -55,6 +55,14 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""type"": ""Button"",
                     ""id"": ""0ddea9e2-0341-48e0-ba26-d4b4ef45fae5"",
                     ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Deflect"",
+                    ""type"": ""Button"",
+                    ""id"": ""1a2e6c8c-a26c-4527-9e45-21d470b3c560"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -217,7 +225,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""66158f93-fe74-4bc1-8579-efd0705e9495"",
-                    ""path"": ""<Mouse>/rightButton"",
+                    ""path"": ""<Keyboard>/ctrl"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and mouse"",
@@ -255,6 +263,28 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""PauseGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""420850a7-2b2f-4eef-a7a6-5260ea7b9c68"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Deflect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""03ce877b-fc61-4c61-a962-a1256298cd46"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Deflect"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -298,6 +328,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Throw = m_Player.FindAction("Throw", throwIfNotFound: true);
         m_Player_PauseGame = m_Player.FindAction("PauseGame", throwIfNotFound: true);
+        m_Player_Deflect = m_Player.FindAction("Deflect", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -352,6 +383,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Throw;
     private readonly InputAction m_Player_PauseGame;
+    private readonly InputAction m_Player_Deflect;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -361,6 +393,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Throw => m_Wrapper.m_Player_Throw;
         public InputAction @PauseGame => m_Wrapper.m_Player_PauseGame;
+        public InputAction @Deflect => m_Wrapper.m_Player_Deflect;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -385,6 +418,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @PauseGame.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseGame;
                 @PauseGame.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseGame;
                 @PauseGame.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseGame;
+                @Deflect.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDeflect;
+                @Deflect.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDeflect;
+                @Deflect.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDeflect;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -404,6 +440,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @PauseGame.started += instance.OnPauseGame;
                 @PauseGame.performed += instance.OnPauseGame;
                 @PauseGame.canceled += instance.OnPauseGame;
+                @Deflect.started += instance.OnDeflect;
+                @Deflect.performed += instance.OnDeflect;
+                @Deflect.canceled += instance.OnDeflect;
             }
         }
     }
@@ -433,5 +472,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnThrow(InputAction.CallbackContext context);
         void OnPauseGame(InputAction.CallbackContext context);
+        void OnDeflect(InputAction.CallbackContext context);
     }
 }

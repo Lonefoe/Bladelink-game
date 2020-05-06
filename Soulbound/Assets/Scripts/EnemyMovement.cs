@@ -8,6 +8,8 @@ public class EnemyMovement : MonoBehaviour
 
     [SerializeField] private float moveSpeed = 25f;
     private float moveSpeedMultiplier = 1f;
+    private bool disabled = false;
+    private bool stopped = false;
     private float horizontalMove;
     private int direction = 1;
 
@@ -29,6 +31,11 @@ public class EnemyMovement : MonoBehaviour
         enemy = GetComponent<Enemy>();
     }
 
+    private void Start()
+    {
+        enemy.Attack.onAttackEvent += DisableMovement;
+    }
+
     void Update()
     {
         enemy.Animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
@@ -36,6 +43,8 @@ public class EnemyMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (enemy.IsDead() || disabled || stopped) { horizontalMove = 0; enemy.Controller.Move(0, false, false); stopped = false; return; }
+
         horizontalMove = moveSpeed * moveSpeedMultiplier;
 
         if (direction == 1)
@@ -60,6 +69,22 @@ public class EnemyMovement : MonoBehaviour
     public int GetDirection()
     {
         return direction;
+    }
+
+    // Stops the enemy for the current frame - called in Update
+    public void StopForFrame()
+    {
+        stopped = true;
+    }
+
+    public void DisableMovement()
+    {
+        disabled = true;
+    }
+
+    public void EnableMovement()
+    {
+        disabled = false;
     }
 
 }

@@ -27,16 +27,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (pauseInEditor == true)
-        {
-            gamePaused = true;
-            Time.timeScale = 0f;
-        }
-        else
-        {
-            Time.timeScale = 1f;
-            gamePaused = false;
-        }
         
     }
 

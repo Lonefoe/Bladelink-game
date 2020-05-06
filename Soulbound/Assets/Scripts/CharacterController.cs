@@ -162,4 +162,16 @@ public class CharacterController : MonoBehaviour
 		return m_FacingRight;
 	}
 
+	public void Face(GameObject obj)
+	{
+		if (transform.position.x <= obj.transform.position.x)
+		{
+			if (!m_FacingRight) Flip();
+		}
+		else
+		{
+			if (m_FacingRight) Flip();
+		}
+	}
+
 }

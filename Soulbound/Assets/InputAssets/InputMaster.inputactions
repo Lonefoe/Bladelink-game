@@ -11,7 +11,7 @@
                     "id": "e8a20f29-1b26-4f1b-8a55-caecba73011d",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Press"
                 },
                 {
                     "name": "Jump",
@@ -42,6 +42,14 @@
                     "type": "Button",
                     "id": "0ddea9e2-0341-48e0-ba26-d4b4ef45fae5",
                     "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Deflect",
+                    "type": "Button",
+                    "id": "1a2e6c8c-a26c-4527-9e45-21d470b3c560",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 }
@@ -204,7 +212,7 @@
                 {
                     "name": "",
                     "id": "66158f93-fe74-4bc1-8579-efd0705e9495",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Keyboard>/ctrl",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard and mouse",
@@ -242,6 +250,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "PauseGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "420850a7-2b2f-4eef-a7a6-5260ea7b9c68",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Deflect",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "03ce877b-fc61-4c61-a962-a1256298cd46",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Deflect",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Sword : MonoBehaviour
 {
 	public static Sword Instance { get; private set; }
 
 	// All sword variables
+	private List<GameObject> hitEnemies = new List<GameObject>();
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;
 	private bool isReturning = false;
@@ -79,7 +79,7 @@ public class Sword : MonoBehaviour
 	public void Return()
 	{
 		isReturning = true;
-		Debug.Log(isReturning);
+		hitEnemies.Clear();
 		m_Rigidbody2D.isKinematic = true;
 		m_Rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation; // Freeze rotation only => unfreeze position
 		m_Rigidbody2D.Sleep();
@@ -88,11 +88,13 @@ public class Sword : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.tag == "Enemy")
+		if (other.gameObject.tag == "Enemy" && !hitEnemies.Contains(other.gameObject))
 		{
+			Player.Combat.HitEnemy(other);
+			hitEnemies.Add(other.gameObject);
 			m_Rigidbody2D.isKinematic = true;
 			m_Rigidbody2D.constraints = RigidbodyConstraints2D.FreezePosition;
-			other.gameObject.GetComponent<Enemy>().TakeDamage(Player.Combat.attackDamage);
+
 			waitingForReturn = true;
 			Player.Combat.CanReturn = true;
 		}
