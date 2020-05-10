@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour, IDamageable<int>
 
     public EnemyStats Stats = new EnemyStats();
     private int currentHealth;
-    private int currentPoise = 0;
+    private int currentPoise;
     private bool dead = false;
 
     public event Action onDeathEvent;
@@ -37,20 +37,22 @@ public class Enemy : MonoBehaviour, IDamageable<int>
     void Start()
     {
         currentHealth = Stats.maxHealth;
+        currentPoise = Stats.poise;
     }
 
-
+    
     // Is called from the combat script
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         Senses.Report(Sense.Damage);
         StartCoroutine(Flasher(Color.red, Renderer.color));
+        Movement.Knockback(580f, true);
 
-        currentPoise += damage;
-        if (!Attack.IsAttacking())
+        currentPoise -= damage;
+        if (!Attack.IsSlashing())
         {
-            if (currentPoise >= Stats.poise) { currentPoise = 0; Animator.SetTrigger("Hurt"); }
+            if (currentPoise <= 0) { currentPoise = Stats.poise; Animator.SetTrigger("Hurt"); }
         }
 
         AudioManager.Instance.PlayOneShot("Hit");
@@ -67,11 +69,14 @@ public class Enemy : MonoBehaviour, IDamageable<int>
         onDeathEvent();
         dead = true;
         Animator.SetTrigger("Death");
+        Rigidbody.isKinematic = true;
+
         Collider2D[] colliders = GetComponents<Collider2D>();
         foreach (Collider2D col in colliders)
         {
             col.enabled = false;
         }
+
         Player.currentSoulPoints += UnityEngine.Random.Range(0.5f, 1f);
     }
 

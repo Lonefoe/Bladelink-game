@@ -33,7 +33,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Start()
     {
-        enemy.Attack.onAttackEvent += DisableMovement;
+        enemy.Attack.onSlashEvent += DisableMovement;
     }
 
     void Update()
@@ -69,6 +69,12 @@ public class EnemyMovement : MonoBehaviour
     public int GetDirection()
     {
         return direction;
+    }
+
+    public void Knockback(float force = 580f, bool attackCalled = false)
+    {
+        if (attackCalled) enemy.Rigidbody.AddForce(Vector2.right * Player.Movement.GetDirection() * force * enemy.Rigidbody.mass);
+        else enemy.Rigidbody.AddForce(Vector2.right * GetDirection() * -force * enemy.Rigidbody.mass);
     }
 
     // Stops the enemy for the current frame - called in Update

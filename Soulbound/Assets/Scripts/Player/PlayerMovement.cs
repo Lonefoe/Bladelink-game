@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 40f;
     private float horizontalMove = 0f;
+    private int direction = 1;
     private bool jump = false;
 
     private void Awake()
@@ -17,9 +18,11 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalMove = InputManager.Instance.moveInput.x * moveSpeed;        // Getting our mov. input and boosting that input with our speed variable
 
-        Player.Animator.SetFloat("Speed", Mathf.Abs(horizontalMove));          // Transfers our input to Speed variable inside of animator
-        Player.Animator.SetBool("isInAir", !Player.Controller.m_Grounded);     // We take the grounded property from controller and send it to animator
+        Player.Anim.SetFloat("Speed", Mathf.Abs(horizontalMove));          // Transfers our input to Speed variable inside of animator
+        Player.Anim.SetBool("isInAir", !Player.Controller.m_Grounded);     // We take the grounded property from controller and send it to animator
 
+        if (Player.Controller.IsFacingRight()) direction = 1;
+        else direction = -1;
     }
 
     // Where we call the movement logic from the controller
@@ -33,6 +36,16 @@ public class PlayerMovement : MonoBehaviour
     void Jump()
     {
             jump = true;
+    }
+
+    public int GetDirection()
+    {
+        return direction;
+    }
+
+    public void Knockback(float force)
+    {
+        Player.Rigidbody.AddForce(Vector2.right * GetDirection() * -force * Player.Rigidbody.mass);
     }
 
     public void DisableMovement()

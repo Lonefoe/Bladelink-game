@@ -4,14 +4,26 @@ using UnityEngine;
 
 public class Shield : MonoBehaviour
 {
+    Collider2D col;
+
+    private void Awake()
+    {
+        col = GetComponent<Collider2D>();
+    }
+
     public void Hide()
     {
-        GetComponent<Collider2D>().enabled = false;
+        col.enabled = false;
     }
 
     public void Show()
     {
-        GetComponent<Collider2D>().enabled = true;
+        col.enabled = true;
+    }
+
+    public bool IsShielding()
+    {
+        return col.enabled;
     }
 
 }

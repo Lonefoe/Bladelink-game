@@ -22,6 +22,8 @@ public class EnemySight : MonoBehaviour
         eyes = GetComponent<Transform>();
     }
 
+    // Checks whether we see the player and returns true / false
+    // Uses an x amount of rays to check if the player's in sight
     public bool CanSeePlayer()
     {
         float viewDist = viewDistance * (float)enemy.Movement.GetDirection();

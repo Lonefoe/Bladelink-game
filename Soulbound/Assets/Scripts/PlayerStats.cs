@@ -6,5 +6,6 @@ using UnityEngine;
 public class PlayerStats
 {
     public int maxHealth = 100;
+    public int maxPoise = 50;
     public float maxSoulPoints = 3;
 }

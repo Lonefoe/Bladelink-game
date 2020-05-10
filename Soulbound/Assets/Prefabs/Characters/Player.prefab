@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6028188136408692846}
   m_Layer: 9
   m_Name: Shield
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4633777522271313405}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.312, y: -0.061, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.3627325, w: 0.9318933}
+  m_LocalPosition: {x: 0.132, y: -0.077, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 200908981002760659}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -42.536003}
 --- !u!70 &8182020694223720321
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -45,8 +45,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.056353435, y: -0.07189906}
-  m_Size: {x: 0.19729313, y: 0.38423848}
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.06, y: 0.44}
   m_Direction: 0
 --- !u!114 &6028188136408692846
 MonoBehaviour:
@@ -228,8 +228,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2057231465
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -3316437661583186769, guid: 833c412f353965541afca17dc72ac2df,
     type: 3}
@@ -311,10 +311,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2e7da315db169428b877c33807c8e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 650
+  m_JumpForce: 450
   m_CrouchSpeed: 0.36
   m_MovementSmoothing: 0.05
   m_AirControl: 1
+  shouldFlip: 1
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 256
@@ -352,7 +353,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Stats:
     maxHealth: 100
-    maxSoulPoints: 3
+    maxPoise: 40
+    maxSoulPoints: 5
 --- !u!114 &2793365201235559372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,8 +380,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a296f565c9479af42827c9da2bd6a93b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 20
-  throwForce: 115
+  attackDamage: 25
+  throwForce: 76.666664
   attackPoint: {fileID: 1839703025070307345}
   attackRange: 0.43
   enemyLayer:

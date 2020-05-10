@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7042662805132808187}
   - component: {fileID: 8447731973876705103}
-  - component: {fileID: 6000336916334354984}
+  - component: {fileID: 1210088665358539375}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravityMultiplier: 1.5
   pauseInEditor: 0
---- !u!114 &6000336916334354984
+--- !u!114 &1210088665358539375
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -55,39 +55,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3994666442256999937}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0ad37a9eeb026947a5cbfe604b71916, type: 3}
+  m_Script: {fileID: 11500000, guid: a117f6a1b4eb8774191c2d776426a6c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  density: 1
-  fogBack: 10
-  fogFront: 0
-  fogGradient:
-    serializedVersion: 2
-    key0: {r: 1, g: 0, b: 0, a: 1}
-    key1: {r: 0.54795593, g: 0.4575472, b: 1, a: 1}
-    key2: {r: 0.54795593, g: 0.4575472, b: 1, a: 1}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 65342
-    ctime2: 65535
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 65535
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
-  tint: {r: 0.885413, g: 0.89508873, b: 0.9528302, a: 1}
+  particles: []

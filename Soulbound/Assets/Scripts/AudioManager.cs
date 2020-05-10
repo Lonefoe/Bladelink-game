@@ -49,7 +49,7 @@ public class AudioManager : MonoBehaviour
             s.source.Play();
         } else if (s.clips != null)
         {
-            int num = UnityEngine.Random.Range(1, s.clips.Length);
+            int num = UnityEngine.Random.Range(0, s.clips.Length);
 
             s.source.clip = s.clips[num];
             s.source.Play();
@@ -70,7 +70,7 @@ public class AudioManager : MonoBehaviour
             s.source.PlayOneShot(s.clip);
         } else if (s.clips != null)
         {
-            int num = UnityEngine.Random.Range(1, s.clips.Length);
+            int num = UnityEngine.Random.Range(0, s.clips.Length);
 
             s.source.PlayOneShot(s.clips[num]);
         }

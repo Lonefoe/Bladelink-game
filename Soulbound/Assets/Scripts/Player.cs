@@ -6,7 +6,7 @@ using UnityEngine.Experimental.Rendering.Universal;
 public class Player : MonoBehaviour, IDamageable<int>
 {
     // All static references to all player's components
-    public static Animator Animator { get; private set; }
+    public static Animator Anim { get; private set; }
     public static Rigidbody2D Rigidbody { get; private set; }
     public static CharacterController Controller { get; private set; }
     public static Player Instance { get; private set; }
@@ -16,6 +16,7 @@ public class Player : MonoBehaviour, IDamageable<int>
 
     [SerializeField] PlayerStats Stats = new PlayerStats();    
     public static int currentHealth;
+    public static int currentPoise;
     public static float currentSoulPoints;
     private Vector2 startingPosition;
 
@@ -23,7 +24,7 @@ public class Player : MonoBehaviour, IDamageable<int>
     {
         Instance = this;
         Rigidbody = GetComponent<Rigidbody2D>();
-        Animator = GetComponent<Animator>();
+        Anim = GetComponent<Animator>();
         Controller = GetComponent<CharacterController>();
         Movement = GetComponent<PlayerMovement>();
         Combat = GetComponent<PlayerCombat>();
@@ -33,6 +34,7 @@ public class Player : MonoBehaviour, IDamageable<int>
     void Start()
     {
         currentHealth = Stats.maxHealth;
+        currentPoise = Stats.maxPoise;
         currentSoulPoints = Stats.maxSoulPoints;
         startingPosition = transform.position;
     }
@@ -53,6 +55,10 @@ public class Player : MonoBehaviour, IDamageable<int>
         currentHealth -= damage;
         StartCoroutine(Flasher(Color.red, Renderer.color));
         AudioManager.Instance.PlayOneShot("Hit");
+        Movement.Knockback(580f);
+
+        if (currentPoise <= 0) { currentPoise = Stats.maxPoise; Debug.Log("Play hurt animation"); }
+        else currentPoise -= damage;
 
         if (currentHealth <= 0)
         {

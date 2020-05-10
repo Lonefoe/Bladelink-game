@@ -20,24 +20,30 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -4341356872245263088, guid: 833c412f353965541afca17dc72ac2df,
+      value: {fileID: 1867614440103027997, guid: 833c412f353965541afca17dc72ac2df,
         type: 3}
     - time: 0.083333336
-      value: {fileID: 1767457240126523544, guid: 833c412f353965541afca17dc72ac2df,
+      value: {fileID: -5516172988903973048, guid: 833c412f353965541afca17dc72ac2df,
         type: 3}
     - time: 0.16666667
-      value: {fileID: -4075373463826780061, guid: 833c412f353965541afca17dc72ac2df,
+      value: {fileID: -4341356872245263088, guid: 833c412f353965541afca17dc72ac2df,
         type: 3}
     - time: 0.25
-      value: {fileID: -3585722546115978389, guid: 833c412f353965541afca17dc72ac2df,
+      value: {fileID: 1767457240126523544, guid: 833c412f353965541afca17dc72ac2df,
         type: 3}
     - time: 0.33333334
-      value: {fileID: 2729851271774367765, guid: 833c412f353965541afca17dc72ac2df,
+      value: {fileID: -4075373463826780061, guid: 833c412f353965541afca17dc72ac2df,
         type: 3}
     - time: 0.41666666
-      value: {fileID: -1245805177388227614, guid: 833c412f353965541afca17dc72ac2df,
+      value: {fileID: -3585722546115978389, guid: 833c412f353965541afca17dc72ac2df,
         type: 3}
     - time: 0.5
+      value: {fileID: 2729851271774367765, guid: 833c412f353965541afca17dc72ac2df,
+        type: 3}
+    - time: 0.5833333
+      value: {fileID: -1245805177388227614, guid: 833c412f353965541afca17dc72ac2df,
+        type: 3}
+    - time: 0.6666667
       value: {fileID: -6787540193282983219, guid: 833c412f353965541afca17dc72ac2df,
         type: 3}
     attribute: m_Sprite
@@ -59,6 +65,8 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
+    - {fileID: 1867614440103027997, guid: 833c412f353965541afca17dc72ac2df, type: 3}
+    - {fileID: -5516172988903973048, guid: 833c412f353965541afca17dc72ac2df, type: 3}
     - {fileID: -4341356872245263088, guid: 833c412f353965541afca17dc72ac2df, type: 3}
     - {fileID: 1767457240126523544, guid: 833c412f353965541afca17dc72ac2df, type: 3}
     - {fileID: -4075373463826780061, guid: 833c412f353965541afca17dc72ac2df, type: 3}
@@ -71,7 +79,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5833333
+    m_StopTime: 0.75
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -98,7 +106,14 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.5
+  - time: 0.25
+    functionName: SpawnSword
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.6666667
     functionName: EnableMovement
     data: 
     objectReferenceParameter: {fileID: 0}
