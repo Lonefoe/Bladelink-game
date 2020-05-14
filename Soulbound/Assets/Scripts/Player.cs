@@ -8,7 +8,7 @@ public class Player : MonoBehaviour, IDamageable<int>
     // All static references to all player's components
     public static Animator Anim { get; private set; }
     public static Rigidbody2D Rigidbody { get; private set; }
-    public static CharacterController Controller { get; private set; }
+    public static PlayerController Controller { get; private set; }
     public static Player Instance { get; private set; }
     public static PlayerMovement Movement { get; private set; }
     public static PlayerCombat Combat { get; private set; }
@@ -25,7 +25,7 @@ public class Player : MonoBehaviour, IDamageable<int>
         Instance = this;
         Rigidbody = GetComponent<Rigidbody2D>();
         Anim = GetComponent<Animator>();
-        Controller = GetComponent<CharacterController>();
+        Controller = GetComponent<PlayerController>();
         Movement = GetComponent<PlayerMovement>();
         Combat = GetComponent<PlayerCombat>();
         Renderer = GetComponent<SpriteRenderer>();
@@ -53,11 +53,11 @@ public class Player : MonoBehaviour, IDamageable<int>
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        StartCoroutine(Flasher(Color.red, Renderer.color));
+        StartCoroutine(Flasher(Color.clear, Renderer.color));
         AudioManager.Instance.PlayOneShot("Hit");
         Movement.Knockback(580f);
 
-        if (currentPoise <= 0) { currentPoise = Stats.maxPoise; Debug.Log("Play hurt animation"); }
+        if (currentPoise <= 0) { currentPoise = Stats.maxPoise; Anim.SetBool("Hurt", true); }
         else currentPoise -= damage;
 
         if (currentHealth <= 0)

@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 8741395425108115548}
   - component: {fileID: 8741395425108115549}
   - component: {fileID: 8741395425108115491}
+  - component: {fileID: 2729585459045926765}
   m_Layer: 0
   m_Name: Main Virtual Cam
   m_TagString: Untagged
@@ -143,7 +144,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 4
+    OrthographicSize: 3.8
     NearClipPlane: 0.3
     FarClipPlane: 1500
     Dutch: 0
@@ -255,3 +256,18 @@ MonoBehaviour:
     m_DirectionMode: 0
     m_DissipationMode: 2
     m_DissipationDistance: 1000
+--- !u!114 &2729585459045926765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8741395425108115494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a51283a37fccc7f4a90fd6d72290ca0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RippleMaterial: {fileID: 2100000, guid: b60e71d1a368fae42818a279e6e64b03, type: 2}
+  MaxAmount: 50
+  Friction: 0.9

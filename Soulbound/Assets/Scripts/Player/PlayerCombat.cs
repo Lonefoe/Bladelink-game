@@ -10,13 +10,11 @@ public class PlayerCombat : MonoBehaviour
     public CombatMode Mode = new CombatMode();
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackRange = 0.5f;
-    private bool attacking;
-    private bool deflecting;
+    private bool attacking, deflecting;
     [SerializeField] private LayerMask enemyLayer;
 
-    private bool chainAttack = true;
-    private bool rememberChain = false;
-    private bool canDeflect = true;
+    private bool chainAttack = true, rememberChain = false;
+    private bool canDeflect = true, canAttack = true;
     private int comboPoint = 0;
     [SerializeField] private float launchForce = 125f;
 
@@ -58,7 +56,8 @@ public class PlayerCombat : MonoBehaviour
     //=====================================================  
     private void HandleAttack()
     {
-        if (chainAttack && !deflecting && mySword == null)
+        if (Player.Controller.IsClimbingLedge()) return;
+        if (chainAttack && !deflecting && mySword == null && canAttack)
         {
             Player.Anim.SetInteger("ComboPoint", comboPoint);
             Player.Anim.SetTrigger("Attack");                  // Trigger attack animation with a specific combo point
@@ -67,8 +66,8 @@ public class PlayerCombat : MonoBehaviour
             canDeflect = false;
             AudioManager.Instance.PlayOneShot("Slash");
         }
-        else if (!chainAttack && mySword == null) rememberChain = true;
-        else if (mySword != null) PortToSword(); 
+        else if (!chainAttack && mySword == null && canAttack) rememberChain = true;
+        else if (mySword != null) PortToSword();
     }
 
     //=====================================================
@@ -93,6 +92,30 @@ public class PlayerCombat : MonoBehaviour
     }
 
     //=====================================================
+    // Deflecting Input
+    //=====================================================  
+    public void StartDeflect()
+    {
+        if (!canDeflect) { deflecting = true; return; }
+
+        deflecting = true;
+        Player.Controller.SetShouldFlip(false);
+        Player.Movement.SetMoveMultiplier(0.3f);
+        Player.Anim.SetBool("deflecting", deflecting);
+        shield.Show();
+        ResetCombo();
+    }
+
+    public void StopDeflect()
+    {
+        deflecting = false;
+        Player.Controller.SetShouldFlip(true);
+        Player.Movement.SetMoveMultiplier(1f);
+        Player.Anim.SetBool("deflecting", deflecting);
+        shield.Hide();
+    }
+
+    //=====================================================
     // Deflect (Called when two swords meet)
     //=====================================================  
     public void Deflect()
@@ -100,6 +123,7 @@ public class PlayerCombat : MonoBehaviour
         CameraEffects.Instance.Shake(0.05f, 2.4f);
         StartCoroutine(CameraEffects.Instance.PauseEffect(.1f));
         AudioManager.Instance.PlayOneShot("Deflect");
+        InputManager.Instance.Vibrate(0.18f, 0.28f, 0.3f);
         EffectsManager.Instance.SpawnParticles("Deflect", shield.transform.position);
         Player.Movement.Knockback(400f);
     }
@@ -153,31 +177,10 @@ public class PlayerCombat : MonoBehaviour
     {
         enemy.GetComponent<Enemy>().TakeDamage(attackDamage);   // We call for the enemy to take damage
         CameraEffects.Instance.Shake(0.08f, 2.2f);
-        StartCoroutine(CameraEffects.Instance.PauseEffect(.1f));
+        InputManager.Instance.Vibrate(0.12f, 0.25f, 0.4f);
+        StartCoroutine(CameraEffects.Instance.PauseEffect(.15f));
         
     }
-
-    //=====================================================
-    // Deflecting Input
-    //=====================================================  
-    public void StartDeflect()
-    {
-        if (!canDeflect) { deflecting = true; return; }
-
-        deflecting = true;
-        Player.Anim.SetBool("deflecting", deflecting);
-        shield.Show();
-        ResetCombo();
-    }
-
-    public void StopDeflect()
-    {
-        deflecting = false;
-        Player.Anim.SetBool("deflecting", deflecting);
-        shield.Hide();
-    }
-
-    public bool IsDeflecting() { return shield.IsShielding(); }
 
     //=====================================================
     // Resetting the combo - player will start from attack 1
@@ -187,7 +190,9 @@ public class PlayerCombat : MonoBehaviour
         comboPoint = 0;          // Reset combo points
         Player.Movement.EnableMovement(); // Enable movement script
         chainAttack = true;      // Make sure we can start a new attack 01
+        rememberChain = false;
         attacking = false;
+        canDeflect = true;
     }
 
     //=====================================================
@@ -200,6 +205,15 @@ public class PlayerCombat : MonoBehaviour
         if (deflecting) StartDeflect();
         if (rememberChain) { HandleAttack(); rememberChain = false; }
     }
+
+    private void HurtEnd()
+    {
+        Player.Anim.SetBool("Hurt", false);
+    }
+
+    public bool IsDeflecting() { return shield.IsShielding(); }
+
+    public bool IsAttacking() { return attacking; }
 
     // Gizmos in the editor
     private void OnDrawGizmosSelected()

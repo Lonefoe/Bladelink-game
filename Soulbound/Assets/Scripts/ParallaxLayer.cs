@@ -3,8 +3,8 @@
 public class ParallaxLayer : MonoBehaviour
 {
     [SerializeField] float multiplier = 0.0f;
+[Range(0,1)][SerializeField] float verticalMultiplier = 1f;
     [SerializeField] bool horizontalOnly = true;
-    [SerializeField] float verticalMultiplier = 1f;
 
     private Transform cameraTransform;
 
@@ -25,7 +25,10 @@ public class ParallaxLayer : MonoBehaviour
         if (horizontalOnly)
             position.x += multiplier * (cameraTransform.position.x - startCameraPos.x);
         else
-            position += multiplier * (cameraTransform.position - startCameraPos);
+        {
+            position.x += multiplier * (cameraTransform.position.x - startCameraPos.x);
+            position.y += verticalMultiplier * multiplier * (cameraTransform.position.y - startCameraPos.y);
+        }
 
         transform.position = position;
     }

@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using System;
+using System.Collections;
 
 [DefaultExecutionOrder(-110)]
 public class InputManager : MonoBehaviour
@@ -45,6 +47,17 @@ public class InputManager : MonoBehaviour
         controls.Player.Move.canceled += ctx => moveInput = Vector2.zero;
     }
 
+    public void Vibrate(float low, float high, float dur)
+    {
+        if (Gamepad.current != null) StartCoroutine(Vibration(low, high, dur));   
+    }
+
+    private IEnumerator Vibration(float lowFreq, float highFreq, float duration)
+    {
+        Gamepad.current.SetMotorSpeeds(0.123f, 0.25f);
+        yield return new WaitForSeconds(0.5f);
+        Gamepad.current.SetMotorSpeeds(0f, 0f);
+    }
 
     private void OnEnable()
     {

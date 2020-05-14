@@ -15,6 +15,7 @@ public class CameraEffects : Singleton<CameraEffects>
 
     public void Shake(float amplitude, float frequency)
     {
+        if (shake == null) return;
         shake.m_ImpulseDefinition.m_AmplitudeGain = amplitude;
         shake.m_ImpulseDefinition.m_FrequencyGain = frequency;
         shake.GenerateImpulse();

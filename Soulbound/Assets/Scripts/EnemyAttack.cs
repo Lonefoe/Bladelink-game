@@ -17,14 +17,18 @@ public class EnemyAttack : MonoBehaviour
 
     private void Awake()
     {
-        enemy = GetComponent<Enemy>();
+        enemy = GetComponent<Enemy>();  
+    }
+
+    private void Start()
+    {
         enemy.AI.attackEvent += OnAttackStart;
     }
 
     // Called by an animation event
     public virtual void Attack()
     {   
-        Collider2D hitPlayer = Physics2D.OverlapCircle(attackPoint.position, 0.5f, playerLayer);
+        Collider2D hitPlayer = Physics2D.OverlapCircle(attackPoint.position, 0.6f, playerLayer);
         AudioManager.Instance.PlayOneShot("Slash");
         slashing = true;
         onSlashEvent();

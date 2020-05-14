@@ -42,7 +42,7 @@ public class EnemyAI : MonoBehaviour
         enemy.Senses.onTakeDamageEvent += OnTakeDamage;
 
         state = State.Patrolling;
-        pathPoints = path.GetPoints();
+        if (path != null) pathPoints = path.GetPoints();
         currentPathIndex = startPathIndex;
         waitTime = waitTimes[waitTimeIndex];
     }
@@ -54,7 +54,7 @@ public class EnemyAI : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (state == State.Dead) return;
+        if (state == State.Dead) { enemy.Movement.moveInput = 0; return; }
 
          if (sight.CanSeePlayer())
          {
@@ -68,7 +68,8 @@ public class EnemyAI : MonoBehaviour
         switch (state)
         {
             case State.Patrolling:
-                Patrol();
+                if (path != null) Patrol();
+                else NoPathPatrol();
                 break;
 
             case State.Chasing:
@@ -90,15 +91,31 @@ public class EnemyAI : MonoBehaviour
         if (Vector2.Distance(enemyPos, pointPos) < 0.2f)
         {
             // If we're not done waiting, stop the enemy for this frame and keep waiting
-            if (waitTime > 0) { enemy.Movement.StopForFrame(); waitTime -= Time.deltaTime; return; }
+            if (waitTime > 0) { enemy.Movement.moveInput = 0; waitTime -= Time.deltaTime; return; }
 
             currentPathIndex = GetNextPointIndex(); // Update the current path index with the next index to goto
             waitTimeIndex = GetNextTimeIndex(); // Update the index of the list with wait times
             waitTime = waitTimes[waitTimeIndex]; // Update the next time to wait with a new amount
+
         }
 
-        enemy.Movement.ChangeDirection(pathPoints[currentPathIndex].position);
+        enemy.Movement.UpdateDirection(pathPoints[currentPathIndex].position);
+        enemy.Movement.moveInput = 1;
     }
+
+    private void NoPathPatrol()
+    {
+        if (waitTime > 0) { enemy.Movement.moveInput = 0; waitTime -= Time.deltaTime; return; }
+
+        waitTimeIndex = GetNextTimeIndex(); // Update the index of the list with wait times
+        waitTime = waitTimes[waitTimeIndex]; // Update the next time to wait with a new amount
+
+        enemy.Movement.Flip();
+        enemy.Movement.moveInput = 1;
+    }
+
+        
+
 
     //=====================================================
     // Chase
@@ -106,7 +123,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Chase()
     {
-        if (!enemy.Attack.IsAttacking()) enemy.Movement.ChangeDirection(Player.Instance.GetPosition());
+        if (!enemy.Attack.IsAttacking()) { enemy.Movement.moveInput = 1; enemy.Movement.UpdateDirection(Player.Instance.GetPosition()); }
 
         if (enemy.IsPlayerInRange(enemy.Attack.attackRange))
         {
@@ -115,6 +132,7 @@ public class EnemyAI : MonoBehaviour
                 enemy.Animator.SetTrigger("Attack");
                 attackEvent();
             }
+            enemy.Movement.moveInput = 0;
         }
     }
 

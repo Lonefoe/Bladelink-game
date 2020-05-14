@@ -7,23 +7,12 @@ public class EnemyMovement : MonoBehaviour
     Enemy enemy;
 
     [SerializeField] private float moveSpeed = 25f;
-    private float moveSpeedMultiplier = 1f;
     private bool disabled = false;
     private bool stopped = false;
+    public float moveInput = 0f;
     private float horizontalMove;
     private int direction = 1;
 
-    public float MoveSpeedMultiplier
-    {
-        get
-        {
-            return moveSpeedMultiplier;
-        }
-        set
-        {
-            moveSpeedMultiplier = value;
-        }
-    }
 
     // Reference setup
     private void Awake()
@@ -38,26 +27,25 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
+        horizontalMove = moveInput * moveSpeed;
         enemy.Animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
     }
 
     private void FixedUpdate()
     {
-        if (enemy.IsDead() || disabled || stopped) { horizontalMove = 0; enemy.Controller.Move(0, false, false); stopped = false; return; }
-
-        horizontalMove = moveSpeed * moveSpeedMultiplier;
+        if (enemy.IsDead() || disabled) { horizontalMove = 0; enemy.Controller.Move(0, false); return; }
 
         if (direction == 1)
         {
-            enemy.Controller.Move(horizontalMove * Time.fixedDeltaTime, false, false);
+            enemy.Controller.Move(horizontalMove * Time.fixedDeltaTime, false);
         }
         else if (direction == -1)
         {
-            enemy.Controller.Move(-horizontalMove * Time.fixedDeltaTime, false, false);
+            enemy.Controller.Move(-horizontalMove * Time.fixedDeltaTime, false);
         }
     }
 
-    public void ChangeDirection(Vector2 targetPos)
+    public void UpdateDirection(Vector2 targetPos)
     {
         if (transform.position.x <= targetPos.x)
         {
@@ -71,16 +59,15 @@ public class EnemyMovement : MonoBehaviour
         return direction;
     }
 
+    public void Flip()
+    {
+        direction = -direction;
+    }
+
     public void Knockback(float force = 580f, bool attackCalled = false)
     {
         if (attackCalled) enemy.Rigidbody.AddForce(Vector2.right * Player.Movement.GetDirection() * force * enemy.Rigidbody.mass);
         else enemy.Rigidbody.AddForce(Vector2.right * GetDirection() * -force * enemy.Rigidbody.mass);
-    }
-
-    // Stops the enemy for the current frame - called in Update
-    public void StopForFrame()
-    {
-        stopped = true;
     }
 
     public void DisableMovement()
