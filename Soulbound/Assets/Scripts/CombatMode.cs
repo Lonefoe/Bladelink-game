@@ -5,7 +5,6 @@ using Cinemachine;
 
 public class CombatMode
 {
-    public CinemachineVirtualCamera combatCam;
     public Enemy targetEnemy = null;
     private bool inCombatMode;
     
@@ -13,14 +12,16 @@ public class CombatMode
     public void EnterCombatMode()
     {
         inCombatMode = true;
-        Player.Controller.Face(targetEnemy.gameObject);
+    //    Player.Controller.Face(targetEnemy.gameObject);
         Player.Controller.SetShouldFlip(false);
+        Player.Combat.combatCam.gameObject.SetActive(true);
     }
 
     public void ExitCombatMode()
     {
         inCombatMode = false;
         Player.Controller.SetShouldFlip(true);
+        Player.Combat.combatCam.gameObject.SetActive(false);
     }
 
     public bool IsInCombatMode()

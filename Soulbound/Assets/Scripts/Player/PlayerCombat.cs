@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class PlayerCombat : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private float attackRange = 0.5f;
     private bool attacking, deflecting;
     [SerializeField] private LayerMask enemyLayer;
+    public CinemachineVirtualCamera combatCam;
 
     private bool chainAttack = true, rememberChain = false;
     private bool canDeflect = true, canAttack = true;

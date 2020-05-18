@@ -13,7 +13,7 @@ public class ParallaxLayer : MonoBehaviour
 
     void Start()
     {
-        cameraTransform = GameLevel.Instance.mainVirtualCam.transform;
+        cameraTransform = Camera.main.transform;
         startCameraPos = cameraTransform.position;
         startPos = transform.position;
     }

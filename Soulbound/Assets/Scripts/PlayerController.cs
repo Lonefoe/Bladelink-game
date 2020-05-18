@@ -7,7 +7,7 @@ public class PlayerController : CharacterController
     [Header("Player Controller")]
     [SerializeField] private Transform wallCheck;
     [SerializeField] private Transform ledgeCheck;
-    [SerializeField] private Vector2 ledgeClimbOffset1 = Vector2.zero, ledgeClimbOffset2 = Vector2.zero;
+    [SerializeField] private Vector2 ledgeClimbOffset1 = Vector2.zero;
     protected bool isTouchingWall, isTouchingLedge;
     private bool ledgeDetected, holdingLedge, ledgeJumped;
     private bool ignoreCheck;
@@ -16,14 +16,13 @@ public class PlayerController : CharacterController
 [Range(0,1)][SerializeField] float fCutJumpHeight;
     [SerializeField] float ledgeJumpMultiplier = 1f;
 
-    private Vector2 ledgePosBot, ledgePos1, ledgePos2;
+    private Vector2 ledgePosBot, ledgePos;
 
     // Update is called once per frame
     void Update()
     {
         fJumpPressedRemember -= Time.deltaTime;
 
-        if (ignoreCheck) return;
         CheckSurroundings();
 
         if (ledgeJumped) return;
@@ -43,20 +42,18 @@ public class PlayerController : CharacterController
         {
             fJumpPressedRemember = 0;
             m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_JumpForce); // Jump
+        } 
+        else if (fJumpPressedRemember > 0 && IsClimbingLedge() && !ledgeJumped)
+        {
+            fJumpPressedRemember = 0;
+            m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_JumpForce * ledgeJumpMultiplier); // Ledge jump
+            LedgeJumped();
         }
     }
 
     // When we press jump button
     public override void Jump()
     {
-        if (IsClimbingLedge() && !ledgeJumped)
-        {
-            fJumpPressedRemember = 0;
-            m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_JumpForce * ledgeJumpMultiplier); // Ledge jump
-            LedgeJumped();
-            return;
-        }
-
         fJumpPressedRemember = fJumpPressedRememberTime;
     }
 
@@ -75,16 +72,20 @@ public class PlayerController : CharacterController
     //=====================================================  
 
     private void CheckSurroundings()
-    {
+    {  
         isTouchingWall = Physics2D.Raycast(wallCheck.position, transform.right * Player.Movement.GetDirection(), 0.5f, m_WhatIsGround);
         isTouchingLedge = Physics2D.Raycast(ledgeCheck.position, transform.right * Player.Movement.GetDirection(), 0.5f, m_WhatIsGround);
 
-        if (isTouchingWall && !isTouchingLedge & !ledgeDetected)
+
+        if (isTouchingWall && !isTouchingLedge & !ledgeDetected && !ignoreCheck)
         {
             ledgeDetected = true;
             ledgePosBot = wallCheck.position;
+        } 
+        else if (!isTouchingWall && !isTouchingLedge && ignoreCheck)
+        {
+            FinishLedgeClimb();
         }
-
     }
 
     private void CheckLedgeClimb()
@@ -95,13 +96,11 @@ public class PlayerController : CharacterController
 
             if (IsFacingRight())
             {
-                ledgePos1 = new Vector2(Mathf.Floor(ledgePosBot.x + 0.5f) - ledgeClimbOffset1.x, Mathf.Floor(ledgePosBot.y) + ledgeClimbOffset1.y);
-                ledgePos2 = new Vector2(Mathf.Floor(ledgePosBot.x + 0.5f) + ledgeClimbOffset2.x, Mathf.Floor(ledgePosBot.y) + ledgeClimbOffset2.y);
+                ledgePos = new Vector2(Mathf.Floor(ledgePosBot.x + 0.5f) - ledgeClimbOffset1.x, Mathf.Floor(ledgePosBot.y) + ledgeClimbOffset1.y);
             }
             else
             {
-                ledgePos1 = new Vector2(Mathf.Ceil(ledgePosBot.x - 0.5f) + ledgeClimbOffset1.x, Mathf.Floor(ledgePosBot.y) + ledgeClimbOffset1.y);
-                ledgePos2 = new Vector2(Mathf.Ceil(ledgePosBot.x - 0.5f) - ledgeClimbOffset2.x, Mathf.Floor(ledgePosBot.y) + ledgeClimbOffset2.y);
+                ledgePos = new Vector2(Mathf.Ceil(ledgePosBot.x - 0.5f) + ledgeClimbOffset1.x, Mathf.Floor(ledgePosBot.y) + ledgeClimbOffset1.y);
             }
 
             m_canMove = false;
@@ -111,7 +110,7 @@ public class PlayerController : CharacterController
 
         if (holdingLedge)
         {
-            transform.position = ledgePos1;
+            transform.position = ledgePos;
         }
     }
 

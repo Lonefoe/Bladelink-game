@@ -29,6 +29,7 @@ public class AudioManager : MonoBehaviour
 
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
+
             s.source.loop = s.loop;
             if (s.autoplay) s.source.Play();
         }
@@ -43,6 +44,8 @@ public class AudioManager : MonoBehaviour
             Debug.Log("Sound: " + name + " not found!");
             return;
         }
+
+        if (s.randomizePitch) s.source.pitch = UnityEngine.Random.Range(s.minPitch, s.maxPitch);
 
         if (s.clip != null)
         {
@@ -65,10 +68,13 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
+        if (s.randomizePitch) s.source.pitch = UnityEngine.Random.Range(s.minPitch, s.maxPitch);
+
         if (s.clip != null)
         {
             s.source.PlayOneShot(s.clip);
-        } else if (s.clips != null)
+        } 
+        else if (s.clips != null)
         {
             int num = UnityEngine.Random.Range(0, s.clips.Length);
 

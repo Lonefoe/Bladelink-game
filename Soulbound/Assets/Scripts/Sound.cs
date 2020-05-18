@@ -23,6 +23,9 @@ public class Sound
     public float volume = 1f;
     [Range(.1f, 3f)]
     public float pitch = 1f;
+    public bool randomizePitch = false;
+    public float minPitch;
+    public float maxPitch;
 
     [HideInInspector]
     public AudioSource source;

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.Rendering;
 
 public class CameraEffects : Singleton<CameraEffects>
 {
-
     CinemachineImpulseSource shake;
 
     private void Awake()

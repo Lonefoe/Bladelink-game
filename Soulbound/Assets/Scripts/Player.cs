@@ -90,24 +90,9 @@ public class Player : MonoBehaviour, IDamageable<int>
         }
     }
 
-    public void PlayFootstep()
+    private void PlayFootstep()
     {
-        int num = Random.Range(1, 4);
-
-        switch (num)
-        {
-            case 1:
-              AudioManager.Instance.Play("Footstep01");
-                break;
-
-            case 2:
-                AudioManager.Instance.Play("Footstep02");
-                break;
-
-            case 3:
-                AudioManager.Instance.Play("Footstep03");
-                break;
-        }
+        AudioManager.Instance.PlayOneShot("PlayerFootstep");
     }
 
 }
