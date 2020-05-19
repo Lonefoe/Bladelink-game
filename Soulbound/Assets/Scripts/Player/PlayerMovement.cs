@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 40f;
     private float moveMultiplier = 1f;
     private float horizontalMove = 0f;
+    private bool doRun = false;
     private int direction = 1;
 
     private void Awake()
@@ -17,7 +18,8 @@ public class PlayerMovement : MonoBehaviour
     // We handle everything input-based in here
     void Update()
     {
-        horizontalMove = InputManager.Instance.moveInput.x * moveSpeed * moveMultiplier;        // Getting our mov. input and boosting that input with our speed variable
+        if (!doRun) horizontalMove = InputManager.Instance.moveInput.x * moveSpeed * moveMultiplier;        // Getting our mov. input and boosting that input with our speed variable
+        else horizontalMove = moveSpeed * moveMultiplier;
 
         Player.Anim.SetFloat("Speed", Mathf.Abs(horizontalMove));          // Transfers our input to Speed variable inside of animator
         Player.Anim.SetBool("isInAir", !Player.Controller.m_Grounded);     // We take the grounded property from controller and send it to animator
@@ -41,6 +43,13 @@ public class PlayerMovement : MonoBehaviour
     public void Knockback(float force)
     {
         Player.Rigidbody.AddForce(Vector2.right * GetDirection() * -force * Player.Rigidbody.mass);
+    }
+
+    public void DoRunToggle(float moveMult = 1f)
+    {
+        doRun = !doRun;
+        if (doRun) moveMultiplier = moveMult;
+        else moveMultiplier = 1f;
     }
 
     public void SetMoveMultiplier(float value)

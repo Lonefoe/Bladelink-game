@@ -5,9 +5,8 @@ using System;
 using System.Collections;
 
 [DefaultExecutionOrder(-110)]
-public class InputManager : MonoBehaviour
+public class InputManager : Singleton<InputManager>
 {
-    public static InputManager Instance { get; private set; }
 
     //======================================
     // PUBLIC PROPERTIES
@@ -32,15 +31,6 @@ public class InputManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        } else
-        {
-            Destroy(gameObject);
-        }
-
         controls = new InputMaster();
 
         controls.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
