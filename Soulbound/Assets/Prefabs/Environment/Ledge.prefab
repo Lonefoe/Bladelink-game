@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 502944141497179811}
   - component: {fileID: 7923362310108328047}
   - component: {fileID: 4348942111587266520}
+  - component: {fileID: 1680017696707369854}
   m_Layer: 8
   m_Name: Ledge
-  m_TagString: Untagged
+  m_TagString: Ledge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,7 +98,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: -0.000061035156, y: -0.117687464}
+  m_Offset: {x: -0.000061035156, y: -0.1359806}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -108,7 +109,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9998779, y: 0.6416249}
+  m_Size: {x: 0.9998779, y: 0.60503864}
   m_EdgeRadius: 0
 --- !u!251 &7923362310108328047
 PlatformEffector2D:
@@ -155,3 +156,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.18949974, y: 0.24684304}
   m_EdgeRadius: 0
+--- !u!114 &1680017696707369854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502944141497179808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744bb59082debab4598b626447db975e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ledgeClimbOffset: {x: 0, y: 0}

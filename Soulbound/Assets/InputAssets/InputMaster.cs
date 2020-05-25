@@ -65,6 +65,14 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ActionButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""0d2b08b7-3fa2-4a90-9dc8-afbf44683c89"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Hold""
                 }
             ],
             ""bindings"": [
@@ -342,6 +350,28 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""action"": ""Deflect"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3e7f6521-fd2a-4c4c-a123-3c1f5c8e5ff1"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and mouse"",
+                    ""action"": ""ActionButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5b099ab7-0472-40d0-a2dc-17d3d57e57fd"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ActionButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -384,6 +414,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_Throw = m_Player.FindAction("Throw", throwIfNotFound: true);
         m_Player_PauseGame = m_Player.FindAction("PauseGame", throwIfNotFound: true);
         m_Player_Deflect = m_Player.FindAction("Deflect", throwIfNotFound: true);
+        m_Player_ActionButton = m_Player.FindAction("ActionButton", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -439,6 +470,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Throw;
     private readonly InputAction m_Player_PauseGame;
     private readonly InputAction m_Player_Deflect;
+    private readonly InputAction m_Player_ActionButton;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -449,6 +481,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         public InputAction @Throw => m_Wrapper.m_Player_Throw;
         public InputAction @PauseGame => m_Wrapper.m_Player_PauseGame;
         public InputAction @Deflect => m_Wrapper.m_Player_Deflect;
+        public InputAction @ActionButton => m_Wrapper.m_Player_ActionButton;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -476,6 +509,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Deflect.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDeflect;
                 @Deflect.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDeflect;
                 @Deflect.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDeflect;
+                @ActionButton.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnActionButton;
+                @ActionButton.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnActionButton;
+                @ActionButton.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnActionButton;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -498,6 +534,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Deflect.started += instance.OnDeflect;
                 @Deflect.performed += instance.OnDeflect;
                 @Deflect.canceled += instance.OnDeflect;
+                @ActionButton.started += instance.OnActionButton;
+                @ActionButton.performed += instance.OnActionButton;
+                @ActionButton.canceled += instance.OnActionButton;
             }
         }
     }
@@ -528,5 +567,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnThrow(InputAction.CallbackContext context);
         void OnPauseGame(InputAction.CallbackContext context);
         void OnDeflect(InputAction.CallbackContext context);
+        void OnActionButton(InputAction.CallbackContext context);
     }
 }

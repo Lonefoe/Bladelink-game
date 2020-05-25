@@ -5,6 +5,8 @@ using Cinemachine;
 
 public class PlayerCombat : MonoBehaviour
 {
+    #region VARIABLES
+
     [Header("Attacking")]
     public int attackDamage = 20;
     public float throwForce = 10f;
@@ -17,6 +19,8 @@ public class PlayerCombat : MonoBehaviour
 
     private bool chainAttack = true, rememberChain = false;
     private bool canDeflect = true, canAttack = true;
+    private float parryTime; 
+    public float startParryTime = 0.15f;
     private int comboPoint = 0;
     [SerializeField] private float launchForce = 125f;
 
@@ -27,6 +31,8 @@ public class PlayerCombat : MonoBehaviour
     private bool canReturn = false;
 
     private Shield shield;
+
+    #endregion
 
     public bool CanReturn
     {
@@ -48,6 +54,15 @@ public class PlayerCombat : MonoBehaviour
         InputManager.controls.Player.Deflect.canceled += ctx => StopDeflect();
     }
 
+    private void Update()
+    {
+        if (deflecting)
+        {
+            parryTime -= Time.deltaTime;
+        }
+        else parryTime = startParryTime;
+    }
+
     private void Start()
     {
         shield = GetComponentInChildren<Shield>();
@@ -58,7 +73,7 @@ public class PlayerCombat : MonoBehaviour
     //=====================================================  
     private void HandleAttack()
     {
-        if (Player.Controller.IsClimbingLedge()) return;
+        if (Player.Controller.IsClimbingLedge() || Player.Instance.IsDead()) return;
         if (chainAttack && !deflecting && mySword == null && canAttack)
         {
             Player.Anim.SetInteger("ComboPoint", comboPoint);
@@ -69,19 +84,22 @@ public class PlayerCombat : MonoBehaviour
             AudioManager.Instance.PlayOneShot("Slash");
         }
         else if (!chainAttack && mySword == null && canAttack) rememberChain = true;
-        else if (mySword != null) PortToSword();
+        else if (mySword != null) StartCoroutine(PortToSword());
     }
 
+    #region ATTACK
     //=====================================================
     // Attack (Called by an animation event)
     //=====================================================  
     public void Attack()
     {
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);      
+
         comboPoint++;               // Add a combo point   
         Player.Movement.DisableMovement();   // Disable movement script
         Player.Rigidbody.Sleep();
 
+        if (hitColliders.Length <= 0 && IsEnemyBehindPlayer()) { Player.Controller.Flip(); hitColliders = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer); }
         if (hitColliders.Length <= 0) Player.Controller.Launch(launchForce);    // Launch character forward a bit
 
         List<GameObject> hitEnemies = new List<GameObject>();
@@ -93,6 +111,17 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
+    // We check if enemy's behind the player, if it is, we flip him
+    private bool IsEnemyBehindPlayer()
+    {
+        Collider2D[] safetyHit = Physics2D.OverlapCircleAll(new Vector2(attackPoint.position.x - attackPoint.localPosition.x * 2 * Player.Movement.GetDirection(), attackPoint.position.y), attackRange + 0.07f, enemyLayer);
+        if (safetyHit.Length > 0) return true;
+        else return false;
+    }
+
+    #endregion
+
+    #region DEFLECT
     //=====================================================
     // Deflecting Input
     //=====================================================  
@@ -120,15 +149,26 @@ public class PlayerCombat : MonoBehaviour
     //=====================================================
     // Deflect (Called when two swords meet)
     //=====================================================  
-    public void Deflect()
+    public void Deflect(Enemy enemy)
     {
         CameraEffects.Instance.Shake(0.05f, 2.4f);
-        StartCoroutine(CameraEffects.Instance.PauseEffect(.1f));
         AudioManager.Instance.PlayOneShot("Deflect");
         InputManager.Instance.Vibrate(0.18f, 0.28f, 0.3f);
         EffectsManager.Instance.SpawnParticles("Deflect", shield.transform.position);
         Player.Movement.Knockback(400f);
+
+        // If we successfully parried, do this
+        if (parryTime > 0)
+        {
+            enemy.OnParried();
+            StartCoroutine(CameraEffects.Instance.Slowmotion(0.2f, 0.5f));
+            parryTime = startParryTime;
+        }
     }
+
+    #endregion
+
+    #region SWORD THROW
 
     //=====================================================
     // Throwing the sword ability
@@ -140,13 +180,18 @@ public class PlayerCombat : MonoBehaviour
             if (Player.currentSoulPoints < swordThrowCost || attacking) return;
             Player.currentSoulPoints -= swordThrowCost;
             Player.Anim.SetTrigger("throw");
+            StartCoroutine(CameraEffects.Instance.Slowmotion(.2f, 0.5f));
+            AudioManager.Instance.Play("SwordSwoosh");
 
+            StartCoroutine(CameraEffects.Instance.PauseEffect(0.1f));
+            Player.Movement.Knockback(150f);
         }
         else if (canReturn == true)
         {
             Player.Controller.Face(mySword);
             mySword.GetComponent<PlayerSword>().Return();
             Player.Anim.SetTrigger("throw");
+            AudioManager.Instance.Play("SwordSwoosh");
         }
 
     }
@@ -166,11 +211,16 @@ public class PlayerCombat : MonoBehaviour
     }
 
     // Second part of the ability - player ports to the sword and absorbs it
-    private void PortToSword()
+    private IEnumerator<WaitForSecondsRealtime> PortToSword()
     {
+        AudioManager.Instance.Play("SwordPort");
+        StartCoroutine(CameraEffects.Instance.Slowmotion());
+        yield return new WaitForSecondsRealtime(1f);
         transform.position = mySword.transform.position + new Vector3(0f, 0.5f, 0f);
         Destroy(mySword.gameObject);
     }
+
+    #endregion
 
     //=====================================================
     // Things that happen when enemy's hit
@@ -178,10 +228,10 @@ public class PlayerCombat : MonoBehaviour
     public void HitEnemy(Collider2D enemy)
     {
         enemy.GetComponent<Enemy>().TakeDamage(attackDamage);   // We call for the enemy to take damage
-        CameraEffects.Instance.Shake(0.08f, 2.2f);
+        CameraEffects.Instance.Shake(0.12f, 2.2f);
         InputManager.Instance.Vibrate(0.12f, 0.25f, 0.4f);
         StartCoroutine(CameraEffects.Instance.PauseEffect(.15f));
-        
+        EffectsManager.Instance.SpawnParticles("CircleHit", enemy.transform.position + new Vector3(Random.Range(0f, 0.25f), Random.Range(0.5f, 0.75f), 0), true);
     }
 
     //=====================================================
@@ -208,11 +258,6 @@ public class PlayerCombat : MonoBehaviour
         if (rememberChain) { HandleAttack(); rememberChain = false; }
     }
 
-    private void HurtEnd()
-    {
-        Player.Anim.SetBool("Hurt", false);
-    }
-
     public bool IsDeflecting() { return shield.IsShielding(); }
 
     public bool IsAttacking() { return attacking; }
@@ -224,6 +269,7 @@ public class PlayerCombat : MonoBehaviour
             return;
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        Gizmos.color = Color.red;
     }
 
 }

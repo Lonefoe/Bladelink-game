@@ -10,8 +10,13 @@ public class UIManager : MonoBehaviour
 
     //-------------UI REFERENCES---------------//
 
+    #region UI REFERENCES
+
     public Slider healthSlider;
     public TextMeshProUGUI soulPointsText;
+    public TextMeshProUGUI saveTextPopup;
+
+    #endregion
 
     //--------------------------------------//
 

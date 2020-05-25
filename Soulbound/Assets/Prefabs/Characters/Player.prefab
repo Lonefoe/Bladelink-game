@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2347781465453783194}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.3282, z: 0}
+  m_LocalPosition: {x: 0, y: 0.4033, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 200908981002760659}
@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 3747368193666487877}
   - component: {fileID: 2793365201235559372}
   - component: {fileID: 111904524015332663}
+  - component: {fileID: 3308849245028838503}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -373,10 +374,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b87e61c87403d134093fe53b991ebf6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 10
+  m_JumpForce: 11
   fallMultiplier: 2.5
   m_CrouchSpeed: 0.36
-  m_MovementSmoothing: 0.05
+  m_MovementSmoothing: 0.068
   m_AirControl: 1
   shouldFlip: 1
   m_WhatIsGround:
@@ -404,8 +405,10 @@ MonoBehaviour:
       m_Calls: []
   wallCheck: {fileID: 311585381538718209}
   ledgeCheck: {fileID: 1754040919872140716}
-  ledgeClimbOffset1: {x: 0.18, y: 0.5}
+  ledgeClimbOffset: {x: 0.22, y: 0.5}
+  ledgeOffsetStart: {x: 0, y: 0}
   fJumpPressedRememberTime: 0.15
+  fGroundedRememberTime: 0.09
   fCutJumpHeight: 0.4
   ledgeJumpMultiplier: 1.18
 --- !u!114 &3747368193666487877
@@ -423,7 +426,7 @@ MonoBehaviour:
   Stats:
     maxHealth: 100
     maxPoise: 40
-    maxSoulPoints: 5
+    maxSoulPoints: 1
 --- !u!114 &2793365201235559372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,7 +439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e929eaff5898b4a8b4912c45827c6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 38
+  moveSpeed: 34
 --- !u!114 &111904524015332663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,7 +460,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   combatCam: {fileID: 0}
+  startParryTime: 0.145
   launchForce: 24
   swordPrefab: {fileID: 1575309502313035274, guid: 80cbbb3b7d1163149acdc03f0997637b,
     type: 3}
   swordThrowCost: 1
+--- !u!114 &3308849245028838503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8584758829728493051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 135f19c9a28c6ff4aa7179afd0f89640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -11,7 +11,7 @@ public class CharacterController : MonoBehaviour
 	[SerializeField] private bool m_AirControl = false;                         // Whether or not a player can steer while jumping;
 	[SerializeField] private bool shouldFlip = true;
 	[SerializeField] protected LayerMask m_WhatIsGround;                         // A mask determining what is ground to the character
-	[SerializeField] private Transform m_GroundCheck;                           // A position marking where to check if the player is grounded.
+	[SerializeField] protected Transform m_GroundCheck;                           // A position marking where to check if the player is grounded.
 	[SerializeField] private Transform m_CeilingCheck;                          // A position marking where to check for ceilings
 	[SerializeField] private Collider2D m_CrouchDisableCollider;                // A collider that will be disabled when crouching
 
@@ -63,6 +63,8 @@ public class CharacterController : MonoBehaviour
 					OnLandEvent.Invoke();
 			}
 		}
+
+		// NormalizeSlope();
 	}
 
 
@@ -147,7 +149,7 @@ public class CharacterController : MonoBehaviour
 		}
 	}
 
-	private void Flip()
+	public void Flip()
 	{
 		// Switch the way the player is labelled as facing.
 		m_FacingRight = !m_FacingRight;
@@ -156,6 +158,28 @@ public class CharacterController : MonoBehaviour
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
+	}
+
+	void NormalizeSlope()
+	{
+		// Attempt vertical normalization
+		if (m_Grounded)
+		{
+			RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 1f, m_WhatIsGround);
+
+			if (hit.collider != null && Mathf.Abs(hit.normal.x) > 0.1f)
+			{
+				var slopeFriction = 2f;
+				// Apply the opposite force against the slope force 
+				// You will need to provide your own slopeFriction to stabalize movement
+				m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x - (hit.normal.x * slopeFriction), m_Rigidbody2D.velocity.y);
+
+				//Move Player up or down to compensate for the slope below them
+				Vector3 pos = transform.position;
+				pos.y += -hit.normal.x * Mathf.Abs(m_Rigidbody2D.velocity.x) * Time.deltaTime * (m_Rigidbody2D.velocity.x - hit.normal.x > 0 ? 1 : -1);
+				transform.position = pos;
+			}
+		}
 	}
 
 	public void Launch(float launchForce)
