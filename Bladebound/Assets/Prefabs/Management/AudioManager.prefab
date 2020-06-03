@@ -1,0 +1,139 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6346980480420004794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6346980480420004792}
+  - component: {fileID: 1791623163195588544}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6346980480420004792
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6346980480420004794}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.092641175, y: 3.4, z: -22.762213}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1791623163195588544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6346980480420004794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf543bc67d7204d408b2055986d43c2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: MainTheme
+    clip: {fileID: 8300000, guid: e2d957846aa71d64397a72f0cd963fef, type: 3}
+    clips: []
+    loop: 1
+    autoplay: 0
+    volume: 0.15
+    pitch: 1
+    randomizePitch: 0
+    minPitch: 0
+    maxPitch: 0
+    source: {fileID: 0}
+  - name: CaveAmbienceBG
+    clip: {fileID: 8300000, guid: 20d3992b791a9464ba5d306a93b282a8, type: 3}
+    clips: []
+    loop: 1
+    autoplay: 1
+    volume: 0.075
+    pitch: 0.83
+    randomizePitch: 0
+    minPitch: 0
+    maxPitch: 0
+    source: {fileID: 0}
+  - name: PlayerFootstep
+    clip: {fileID: 8300000, guid: 3596c82aa5303d84f92a924443ffbf23, type: 3}
+    clips: []
+    loop: 0
+    autoplay: 0
+    volume: 0.3
+    pitch: 1
+    randomizePitch: 1
+    minPitch: 0.8
+    maxPitch: 1.2
+    source: {fileID: 0}
+  - name: Slash
+    clip: {fileID: 0}
+    clips:
+    - {fileID: 8300000, guid: 397ca84683436a3499f0cf14f7b344cf, type: 3}
+    - {fileID: 8300000, guid: d9f5f9e68c0a29342b5a4178f1415603, type: 3}
+    loop: 0
+    autoplay: 0
+    volume: 0.35
+    pitch: 1
+    randomizePitch: 0
+    minPitch: 0
+    maxPitch: 0
+    source: {fileID: 0}
+  - name: Hit
+    clip: {fileID: 8300000, guid: a2a76ded43241234db2e206dd5182687, type: 3}
+    clips: []
+    loop: 0
+    autoplay: 0
+    volume: 0.37
+    pitch: 1
+    randomizePitch: 1
+    minPitch: 0.9
+    maxPitch: 1
+    source: {fileID: 0}
+  - name: Deflect
+    clip: {fileID: 0}
+    clips:
+    - {fileID: 8300000, guid: 42b968fa19a159e439f4f6e36c352f8f, type: 3}
+    - {fileID: 8300000, guid: 4bc901dba460e784ca80cf5985d26181, type: 3}
+    - {fileID: 8300000, guid: f3c29cae2bffad54f8f1a6d633541ec4, type: 3}
+    loop: 0
+    autoplay: 0
+    volume: 0.288
+    pitch: 1
+    randomizePitch: 0
+    minPitch: 0
+    maxPitch: 0
+    source: {fileID: 0}
+  - name: SwordGround
+    clip: {fileID: 8300000, guid: fef88cf58e38e524b8ef89636d32039d, type: 3}
+    clips: []
+    loop: 0
+    autoplay: 0
+    volume: 0.6
+    pitch: 1
+    randomizePitch: 0
+    minPitch: 0
+    maxPitch: 0
+    source: {fileID: 0}
+  - name: CaveAmbienceBass
+    clip: {fileID: 8300000, guid: 9435ef61d5ea2274f8d57a1a3de8859b, type: 3}
+    clips: []
+    loop: 1
+    autoplay: 1
+    volume: 0.1
+    pitch: 1
+    randomizePitch: 0
+    minPitch: 0
+    maxPitch: 0
+    source: {fileID: 0}

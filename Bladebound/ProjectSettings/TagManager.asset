@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Enemy
+  - Ground
+  - Ledge
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Ground
+  - Player
+  - Enemy
+  - PlayerSword
+  - PostProcessing
+  - Grass
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Background 7
+    uniqueID: 349698107
+    locked: 0
+  - name: Background 6
+    uniqueID: 3846718813
+    locked: 0
+  - name: Background 5
+    uniqueID: 2477088925
+    locked: 0
+  - name: Background 4
+    uniqueID: 2206271291
+    locked: 0
+  - name: Background 3
+    uniqueID: 3453801499
+    locked: 0
+  - name: Background 2
+    uniqueID: 3239087973
+    locked: 0
+  - name: Background 1
+    uniqueID: 2273430177
+    locked: 0
+  - name: Near Background
+    uniqueID: 2103674935
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 2237735831
+    locked: 0
+  - name: Exterior
+    uniqueID: 1708721435
+    locked: 0
+  - name: Foreground
+    uniqueID: 3117153863
+    locked: 0
+  - name: Near Foreground
+    uniqueID: 1296326913
+    locked: 0
