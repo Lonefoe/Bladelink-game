@@ -1,2 +1,2 @@
-# Bladebound
-Unity files of my game Bladebound
+# Steelbound
+Unity files of my game Steelbound
