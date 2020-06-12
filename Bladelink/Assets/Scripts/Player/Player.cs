@@ -118,7 +118,7 @@ public class Player : MonoBehaviour, IDamageable<int>
         currentSoulPoints += UnityEngine.Random.Range(min, max);
     }
 
-    private void PlayFootstep()
+    public void PlayFootstep()
     {
         AudioManager.Instance.PlayOneShot("PlayerFootstep");
     }

@@ -7,7 +7,6 @@ using Utilities;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-
     [Range(0, 2f)] public float speed = 1.0f;
     [SerializeField] private float gravityMultiplier = 1f;      // Tweaker for gravity, multiplies the WORLD gravity
     [SerializeField] private bool pauseInEditor = false;
@@ -27,6 +26,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
     }
 
     private void Update()
@@ -45,8 +45,9 @@ public class GameManager : MonoBehaviour
     {
         // Tweaking the world gravity
         Physics2D.gravity *= gravityMultiplier;
-
     }
+
+    public void OnGamePaused() { if(!gamePaused) gamePaused = true; else gamePaused = false; }
 
     public bool IsGamePaused()
     {

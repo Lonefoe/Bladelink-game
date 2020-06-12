@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     #region UI REFERENCES
 
     public GameObject hudCanvas;
+    public GameObject pauseCanvas;
     public Slider healthSlider;
     public TextMeshProUGUI soulPointsText;
     public TextMeshProUGUI saveTextPopup;

@@ -6,7 +6,8 @@ using System.Collections;
 
 [DefaultExecutionOrder(-110)]
 public class InputManager : Singleton<InputManager>
-{
+{   
+    private bool vibrating;
 
     //======================================
     // PUBLIC PROPERTIES
@@ -45,8 +46,17 @@ public class InputManager : Singleton<InputManager>
     private IEnumerator Vibration(float lowFreq, float highFreq, float duration)
     {
         Gamepad.current.SetMotorSpeeds(0.123f, 0.25f);
+        vibrating = true;
+        Invoke("VibrateEndCheck", 0.51f);
         yield return new WaitForSeconds(0.5f);
         Gamepad.current.SetMotorSpeeds(0f, 0f);
+        vibrating = false;
+    }
+
+    void VibrateEndCheck()
+    {
+        if(vibrating) { Gamepad.current.SetMotorSpeeds(0f, 0f);
+        vibrating = false; }
     }
 
     private void OnEnable()

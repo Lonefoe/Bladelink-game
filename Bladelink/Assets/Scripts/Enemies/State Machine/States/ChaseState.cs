@@ -28,7 +28,7 @@ public class ChaseState : State
 
     public override void UpdateState()
     {
-        if(Player.Instance.IsDead()) stateMachine.ChangeState(owner.patrolState);
+        if (Player.Instance.IsDead()) stateMachine.ChangeState(owner.patrolState);
 
         if (!enemy.Attack.IsAttacking()) { enemy.Movement.moveInput = 1; enemy.Movement.UpdateDirection(Player.Instance.GetPosition()); }
 
@@ -42,10 +42,7 @@ public class ChaseState : State
             enemy.Movement.moveInput = 0;
         }
 
-        if (!owner.sight.CanSeePlayer() && !IsInChaseRange())
-        {
-            stateMachine.ChangeState(owner.patrolState);
-        }
+        if (owner.sight.CanSeePlayer() && !IsInChaseRange()) stateMachine.ChangeState(owner.patrolState);
     }
 
     private bool IsInChaseRange()

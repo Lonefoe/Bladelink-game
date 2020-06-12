@@ -26,6 +26,11 @@ namespace Utilities
             Time.timeScale = timeScale;
         }
 
+        public static bool IsBetween(float testValue, float bound1, float bound2)
+     {
+         return (testValue >= Mathf.Min(bound1,bound2) && testValue <= Mathf.Max(bound1,bound2));
+     }
+
     }
 
     public class DevTools

@@ -17,7 +17,21 @@ public class EffectsManager : Singleton<EffectsManager>
         }
 
         var _particle = Instantiate(p.particlesPrefab, pos, Quaternion.identity) as GameObject;
+        if (randomRot) _particle.transform.eulerAngles = new Vector3(_particle.transform.eulerAngles.x, _particle.transform.eulerAngles.y, UnityEngine.Random.Range(0f, 360f));
+    }
 
+    public void SpawnParticles(string name, Vector3 pos, Vector3 rot, Vector3 scale, bool randomRot = default)
+    {
+        ParticleEffect p = Array.Find(particles, particle => particle.name == name);
+        if (p == null)
+        {
+            Debug.Log("Particles: " + name + " not found!");
+            return;
+        }
+
+        var _particle = Instantiate(p.particlesPrefab, pos, Quaternion.identity) as GameObject;
+        _particle.transform.eulerAngles = rot;
+        _particle.transform.localScale = scale;
         if (randomRot) _particle.transform.eulerAngles = new Vector3(_particle.transform.eulerAngles.x, _particle.transform.eulerAngles.y, UnityEngine.Random.Range(0f, 360f));
     }
 

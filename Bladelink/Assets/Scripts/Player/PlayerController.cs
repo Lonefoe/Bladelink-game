@@ -13,8 +13,9 @@ public class PlayerController : CharacterController
     private bool ignoreCheck;
     private float fJumpPressedRemember, fGroundedRemember;
     [SerializeField] float fJumpPressedRememberTime, fGroundedRememberTime;
-[Range(0,1)][SerializeField] float fCutJumpHeight;
+    [Range(0,1)][SerializeField] float fCutJumpHeight;
     [SerializeField] float ledgeJumpMultiplier = 1f;
+    private bool jumpKeyDown;
 
     private Vector2 ledgePosBot, ledgePos;
 
@@ -27,7 +28,7 @@ public class PlayerController : CharacterController
     // Update is called once per frame
     void Update()
     {
-        if(Player.Instance.IsDead()) return;
+        if(Player.Instance.IsDead() || GameManager.Instance.IsGamePaused()) return;
 
         fJumpPressedRemember -= Time.deltaTime;
         fGroundedRemember -= Time.deltaTime;
@@ -53,13 +54,16 @@ public class PlayerController : CharacterController
             fJumpPressedRemember = 0;
             fGroundedRemember = 0f;
             m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_JumpForce); // Jump
+            if(!jumpKeyDown) CutJump();
             EffectsManager.Instance.SpawnParticles("SmokePuff", m_GroundCheck.position + new Vector3(0, 0.35f, 0));
+            Player.Instance.PlayFootstep();
         } 
         else if (fJumpPressedRemember > 0 && IsClimbingLedge() && !ledgeJumped)
         {
             fJumpPressedRemember = 0;
             fGroundedRemember = 0f;
             m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_JumpForce * ledgeJumpMultiplier); // Ledge jump
+            if(!jumpKeyDown) CutJump();
             LedgeJumped();
         }
     }
@@ -68,16 +72,19 @@ public class PlayerController : CharacterController
     public override void Jump()
     {
         fJumpPressedRemember = fJumpPressedRememberTime;
+        jumpKeyDown = true;
     }
 
     // When we release jump button
     // We cut jump's height
     public void CutJump()
     {
-        if (m_Rigidbody2D.velocity.y > 0 && !ledgeJumped)
+        if (m_Rigidbody2D.velocity.y > 0)
         {
             m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_Rigidbody2D.velocity.y * fCutJumpHeight); // Cut jump
         }
+
+        jumpKeyDown = false;
     }
 
     void OnLand()
@@ -176,6 +183,11 @@ public class PlayerController : CharacterController
         if (freeze & !onlyX) m_Rigidbody2D.constraints = RigidbodyConstraints2D.FreezeAll;
         else if (freeze & onlyX) m_Rigidbody2D.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         else m_Rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    public Rigidbody2D GetRigidbody()
+    {
+        return m_Rigidbody2D;
     }
 
     public bool IsClimbingLedge() { return holdingLedge; }

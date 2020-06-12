@@ -70,6 +70,7 @@ public class CharacterController : MonoBehaviour
 
 	public void Move(float move, bool crouch)
 	{
+		if(GameManager.Instance.IsGamePaused()) return;
 		// If crouching, check to see if the character can stand up
 		if (!crouch)
 		{

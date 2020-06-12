@@ -73,6 +73,8 @@ public class PlayerCombat : MonoBehaviour
     //=====================================================  
     private void HandleAttack()
     {     
+        if(GameManager.Instance.IsGamePaused()) return;
+
         if (chainAttack && mySword == null && canAttack)
         {
             if (!CanAttack()) return;
@@ -93,7 +95,7 @@ public class PlayerCombat : MonoBehaviour
     //=====================================================  
     public void Attack()
     {
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);      
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer + grassLayer);
 
         comboPoint++;               // Add a combo point   
         Player.Movement.DisableMovement();   // Disable movement script
@@ -105,9 +107,10 @@ public class PlayerCombat : MonoBehaviour
         List<GameObject> hitEnemies = new List<GameObject>();
         foreach (Collider2D enemy in hitColliders)
         {
-            if (hitEnemies.Contains(enemy.gameObject)) return;
+            if (hitEnemies.Contains(enemy.gameObject)) return; // Don't register multiple hits on one enemy
             hitEnemies.Add(enemy.gameObject);
-            HitEnemy(enemy);
+            if (enemy.GetComponent<Enemy>()) HitEnemy(enemy);
+            else if (enemy.GetComponent<Grass>()) enemy.GetComponent<Grass>().GetSlashed();
         }
     }
 
@@ -115,7 +118,7 @@ public class PlayerCombat : MonoBehaviour
     private bool IsEnemyBehindPlayer()
     {
         Collider2D[] safetyHit = Physics2D.OverlapCircleAll(new Vector2(attackPoint.position.x - attackPoint.localPosition.x * 2 * Player.Movement.GetDirection(), attackPoint.position.y), attackRange + 0.07f, enemyLayer);
-        if (safetyHit.Length > 0 && comboPoint == 1) return true;
+        if (safetyHit.Length > 0 && comboPoint <= 1) return true;
         else return false;
     }
 
@@ -153,7 +156,7 @@ public class PlayerCombat : MonoBehaviour
     //=====================================================  
     public void Deflect(Enemy enemy)
     {
-        CameraEffects.Instance.Shake(0.05f, 2.4f);
+        CameraEffects.Instance.Shake(0.18f, 1.6f);
         AudioManager.Instance.PlayOneShot("Deflect");
         InputManager.Instance.Vibrate(0.18f, 0.28f, 0.3f);
         EffectsManager.Instance.SpawnParticles("Deflect", shield.transform.position);
@@ -164,6 +167,7 @@ public class PlayerCombat : MonoBehaviour
         {
             enemy.OnParried();
             StartCoroutine(CameraEffects.Instance.Slowmotion(0.2f, 0.5f));
+            StartCoroutine(CameraEffects.Instance.VignettePop(0.65f));
             parryTime = startParryTime;
         }
     }
@@ -196,7 +200,6 @@ public class PlayerCombat : MonoBehaviour
             Player.Controller.Face(mySword);
             mySword.GetComponent<PlayerSword>().Return();
             Player.Anim.SetTrigger("throw");
-            AudioManager.Instance.Play("SwordSwoosh");
         }
 
     }
@@ -234,10 +237,11 @@ public class PlayerCombat : MonoBehaviour
     {
         enemy.GetComponent<Enemy>().TakeDamage(attackDamage);   // We call for the enemy to take damage
         Player.AddRandomSoulPoints(0.1f, 0.3f);
-        CameraEffects.Instance.Shake(0.12f, 2.2f);
+        CameraEffects.Instance.Shake(0.16f, 1.2f);
         InputManager.Instance.Vibrate(0.12f, 0.25f, 0.4f);
         if(pause) StartCoroutine(CameraEffects.Instance.PauseEffect(0.13f));
-        EffectsManager.Instance.SpawnParticles("CircleHit", enemy.transform.position + new Vector3(Random.Range(0f, 0.25f), Random.Range(0.5f, 0.75f), 0), true);
+        EffectsManager.Instance.SpawnParticles("CircleHit", enemy.transform.position + new Vector3(Random.Range(0f, 0.25f), Random.Range(0.5f, 0.75f), 0), Vector3.zero, Vector3.one, true);
+        EffectsManager.Instance.SpawnParticles("SlashFX", attackPoint.position + new Vector3(0.2f, 0f, 0f), Vector3.zero, new Vector3(1*Player.Movement.GetDirection(), 1f, 1f));
         Player.Movement.Knockback(38f);
     }
 

@@ -292,7 +292,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2057231465
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -3316437661583186769, guid: 833c412f353965541afca17dc72ac2df,
     type: 3}
@@ -338,8 +338,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00030006468, y: -0.093660176}
-  m_Size: {x: 0.26714095, y: 0.9049195}
+  m_Offset: {x: -0.014829636, y: -0.17110255}
+  m_Size: {x: 0.28059006, y: 0.8103433}
   m_Direction: 0
 --- !u!50 &1500401441653569082
 Rigidbody2D:
@@ -453,7 +453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e929eaff5898b4a8b4912c45827c6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 34
+  moveSpeed: 30
 --- !u!114 &111904524015332663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -472,10 +472,10 @@ MonoBehaviour:
   attackRange: 0.43
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 9216
+    m_Bits: 1024
   grassLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8192
   combatCam: {fileID: 0}
   startParryTime: 0.145
   launchForce: 24

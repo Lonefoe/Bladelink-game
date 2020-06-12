@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Utilities;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
@@ -18,11 +19,21 @@ public class PlayerMovement : MonoBehaviour
     // We handle everything input-based in here
     void Update()
     {
+        if(GameManager.Instance.IsGamePaused()) return;
+
         if (!doRun) horizontalMove = InputManager.Instance.moveInput.x * moveSpeed * moveMultiplier;        // Getting our mov. input and boosting that input with our speed variable
         else horizontalMove = moveSpeed * moveMultiplier;
 
         Player.Anim.SetFloat("Speed", Mathf.Abs(horizontalMove));          // Transfers our input to Speed variable inside of animator
         Player.Anim.SetBool("isInAir", !Player.Controller.m_Grounded);     // We take the grounded property from controller and send it to animator
+
+        int airState = 0;
+        if(Utils.IsBetween(Player.Controller.GetRigidbody().velocity.y, 1f, -6f)) airState = 1;
+        else if (Player.Controller.GetRigidbody().velocity.y > 1f) airState = 0;
+        else if (Player.Controller.GetRigidbody().velocity.y < -6f) airState = 2;
+        
+
+        Player.Anim.SetInteger("airState", airState);
 
         if (Player.Controller.IsFacingRight()) direction = 1;
         else direction = -1;

@@ -87,6 +87,8 @@ public class PlayerSword : MonoBehaviour
 	// Return to player when called
 	public void Return()
 	{
+		if(isReturning) return;
+
 		isReturning = true;
 		hitEnemies.Clear();
 		m_Rigidbody2D.isKinematic = true;
@@ -95,6 +97,7 @@ public class PlayerSword : MonoBehaviour
 
 		triggerCollider.enabled = false;
 		groundCollider.enabled = false;
+		AudioManager.Instance.Play("SwordSwoosh");
 	}
 
 	// Register when we hit enemy

@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using Utilities;
 
 public class CameraEffects : Singleton<CameraEffects>
 {
+    public Volume globalPostProcessing;
+
     CinemachineImpulseSource shake;
+    Vignette vignette;
 
     private bool isSlowed = false;
     private float currentSlowAmount;
@@ -15,6 +19,13 @@ public class CameraEffects : Singleton<CameraEffects>
     private void Awake()
     {
         shake = GetComponent<CinemachineImpulseSource>();
+        
+    }
+    
+    void Start()
+    {
+        Vignette _vignette;
+        if(globalPostProcessing.profile.TryGet<Vignette>(out _vignette)) vignette = _vignette;
     }
 
     public void Shake(float amplitude, float frequency)
@@ -34,6 +45,14 @@ public class CameraEffects : Singleton<CameraEffects>
         Utils.SetDesiredTimeScale(1f);
         Time.fixedDeltaTime = 0.02f;
 
+    }
+
+    public IEnumerator VignettePop(float time)
+    {
+        if(vignette != null && vignette.active == false) { vignette.active = true; }
+        else yield break;
+        yield return new WaitForSecondsRealtime(time);
+        if(vignette != null && vignette.active == true) vignette.active = false;
     }
 
     public IEnumerator Slowmotion(float slowAmount = .2f, float slowTime = 1f)
