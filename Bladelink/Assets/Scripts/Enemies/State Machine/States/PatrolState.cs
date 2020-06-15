@@ -5,27 +5,28 @@ using UnityEngine;
 public class PatrolState : State
 {
     private Enemy enemy;
+    private MovementType movementType;
     [SerializeField] private EnemyPath path;
-    private bool noPathPatrol = false;
-    private Vector2 startPos;
+    private Vector2 stationaryPoint;
     private List<Transform> pathPoints = new List<Transform>();
     [SerializeField] private int startPathIndex = 1;
     private int currentPathIndex;   // Current index we're moving towards
 
-    public PatrolState(AI owner, StateMachine stateMachine, EnemyPath path, int startPathIndex) : base(owner, stateMachine)
+    public PatrolState(AI owner, StateMachine stateMachine, MovementType movementType, EnemyPath path, int startPathIndex) : base(owner, stateMachine)
     {
         enemy = owner.GetComponent<Enemy>();
         this.path = path;
         this.startPathIndex = startPathIndex;
+        this.movementType = movementType;
 
         if (path != null) pathPoints = path.GetPoints();
         currentPathIndex = startPathIndex - 1;
-        startPos = enemy.GetPosition();
+        if(movementType == MovementType.Stationary) stationaryPoint = enemy.transform.position;
     }
 
     public override void EnterState()
     {
-        if (path == null) { enemy.Movement.Flip(); enemy.Movement.moveInput = 1; NoPathPatrol(); return; }
+        if (movementType == MovementType.Stationary) { enemy.Movement.moveInput = 1; enemy.Movement.Flip(); return; }
         currentPathIndex = GetNextPointIndex();
     }
 
@@ -36,7 +37,8 @@ public class PatrolState : State
 
     public override void UpdateState()
     {
-        if (noPathPatrol) { return; }
+        if (movementType == MovementType.Stationary) { NoPathPatrol(); return; }
+
         var enemyPos = new Vector2(enemy.transform.position.x, 0);
         var pointPos = new Vector2(pathPoints[currentPathIndex].position.x, 0);
 
@@ -57,9 +59,12 @@ public class PatrolState : State
 
     private void NoPathPatrol()
     {
-        noPathPatrol = true;
-        enemy.transform.position = startPos;
-        stateMachine.ChangeState(owner.idleState);
+        if (Vector2.Distance(enemy.GetPosition(), stationaryPoint) < 0.2f)
+        {
+            stateMachine.ChangeState(owner.idleState); 
+        }
+
+        enemy.Movement.UpdateDirection(stationaryPoint);
     }
 
     private int GetNextPointIndex()

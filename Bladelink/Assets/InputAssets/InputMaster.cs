@@ -73,6 +73,14 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": ""Hold""
+                },
+                {
+                    ""name"": ""OpenBackpack"",
+                    ""type"": ""Button"",
+                    ""id"": ""cd6501d2-a999-4739-b4d4-a250077b57b1"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -321,7 +329,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""116083cb-bb72-4c0f-8f9d-02fb58b2e111"",
-                    ""path"": ""<XInputController>/start"",
+                    ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -372,6 +380,28 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""action"": ""ActionButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""82ae4fb3-f9bc-402d-9203-954eabd016b3"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and mouse"",
+                    ""action"": ""OpenBackpack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""35d88f10-7ed0-4937-8958-b62d72cf4ac0"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""OpenBackpack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -415,6 +445,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_PauseGame = m_Player.FindAction("PauseGame", throwIfNotFound: true);
         m_Player_Deflect = m_Player.FindAction("Deflect", throwIfNotFound: true);
         m_Player_ActionButton = m_Player.FindAction("ActionButton", throwIfNotFound: true);
+        m_Player_OpenBackpack = m_Player.FindAction("OpenBackpack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -471,6 +502,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_PauseGame;
     private readonly InputAction m_Player_Deflect;
     private readonly InputAction m_Player_ActionButton;
+    private readonly InputAction m_Player_OpenBackpack;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -482,6 +514,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         public InputAction @PauseGame => m_Wrapper.m_Player_PauseGame;
         public InputAction @Deflect => m_Wrapper.m_Player_Deflect;
         public InputAction @ActionButton => m_Wrapper.m_Player_ActionButton;
+        public InputAction @OpenBackpack => m_Wrapper.m_Player_OpenBackpack;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -512,6 +545,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @ActionButton.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnActionButton;
                 @ActionButton.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnActionButton;
                 @ActionButton.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnActionButton;
+                @OpenBackpack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenBackpack;
+                @OpenBackpack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenBackpack;
+                @OpenBackpack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenBackpack;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -537,6 +573,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @ActionButton.started += instance.OnActionButton;
                 @ActionButton.performed += instance.OnActionButton;
                 @ActionButton.canceled += instance.OnActionButton;
+                @OpenBackpack.started += instance.OnOpenBackpack;
+                @OpenBackpack.performed += instance.OnOpenBackpack;
+                @OpenBackpack.canceled += instance.OnOpenBackpack;
             }
         }
     }
@@ -568,5 +607,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnPauseGame(InputAction.CallbackContext context);
         void OnDeflect(InputAction.CallbackContext context);
         void OnActionButton(InputAction.CallbackContext context);
+        void OnOpenBackpack(InputAction.CallbackContext context);
     }
 }

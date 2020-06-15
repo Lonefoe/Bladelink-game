@@ -131,7 +131,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2057231465
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 2796b5e39406a8a45a881ebc2b2d7350, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -209,6 +209,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aed9fac4e6fee6a4fb4b8297d0dac889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &3996757138873075438
 GameObject:
   m_ObjectHideFlags: 0

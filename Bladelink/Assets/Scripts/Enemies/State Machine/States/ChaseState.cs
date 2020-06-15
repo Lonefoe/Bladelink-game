@@ -42,7 +42,7 @@ public class ChaseState : State
             enemy.Movement.moveInput = 0;
         }
 
-        if (owner.sight.CanSeePlayer() && !IsInChaseRange()) stateMachine.ChangeState(owner.patrolState);
+        if (!owner.sight.CanSeePlayer() && !IsInChaseRange()) stateMachine.ChangeState(owner.patrolState);
     }
 
     private bool IsInChaseRange()

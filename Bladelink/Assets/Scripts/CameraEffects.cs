@@ -64,7 +64,7 @@ public class CameraEffects : Singleton<CameraEffects>
             Time.fixedDeltaTime = slowAmount * 0.02f;
             AudioManager.Instance.Play("SlowDown");
             currentSlowAmount = slowAmount;
-            yield return new WaitForSecondsRealtime(slowTime);
+            yield return new WaitForSeconds(slowAmount * slowTime);
             isSlowed = false;
             Time.timeScale = 1f;
             Time.fixedDeltaTime = 0.02f;

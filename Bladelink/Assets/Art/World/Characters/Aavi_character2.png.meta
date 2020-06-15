@@ -170,6 +170,63 @@ TextureImporter:
   - first:
       213: -7373374515517330965
     second: Aavi_character2_30
+  - first:
+      213: 9160529046563031207
+    second: Aavi_character2_25
+  - first:
+      213: -1049474707925847813
+    second: Aavi_character2_26
+  - first:
+      213: 1061054574710868899
+    second: Aavi_character2_27
+  - first:
+      213: -192055773543257149
+    second: Aavi_character2_28
+  - first:
+      213: 4420482067871180379
+    second: Aavi_character2_31
+  - first:
+      213: 9135199036250374809
+    second: Aavi_character2_32
+  - first:
+      213: 4581193226055113
+    second: Aavi_character2_33
+  - first:
+      213: -7689935596011594777
+    second: Aavi_character2_34
+  - first:
+      213: -4000513665877242787
+    second: Aavi_character2_35
+  - first:
+      213: 6065202118906903294
+    second: Aavi_character2_36
+  - first:
+      213: -8195613915130426492
+    second: Aavi_character2_29
+  - first:
+      213: -778863283075782991
+    second: Aavi_character2_30
+  - first:
+      213: 8398148369509266926
+    second: Aavi_character2_31
+  - first:
+      213: 6236243002157953908
+    second: Aavi_character2_32
+  - first:
+      213: 4507391214447142372
+    second: Aavi_character2_33
+  - first:
+      213: 7731980650176966085
+    second: Aavi_character2_34
+  - first:
+      213: 3433360216644834871
+    second: Aavi_character2_35
+  - first:
+      213: -319855911597785522
+    second: Aavi_character2_36
+  - first:
+      213: 567030531299629221
+    second: Aavi_character2_37
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -259,7 +316,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 148
+        y: 185
         width: 50
         height: 37
       alignment: 0
@@ -280,7 +337,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 50
-        y: 148
+        y: 185
         width: 50
         height: 37
       alignment: 0
@@ -301,7 +358,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 100
-        y: 148
+        y: 185
         width: 50
         height: 37
       alignment: 0
@@ -322,7 +379,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 150
-        y: 148
+        y: 185
         width: 50
         height: 37
       alignment: 0
@@ -343,7 +400,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 200
-        y: 148
+        y: 185
         width: 50
         height: 37
       alignment: 0
@@ -364,7 +421,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 250
-        y: 148
+        y: 185
         width: 50
         height: 37
       alignment: 0
@@ -385,7 +442,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 300
-        y: 148
+        y: 185
         width: 50
         height: 37
       alignment: 0
@@ -406,7 +463,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 111
+        y: 148
         width: 50
         height: 37
       alignment: 0
@@ -427,7 +484,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 50
-        y: 111
+        y: 148
         width: 50
         height: 37
       alignment: 0
@@ -448,7 +505,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 100
-        y: 111
+        y: 148
         width: 50
         height: 37
       alignment: 0
@@ -469,7 +526,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 150
-        y: 111
+        y: 148
         width: 50
         height: 37
       alignment: 0
@@ -490,7 +547,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 200
-        y: 111
+        y: 148
         width: 50
         height: 37
       alignment: 0
@@ -511,7 +568,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 250
-        y: 111
+        y: 148
         width: 50
         height: 37
       alignment: 0
@@ -532,7 +589,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 300
-        y: 111
+        y: 148
         width: 50
         height: 37
       alignment: 0
@@ -553,7 +610,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 74
+        y: 111
         width: 50
         height: 37
       alignment: 0
@@ -574,7 +631,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 50
-        y: 74
+        y: 111
         width: 50
         height: 37
       alignment: 0
@@ -595,7 +652,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 100
-        y: 74
+        y: 111
         width: 50
         height: 37
       alignment: 0
@@ -616,7 +673,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 150
-        y: 74
+        y: 111
         width: 50
         height: 37
       alignment: 0
@@ -637,7 +694,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 200
-        y: 74
+        y: 111
         width: 50
         height: 37
       alignment: 0
@@ -658,7 +715,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 250
-        y: 74
+        y: 111
         width: 50
         height: 37
       alignment: 0
@@ -679,7 +736,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 300
-        y: 74
+        y: 111
         width: 50
         height: 37
       alignment: 0
@@ -700,7 +757,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 37
+        y: 74
         width: 50
         height: 37
       alignment: 0
@@ -721,7 +778,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 50
-        y: 37
+        y: 74
         width: 50
         height: 37
       alignment: 0
@@ -742,7 +799,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 100
-        y: 37
+        y: 74
         width: 50
         height: 37
       alignment: 0
@@ -763,7 +820,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 150
-        y: 37
+        y: 74
         width: 50
         height: 37
       alignment: 0
@@ -784,6 +841,69 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 200
+        y: 74
+        width: 50
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a8890f12acb02f70800000000000000
+      internalID: 9160529046563031207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aavi_character2_26
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 74
+        width: 50
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf0b25140548f61f0800000000000000
+      internalID: -1049474707925847813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aavi_character2_27
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 74
+        width: 50
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3abc1f4938f99be00800000000000000
+      internalID: 1061054574710868899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aavi_character2_28
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 37
         width: 50
         height: 37
@@ -794,14 +914,98 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 881a701867adc7d50800000000000000
-      internalID: 6736499345145176456
+      spriteID: 3cb24e0aa4ea55df0800000000000000
+      internalID: -192055773543257149
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Aavi_character2_26
+      name: Aavi_character2_29
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 37
+        width: 50
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48b07600194534e80800000000000000
+      internalID: -8195613915130426492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aavi_character2_30
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 37
+        width: 50
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b66cab78fbe035f0800000000000000
+      internalID: -778863283075782991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aavi_character2_31
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 37
+        width: 50
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee530af52773c8470800000000000000
+      internalID: 8398148369509266926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aavi_character2_32
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 37
+        width: 50
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 473f3ac28f59b8650800000000000000
+      internalID: 6236243002157953908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aavi_character2_33
       rect:
         serializedVersion: 2
         x: 250
@@ -815,14 +1019,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d5e0b0cc60399ca0800000000000000
-      internalID: -6009718984101796394
+      spriteID: 4e5a6d8ad687d8e30800000000000000
+      internalID: 4507391214447142372
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Aavi_character2_27
+      name: Aavi_character2_34
       rect:
         serializedVersion: 2
         x: 300
@@ -836,14 +1040,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f81a56a1f3e1e4f60800000000000000
-      internalID: 8020381242768073103
+      spriteID: 5cdedff7f638d4b60800000000000000
+      internalID: 7731980650176966085
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Aavi_character2_28
+      name: Aavi_character2_35
       rect:
         serializedVersion: 2
         x: 0
@@ -857,8 +1061,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b918671407f551f20800000000000000
-      internalID: 3392722830032798107
+      spriteID: 736d2132deeb5af20800000000000000
+      internalID: 3433360216644834871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aavi_character2_36
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 0
+        width: 50
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4eb7e93eb4af8bf0800000000000000
+      internalID: -319855911597785522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aavi_character2_37
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 50
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a85ae2934f7ed700800000000000000
+      internalID: 567030531299629221
       vertices: []
       indices: 
       edges: []
@@ -872,7 +1118,9 @@ TextureImporter:
     indices: 
     edges: []
     weights: []
-    secondaryTextures: []
+    secondaryTextures:
+    - texture: {fileID: 2800000, guid: e70dc4fe957fa4d41b0197f2d2b2af1f, type: 3}
+      name: _Emission
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

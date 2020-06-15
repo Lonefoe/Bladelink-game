@@ -18,7 +18,7 @@ public class PauseMenu : MonoBehaviour
 
     private void HandlePause()
     {
-        if (!pausePanel.activeInHierarchy) 
+        if (!pausePanel.activeInHierarchy && !UIManager.Instance.IsAnyMenuActive())
         {
             PauseGame();
         } else if (pausePanel.activeInHierarchy) 
@@ -27,18 +27,19 @@ public class PauseMenu : MonoBehaviour
         } 
     }
 
-    private void PauseGame()
+    public void PauseGame()
     { 
         pausePanel.SetActive(true);
-        Time.timeScale = 0;
-        GameManager.Instance.OnGamePaused();
-        //Disable scripts that still work while timescale is set to 0
+        GameManager.Instance.hideHUD = true;
+        GameManager.Instance.FreezeScreen();
+        UIManager.Instance.anyMenuActive = true;
     } 
-    private void ContinueGame()
+    public void ContinueGame()
     {
         pausePanel.SetActive(false);
-        Time.timeScale = 1;     
-        GameManager.Instance.OnGamePaused();
+        GameManager.Instance.hideHUD = false;
+        GameManager.Instance.FreezeScreen();
+        UIManager.Instance.anyMenuActive = false;
         //enable the scripts again
     }
  

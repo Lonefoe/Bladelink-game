@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
@@ -138,6 +139,7 @@ public class PlayerCombat : MonoBehaviour
         Player.Controller.SetShouldFlip(false);
         Player.Movement.SetMoveMultiplier(0.3f);
         Player.Anim.SetBool("deflecting", deflecting);
+        AudioManager.Instance.PlayOneShot("StartDeflect");
         shield.Show();
         ResetCombo();
     }
@@ -199,7 +201,7 @@ public class PlayerCombat : MonoBehaviour
 
             Player.Controller.Face(mySword);
             mySword.GetComponent<PlayerSword>().Return();
-            Player.Anim.SetTrigger("throw");
+            Player.Anim.SetTrigger("return");
         }
 
     }
@@ -219,11 +221,11 @@ public class PlayerCombat : MonoBehaviour
     }
 
     // Second part of the ability - player ports to the sword and absorbs it
-    private IEnumerator<WaitForSecondsRealtime> PortToSword()
+    private IEnumerator PortToSword()
     {
         AudioManager.Instance.Play("SwordPort");
         StartCoroutine(CameraEffects.Instance.Slowmotion());
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSeconds(0.2f);
         transform.position = mySword.transform.position + new Vector3(0f, 0.5f, 0f);
         Destroy(mySword.gameObject);
     }
@@ -285,12 +287,13 @@ public class PlayerCombat : MonoBehaviour
     }
     private bool CanThrowSword()
     {
-        if (Player.Controller.IsClimbingLedge() || Player.Instance.IsDead() || deflecting || mySword != null || attacking) return false;
+        if (GameManager.Instance.IsGamePaused() || Player.Controller.IsClimbingLedge() || Player.Instance.IsDead() || 
+        deflecting || mySword != null || attacking) return false;
         else return true;
     }
     private bool CanReturnSword()
     {
-            if (Player.Controller.IsClimbingLedge() || Player.Instance.IsDead()) return false;
+            if (GameManager.Instance.IsGamePaused() || Player.Controller.IsClimbingLedge() || Player.Instance.IsDead()) return false;
             else return true;
     }
 

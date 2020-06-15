@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerSword : MonoBehaviour
 {
 	public static PlayerSword Instance { get; private set; }
+	public LayerMask groundLayer;
 
 	// All sword variables
 	private List<GameObject> hitEnemies = new List<GameObject>();

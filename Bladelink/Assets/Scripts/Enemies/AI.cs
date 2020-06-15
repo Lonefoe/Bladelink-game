@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum MovementType { Stationary, Walker, }
+
 public class AI : MonoBehaviour
 {
     #region STATE VARIABLES
@@ -15,8 +17,10 @@ public class AI : MonoBehaviour
 
     #region VARIABLES
     private Enemy enemy;
+    public MovementType movementType = MovementType.Walker;
     public EnemySight sight;
     public float chaseRange = 7f;
+
     public EnemyPath path;
     public int startPathIndex = 1;
 
@@ -35,7 +39,7 @@ public class AI : MonoBehaviour
         stateMachine = new StateMachine();
 
         idleState = new IdleState(this, stateMachine, waitTimes);
-        patrolState = new PatrolState(this, stateMachine, path, startPathIndex);
+        patrolState = new PatrolState(this, stateMachine, movementType, path, startPathIndex);
         chaseState = new ChaseState(this, stateMachine, chaseRange);
 
         chaseState.attackEvent += OnAttack;

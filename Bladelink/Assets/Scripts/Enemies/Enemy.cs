@@ -48,12 +48,12 @@ public class Enemy : MonoBehaviour, IDamageable<int>
         Senses.Report(Sense.Damage);
         StartCoroutine(Flasher(Color.red, Renderer.color));
         Movement.Knockback(580f, true);
-
-        currentPoise -= damage;
+  
         if (!Attack.IsSlashing())
         {
             if (currentPoise <= 0) { currentPoise = Stats.poise; Animator.SetTrigger("Hurt"); }
         }
+        currentPoise -= damage;
 
         AudioManager.Instance.PlayOneShot("Hit");
 

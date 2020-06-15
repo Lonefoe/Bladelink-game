@@ -20,22 +20,22 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -6634061288122490045, guid: e4a44eb9bc527b84c80e02ec3fedfc81,
-        type: 3}
-    - time: 0.083333336
       value: {fileID: 2160047974351934317, guid: e4a44eb9bc527b84c80e02ec3fedfc81,
         type: 3}
-    - time: 0.16666667
+    - time: 0.083333336
       value: {fileID: -7436161210419479713, guid: e4a44eb9bc527b84c80e02ec3fedfc81,
         type: 3}
-    - time: 0.25
+    - time: 0.16666667
       value: {fileID: 482675326648948913, guid: e4a44eb9bc527b84c80e02ec3fedfc81,
         type: 3}
-    - time: 0.33333334
+    - time: 0.25
       value: {fileID: 4545462552363985182, guid: e4a44eb9bc527b84c80e02ec3fedfc81,
         type: 3}
-    - time: 0.41666666
+    - time: 0.33333334
       value: {fileID: 7557115410104664841, guid: e4a44eb9bc527b84c80e02ec3fedfc81,
+        type: 3}
+    - time: 0.41666666
+      value: {fileID: -6634061288122490045, guid: e4a44eb9bc527b84c80e02ec3fedfc81,
         type: 3}
     attribute: m_Sprite
     path: 
@@ -56,12 +56,12 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -6634061288122490045, guid: e4a44eb9bc527b84c80e02ec3fedfc81, type: 3}
     - {fileID: 2160047974351934317, guid: e4a44eb9bc527b84c80e02ec3fedfc81, type: 3}
     - {fileID: -7436161210419479713, guid: e4a44eb9bc527b84c80e02ec3fedfc81, type: 3}
     - {fileID: 482675326648948913, guid: e4a44eb9bc527b84c80e02ec3fedfc81, type: 3}
     - {fileID: 4545462552363985182, guid: e4a44eb9bc527b84c80e02ec3fedfc81, type: 3}
     - {fileID: 7557115410104664841, guid: e4a44eb9bc527b84c80e02ec3fedfc81, type: 3}
+    - {fileID: -6634061288122490045, guid: e4a44eb9bc527b84c80e02ec3fedfc81, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -87,14 +87,14 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0
+  - time: 0.083333336
     functionName: PlayFootstep
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.25
+  - time: 0.33333334
     functionName: PlayFootstep
     data: 
     objectReferenceParameter: {fileID: 0}

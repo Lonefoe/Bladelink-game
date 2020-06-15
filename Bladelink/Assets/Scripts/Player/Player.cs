@@ -65,7 +65,7 @@ public class Player : MonoBehaviour, IDamageable<int>
         if (!flashing) StartCoroutine(Flasher(Color.clear, Renderer.color));
         AudioManager.Instance.PlayOneShot("Hit");
 
-        if (currentPoise <= 0) { currentPoise = Stats.maxPoise; Anim.SetBool("Hurt", true); }
+        if (currentPoise <= 0) { currentPoise = Stats.maxPoise; Anim.SetBool("Hurt", true); Controller.FreezePosition(true, true); }
         else currentPoise -= damage;
 
         if (currentHealth <= 0)
@@ -111,6 +111,7 @@ public class Player : MonoBehaviour, IDamageable<int>
     void HurtEnd()
     {
         Anim.SetBool("Hurt", false);
+        Controller.FreezePosition(false);
     }
 
     public static void AddRandomSoulPoints(float min = 0.1f, float max = 0.3f)

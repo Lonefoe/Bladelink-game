@@ -10,9 +10,10 @@ public class GameManager : MonoBehaviour
     [Range(0, 2f)] public float speed = 1.0f;
     [SerializeField] private float gravityMultiplier = 1f;      // Tweaker for gravity, multiplies the WORLD gravity
     [SerializeField] private bool pauseInEditor = false;
-    [SerializeField] private bool hideHUD = false;
+    public bool hideHUD = false;
     [SerializeField] private bool useDevTools = true;
     private bool gamePaused = false;
+    private float startTimeScale;
 
     private void Awake()
     {
@@ -47,11 +48,25 @@ public class GameManager : MonoBehaviour
         Physics2D.gravity *= gravityMultiplier;
     }
 
-    public void OnGamePaused() { if(!gamePaused) gamePaused = true; else gamePaused = false; }
-
     public bool IsGamePaused()
     {
         return gamePaused;
+    }
+
+    public void FreezeScreen(bool usePreviousTime = false)
+    {
+        if(!gamePaused)
+        {
+        startTimeScale = Time.timeScale;
+        gamePaused = true;
+        Time.timeScale = 0f;
+        }
+        else 
+        {
+            if(usePreviousTime) Time.timeScale = startTimeScale;
+            else Time.timeScale = 1f;
+            gamePaused = false;
+        }
     }
 
     // Called as an event, loads the next level in build

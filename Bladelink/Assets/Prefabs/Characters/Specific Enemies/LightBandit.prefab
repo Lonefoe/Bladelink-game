@@ -10,7 +10,12 @@ PrefabInstance:
     - target: {fileID: 2356603173716905855, guid: 8ce65c4933f5b174ea7d8170c33b548e,
         type: 3}
       propertyPath: m_Name
-      value: Bandit
+      value: LightBandit
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094197210466387073, guid: 8ce65c4933f5b174ea7d8170c33b548e,
+        type: 3}
+      propertyPath: Stats.damage
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6492090777013913026, guid: 8ce65c4933f5b174ea7d8170c33b548e,
         type: 3}

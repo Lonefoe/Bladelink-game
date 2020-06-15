@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 631213987376092613, guid: ea91fc25263de4e45a9f50c3033c9bf9,
         type: 3}
       propertyPath: m_Name
-      value: AnimatorEffect
+      value: SmokePuff
       objectReference: {fileID: 0}
     - target: {fileID: 5266454518950981594, guid: ea91fc25263de4e45a9f50c3033c9bf9,
         type: 3}
@@ -66,6 +66,32 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584630358858770831, guid: ea91fc25263de4e45a9f50c3033c9bf9,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1676100204060196181, guid: e44949998bae0e9469c6736637094437,
+        type: 3}
+    - target: {fileID: 8584630358858770831, guid: ea91fc25263de4e45a9f50c3033c9bf9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+    - target: {fileID: 8584630358858770831, guid: ea91fc25263de4e45a9f50c3033c9bf9,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.9150943
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584630358858770831, guid: ea91fc25263de4e45a9f50c3033c9bf9,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.9150943
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584630358858770831, guid: ea91fc25263de4e45a9f50c3033c9bf9,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.9150943
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea91fc25263de4e45a9f50c3033c9bf9, type: 3}
