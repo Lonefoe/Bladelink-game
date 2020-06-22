@@ -19,6 +19,7 @@ public class Grass : MonoBehaviour
     public void GetSlashed()
     {
         animator.SetTrigger("slash");
+        AudioManager.Instance.PlayOneShot("GrassCut");
     }
 
 }

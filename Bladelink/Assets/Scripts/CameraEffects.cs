@@ -5,12 +5,14 @@ using Cinemachine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using Utilities;
+using System;
 
 public class CameraEffects : Singleton<CameraEffects>
 {
     public Volume globalPostProcessing;
 
     CinemachineImpulseSource shake;
+    public Shake[] shakes;
     Vignette vignette;
 
     private bool isSlowed = false;
@@ -28,11 +30,35 @@ public class CameraEffects : Singleton<CameraEffects>
         if(globalPostProcessing.profile.TryGet<Vignette>(out _vignette)) vignette = _vignette;
     }
 
-    public void Shake(float amplitude, float frequency)
+    public void Shake(string name, float amplitude, float frequency)
     {
+        Shake s = Array.Find(shakes, shake => shake.name == name);
+        if (s == null)
+        {
+            Debug.Log("Particles: " + name + " not found!");
+            return;
+        }
         if (shake == null) return;
+        
+        shake.m_ImpulseDefinition.m_RawSignal = s.shakeSettings;
         shake.m_ImpulseDefinition.m_AmplitudeGain = amplitude;
         shake.m_ImpulseDefinition.m_FrequencyGain = frequency;
+        shake.GenerateImpulse();
+    }
+
+    public void Shake(string name)
+    {
+        Shake s = Array.Find(shakes, shake => shake.name == name);
+        if (s == null)
+        {
+            Debug.Log("Particles: " + name + " not found!");
+            return;
+        }
+        if (shake == null) return;
+        
+        shake.m_ImpulseDefinition.m_RawSignal = s.shakeSettings;
+        shake.m_ImpulseDefinition.m_AmplitudeGain = 1;
+        shake.m_ImpulseDefinition.m_FrequencyGain = 1;
         shake.GenerateImpulse();
     }
 

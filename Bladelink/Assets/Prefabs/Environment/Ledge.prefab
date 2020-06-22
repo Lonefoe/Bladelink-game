@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7923362310108328047}
   - component: {fileID: 4348942111587266520}
   - component: {fileID: 1680017696707369854}
+  - component: {fileID: -2930375183092472268}
   m_Layer: 8
   m_Name: Ledge
   m_TagString: Ledge
@@ -169,3 +170,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ledgeClimbOffset: {x: 0, y: 0}
+--- !u!114 &-2930375183092472268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502944141497179808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fb6e40a68e32e34cbb8775e59cba682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2

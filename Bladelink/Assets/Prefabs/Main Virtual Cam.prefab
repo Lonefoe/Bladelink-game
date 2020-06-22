@@ -221,7 +221,7 @@ MonoBehaviour:
     m_AmplitudeGain: 1
     m_FrequencyGain: 1
     m_RepeatMode: 0
-    m_Randomize: 1
+    m_Randomize: 0
     m_TimeEnvelope:
       m_AttackShape:
         serializedVersion: 2
@@ -274,3 +274,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   globalPostProcessing: {fileID: 0}
+  shakes:
+  - name: HitShake
+    shakeSettings: {fileID: 11400000, guid: 1f279484b816620478cd23727d361529, type: 2}
+  - name: HitShakeRight
+    shakeSettings: {fileID: 11400000, guid: 1f82cfd0e43db684689355a6ce260ae3, type: 2}
+  - name: HitShakeLeft
+    shakeSettings: {fileID: 11400000, guid: 1a0b20b621e72f54e9bd9e68f39fbfd4, type: 2}

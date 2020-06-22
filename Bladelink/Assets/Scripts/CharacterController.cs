@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using System.Collections.Generic;
+using System;
 
 public class CharacterController : MonoBehaviour
 {
@@ -17,9 +19,13 @@ public class CharacterController : MonoBehaviour
 
 	const float k_GroundedRadius = .12f; // Radius of the overlap circle to determine if grounded
 	public bool m_Grounded { get; set; }          // Whether or not the player is grounded.
+	protected bool wasGrounded;
 	const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
 	protected Rigidbody2D m_Rigidbody2D;
+	protected SpriteRenderer m_SpriteRenderer;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
+	protected bool m_Strafing = false;
+	protected Transform[] children;
 	private Vector3 m_Velocity = Vector3.zero;
 
 	protected bool m_canMove = true;
@@ -34,10 +40,13 @@ public class CharacterController : MonoBehaviour
 
 	public BoolEvent OnCrouchEvent;
 	private bool m_wasCrouching = false;
+	protected SurfaceType currentSurface;
 
 	 private void Awake()
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
+		m_SpriteRenderer = GetComponent<SpriteRenderer>();
+		children = GetComponentsInChildren<Transform>();
 
 		if (OnLandEvent == null)
 			OnLandEvent = new UnityEvent();
@@ -48,7 +57,7 @@ public class CharacterController : MonoBehaviour
 
 	protected virtual void FixedUpdate()
 	{
-		bool wasGrounded = m_Grounded;
+		wasGrounded = m_Grounded;
 		m_Grounded = false;
 
 		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
@@ -59,11 +68,11 @@ public class CharacterController : MonoBehaviour
 			if (colliders[i].gameObject != gameObject)
 			{
 				m_Grounded = true;
-				if (!wasGrounded && m_Rigidbody2D.velocity.y < -2)
+				if (!wasGrounded)
 					OnLandEvent.Invoke();
 			}
 		}
-
+		
 		// NormalizeSlope();
 	}
 
@@ -122,7 +131,7 @@ public class CharacterController : MonoBehaviour
 				m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
 			}
 
-			if (shouldFlip)
+			if (shouldFlip && !m_Strafing)
 			{
 				// If the input is moving the player right and the player is facing left...
 				if (move > 0 && !m_FacingRight)
@@ -155,10 +164,16 @@ public class CharacterController : MonoBehaviour
 		// Switch the way the player is labelled as facing.
 		m_FacingRight = !m_FacingRight;
 
-		// Multiply the player's x local scale by -1.
-		Vector3 theScale = transform.localScale;
-		theScale.x *= -1;
-		transform.localScale = theScale;
+		m_SpriteRenderer.flipX = !m_SpriteRenderer.flipX;
+		foreach(Transform child in children)
+		{
+			if(child != gameObject.transform)
+			{
+			Vector3 pos = child.localPosition;
+        	pos.x *= -1;
+       		child.localPosition = pos;
+			}
+		}
 	}
 
 	void NormalizeSlope()

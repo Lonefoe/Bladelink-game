@@ -27,7 +27,7 @@ public class PatrolState : State
     public override void EnterState()
     {
         if (movementType == MovementType.Stationary) { enemy.Movement.moveInput = 1; enemy.Movement.Flip(); return; }
-        currentPathIndex = GetNextPointIndex();
+        if (movementType == MovementType.Walker) currentPathIndex = GetNextPointIndex();
     }
 
     public override void ExitState()
@@ -37,6 +37,8 @@ public class PatrolState : State
 
     public override void UpdateState()
     {
+        if(enemy.IsDead()) stateMachine.ChangeState(owner.deadState);
+
         if (movementType == MovementType.Stationary) { NoPathPatrol(); return; }
 
         var enemyPos = new Vector2(enemy.transform.position.x, 0);
@@ -50,7 +52,7 @@ public class PatrolState : State
         enemy.Movement.UpdateDirection(pathPoints[currentPathIndex].position);
         enemy.Movement.moveInput = 1;
 
-        if (owner.sight.CanSeePlayer())
+        if (owner.sight.CanSeePlayer() && !Player.Instance.IsDead())
         {
             stateMachine.ChangeState(owner.chaseState);
         }
@@ -59,9 +61,16 @@ public class PatrolState : State
 
     private void NoPathPatrol()
     {
+        if(enemy.IsDead()) stateMachine.ChangeState(owner.deadState);
+
         if (Vector2.Distance(enemy.GetPosition(), stationaryPoint) < 0.2f)
         {
             stateMachine.ChangeState(owner.idleState); 
+        }
+
+        if (owner.sight.CanSeePlayer() && !Player.Instance.IsDead())
+        {
+            stateMachine.ChangeState(owner.chaseState);
         }
 
         enemy.Movement.UpdateDirection(stationaryPoint);

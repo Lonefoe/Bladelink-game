@@ -6,14 +6,13 @@ using UnityEngine;
 public class ChaseState : State
 {
     private Enemy enemy;
-    private float chaseRange;
+    private bool allyDetected, playerUnreachable;
+    private ChaseState_Data data;
 
-    public event Action attackEvent;
-
-    public ChaseState(AI owner, StateMachine stateMachine, float chaseRange) : base(owner, stateMachine)
+    public ChaseState(AI owner, StateMachine stateMachine, ChaseState_Data chaseState_Data) : base(owner, stateMachine)
     {
         enemy = owner.GetComponent<Enemy>();
-        this.chaseRange = chaseRange;
+        data = chaseState_Data; 
     }
 
     public override void EnterState()
@@ -23,31 +22,42 @@ public class ChaseState : State
 
     public override void ExitState()
     {
-
+        enemy.Controller.Strafe(false);
     }
 
     public override void UpdateState()
     {
-        if (Player.Instance.IsDead()) stateMachine.ChangeState(owner.patrolState);
+        // TRANSITIONS
+        if (enemy.IsDead()) { stateMachine.ChangeState(owner.deadState); return; }
+        if (!owner.sight.CanSeePlayer() && !IsInRange(data.chaseRange) || Player.Instance.IsDead()) { stateMachine.ChangeState(owner.patrolState); return; }
 
-        if (!enemy.Attack.IsAttacking()) { enemy.Movement.moveInput = 1; enemy.Movement.UpdateDirection(Player.Instance.GetPosition()); }
+        // LOGIC
+        enemy.Movement.moveInput = 0.9f;
 
-        if (enemy.IsPlayerInRange(enemy.Attack.attackRange))
+        if (enemy.IsPlayerInRange(enemy.Attack.attackDetectionRange))
         {
-            if (!enemy.Attack.IsAttacking())
+            enemy.Movement.moveInput = 0f;
+            if(owner.timeSinceLastAttack > UnityEngine.Random.Range(data.minAttackDelay, data.maxAttackDelay))
             {
-                enemy.Animator.SetTrigger("Attack");
-                if (attackEvent != null) attackEvent();
+                stateMachine.ChangeState(owner.attackState);
             }
-            enemy.Movement.moveInput = 0;
         }
+        playerUnreachable = Physics2D.Raycast(enemy.transform.position, Vector2.up, 3f,data.whatIsPlayer);
 
-        if (!owner.sight.CanSeePlayer() && !IsInChaseRange()) stateMachine.ChangeState(owner.patrolState);
+        if(!playerUnreachable)
+        {
+        enemy.Controller.Strafe(true);
+        enemy.Movement.Face(Player.Instance.gameObject);
+        }
+        else enemy.Movement.moveInput = 0;
+        
+        allyDetected = Physics2D.Linecast(enemy.transform.position + (new Vector3(0.5f, 0f, 0f) * enemy.Movement.GetDirection()), Player.Instance.GetPosition(), data.whatIsEnemy);
+        if(allyDetected) enemy.Movement.moveInput = 0f;
     }
 
-    private bool IsInChaseRange()
+    private bool IsInRange(float range)
     {
-        if (Vector2.Distance(enemy.GetPosition(), Player.Instance.GetPosition()) <= chaseRange)
+        if (Vector2.Distance(enemy.GetPosition(), Player.Instance.GetPosition()) <= range)
         {
             return true;
         }

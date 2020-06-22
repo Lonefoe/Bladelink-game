@@ -9,7 +9,8 @@ public class EnemyAttack : MonoBehaviour
     Enemy enemy;
 
     public Transform attackPoint;
-    public float attackRange = 0.8f;
+    public float attackDetectionRange = 0.6f; // Range that initiates the attack
+    public float attackRange = 0.8f; // Range that determines whether enemy hits player or not
     [SerializeField] private LayerMask playerLayer;
     private bool attacking = false, slashing = false;
 
@@ -28,7 +29,7 @@ public class EnemyAttack : MonoBehaviour
     // Called by an animation event
     public virtual void Attack()
     {   
-        Collider2D hitPlayer = Physics2D.OverlapCircle(attackPoint.position, 0.6f, playerLayer);
+        Collider2D hitPlayer = Physics2D.OverlapCircle(attackPoint.position, attackRange, playerLayer);
         AudioManager.Instance.PlayOneShot("Slash");
         slashing = true;
         onSlashEvent();
@@ -53,7 +54,10 @@ public class EnemyAttack : MonoBehaviour
     {
         attacking = false;
         slashing = false;
+        enemy.hurt = false;
         enemy.Movement.EnableMovement();
+        if(enemy.AI.stateMachine.previousState != enemy.AI.attackState) enemy.AI.stateMachine.ChangeState(enemy.AI.stateMachine.previousState);
+        else enemy.AI.stateMachine.ChangeState(enemy.AI.idleState);
     }
 
     public void OnAttackStart()
@@ -69,6 +73,8 @@ public class EnemyAttack : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireSphere(transform.position, attackDetectionRange);
     }
 
     public bool IsAttacking()

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utilities;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -53,6 +54,18 @@ public class EnemyMovement : MonoBehaviour
         }
         else direction = -1;
     }
+
+    	public void Face(GameObject obj)
+	{
+		if (transform.position.x <= obj.transform.position.x)
+		{
+			if (!enemy.Controller.IsFacingRight()) { enemy.Controller.Flip(); direction = 1; }
+		}
+		else
+		{
+			if (enemy.Controller.IsFacingRight()) { enemy.Controller.Flip(); direction = -1; }
+		}
+	}
 
     public int GetDirection()
     {

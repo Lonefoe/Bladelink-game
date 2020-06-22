@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7042662805132808187}
   - component: {fileID: 8447731973876705103}
   - component: {fileID: 1210088665358539375}
+  - component: {fileID: 7576862743294436769}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -44,8 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ad06cf6feb57c348bdbca832516cdf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1
   gravityMultiplier: 1.5
   pauseInEditor: 0
+  hideHUD: 0
+  useDevTools: 1
 --- !u!114 &1210088665358539375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,3 +69,18 @@ MonoBehaviour:
   - name: SmokePuff
     particlesPrefab: {fileID: 7851577323626522467, guid: 56ab414b5d54b854d96f5f22436caaa1,
       type: 3}
+--- !u!114 &7576862743294436769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3994666442256999937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15740cf85e6cd29429c60323154eeed0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stoneSounds: []
+  grassSounds: []
+  woodSounds: []

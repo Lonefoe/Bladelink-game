@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour, IDamageable<int>
     // All references
     public Animator Animator { get; private set; }
     public Rigidbody2D Rigidbody { get; private set; }
-    public CharacterController Controller { get; private set; }
+    public EnemyController Controller { get; private set; }
     public EnemyMovement Movement { get; private set; }
     public AI AI { get; private set; }
     public EnemyAttack Attack { get; private set; }
@@ -16,9 +16,10 @@ public class Enemy : MonoBehaviour, IDamageable<int>
     public SenseManager Senses = new SenseManager();
 
     public EnemyStats Stats = new EnemyStats();
-    private int currentHealth;
+    public int currentHealth { get; private set;}
     private int currentPoise;
     private bool dead = false;
+    public bool hurt { get; set; }
 
     public event Action onDeathEvent;
 
@@ -26,7 +27,7 @@ public class Enemy : MonoBehaviour, IDamageable<int>
     {
         Animator = GetComponent<Animator>();
         Rigidbody = GetComponent<Rigidbody2D>();
-        Controller = GetComponent<CharacterController>();
+        Controller = GetComponent<EnemyController>();
         Movement = GetComponent<EnemyMovement>();
         AI = GetComponent<AI>();
         Attack = GetComponent<EnemyAttack>();
@@ -47,13 +48,13 @@ public class Enemy : MonoBehaviour, IDamageable<int>
         currentHealth -= damage;
         Senses.Report(Sense.Damage);
         StartCoroutine(Flasher(Color.red, Renderer.color));
-        Movement.Knockback(580f, true);
-  
+        Movement.Knockback(320f, true);
+        
         if (!Attack.IsSlashing())
         {
-            if (currentPoise <= 0) { currentPoise = Stats.poise; Animator.SetTrigger("Hurt"); }
+            if (currentPoise <= 0 && !hurt) { currentPoise = Stats.poise; hurt = true; Animator.SetTrigger("Hurt"); }
         }
-        currentPoise -= damage;
+        if (!hurt) currentPoise -= damage;
 
         AudioManager.Instance.PlayOneShot("Hit");
 
@@ -68,7 +69,9 @@ public class Enemy : MonoBehaviour, IDamageable<int>
     {
         onDeathEvent();
         dead = true;
-        Animator.SetTrigger("Death");
+        Animator.SetBool("Dead", true);
+        transform.Find("AntiPlayerForce").gameObject.SetActive(false);
+        Player.Instance.RestoreHealth(1);
         Rigidbody.isKinematic = true;
 
         Collider2D[] colliders = GetComponents<Collider2D>();
@@ -110,7 +113,8 @@ public class Enemy : MonoBehaviour, IDamageable<int>
 
     public void OnParried()
     {
-        Animator.SetTrigger("Hurt");
+        Animator.SetTrigger("PlayerDeflected");
+        hurt = true;
         currentPoise = Stats.poise;
     }
 

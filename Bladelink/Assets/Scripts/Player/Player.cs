@@ -114,6 +114,12 @@ public class Player : MonoBehaviour, IDamageable<int>
         Controller.FreezePosition(false);
     }
 
+    public void RestoreHealth(int amount)
+    {
+        if((currentHealth + amount) >= Stats.maxHealth) currentHealth = Stats.maxHealth;
+        else currentHealth += amount;
+    }
+
     public static void AddRandomSoulPoints(float min = 0.1f, float max = 0.3f)
     {
         currentSoulPoints += UnityEngine.Random.Range(min, max);

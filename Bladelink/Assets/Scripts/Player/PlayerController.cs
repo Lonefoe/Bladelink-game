@@ -16,6 +16,9 @@ public class PlayerController : CharacterController
     [Range(0,1)][SerializeField] float fCutJumpHeight;
     [SerializeField] float ledgeJumpMultiplier = 1f;
     private bool jumpKeyDown;
+    private Vector2 prejumpPos;
+    private bool fallStun = false;
+    public float fallStunHeight = 4f;
 
     private Vector2 ledgePosBot, ledgePos;
 
@@ -48,6 +51,15 @@ public class PlayerController : CharacterController
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
+        if(wasGrounded) { prejumpPos = transform.position; fallStun = false; }
+
+        if (!m_Grounded) 
+        {
+            if (Mathf.Abs(prejumpPos.y - transform.position.y) >= fallStunHeight)
+            {
+                fallStun = true;
+            }
+        }
 
         if (fJumpPressedRemember > 0 && fGroundedRemember > 0)
         {
@@ -56,7 +68,6 @@ public class PlayerController : CharacterController
             m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_JumpForce); // Jump
             if(!jumpKeyDown) CutJump();
             EffectsManager.Instance.SpawnParticles("SmokePuff", m_GroundCheck.position + new Vector3(0, 0.35f, 0));
-            Player.Instance.PlayFootstep();
         } 
         else if (fJumpPressedRemember > 0 && IsClimbingLedge() && !ledgeJumped)
         {
@@ -90,6 +101,7 @@ public class PlayerController : CharacterController
     void OnLand()
     {
         EffectsManager.Instance.SpawnParticles("SmokePuff", m_GroundCheck.position + new Vector3(0, 0.2f, 0));
+        AudioManager.Instance.PlayOneShot("PlayerFootstep");
     }
 
     //=====================================================
@@ -177,6 +189,24 @@ public class PlayerController : CharacterController
         Player.Anim.SetBool("holdingLedge", holdingLedge);
     }
     
+    public void FallStun()
+    {
+        if(fallStun)
+        {
+            fallStun = false;
+            StartCoroutine(Stun());
+        }
+    }
+
+    private IEnumerator Stun()
+    {
+        FreezePosition(true, true);
+        Player.DisableControl(true);
+        yield return new WaitForSeconds(2f);
+        Player.DisableControl(false);
+        FreezePosition(false);
+    }
+
     // We use this when we want player in one place
     public void FreezePosition(bool freeze, bool onlyX = false)
     {
@@ -188,6 +218,11 @@ public class PlayerController : CharacterController
     public Rigidbody2D GetRigidbody()
     {
         return m_Rigidbody2D;
+    }
+
+    public SurfaceType GetCurrentSurfaceType()
+    {
+        return currentSurface;
     }
 
     public bool IsClimbingLedge() { return holdingLedge; }

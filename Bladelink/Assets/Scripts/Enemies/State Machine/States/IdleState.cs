@@ -28,10 +28,13 @@ public class IdleState : State
 
     public override void UpdateState()
     {
+        if(enemy.IsDead()) stateMachine.ChangeState(owner.deadState);
+
         if (waitTime <= 0) stateMachine.ChangeState(owner.patrolState);
         else { enemy.Movement.moveInput = 0; waitTime -= Time.deltaTime; }
 
-        if (owner.sight.CanSeePlayer()) stateMachine.ChangeState(owner.chaseState);
+        if (owner.sight.CanSeePlayer() && !Player.Instance.IsDead()) stateMachine.ChangeState(owner.chaseState);
+
     }
 
 

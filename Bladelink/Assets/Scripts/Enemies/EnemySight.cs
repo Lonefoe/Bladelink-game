@@ -8,6 +8,9 @@ public class EnemySight : MonoBehaviour
     private Enemy enemy;
     private Transform eyes;
 
+    [Tooltip("If you use rays, detecting will work as a normal human sight, if you don't it will work as a radius")]
+    public bool useRays;
+
     [Tooltip("Number of rays above and under the middle ray")]
     public int rayAmount = 1;
     public float fieldOfViewAngle = 22f;
@@ -26,6 +29,8 @@ public class EnemySight : MonoBehaviour
     // Uses an x amount of rays to check if the player's in sight
     public bool CanSeePlayer()
     {
+        if(useRays)
+        {
         float viewDist = viewDistance * (float)enemy.Movement.GetDirection();
         float angle = 0f;
         playerInSight = false;
@@ -51,6 +56,17 @@ public class EnemySight : MonoBehaviour
 
         return playerInSight;
 
+        }
+        else 
+        {
+            return IsInRange(viewDistance);
+        }
+    }
+    private bool IsInRange(float range)
+    {
+        if (Vector2.Distance(enemy.transform.position, Player.Instance.GetPosition()) < range) { return true; }
+        else { return false; }
+
     }
 
     private void OnDrawGizmosSelected()
@@ -60,6 +76,7 @@ public class EnemySight : MonoBehaviour
             Gizmos.DrawRay(GetComponent<Transform>().position, Utils.GetVectorFromAngle(fieldOfViewAngle) * viewDistance);
             Gizmos.DrawRay(GetComponent<Transform>().position, Utils.GetVectorFromAngle(-fieldOfViewAngle) * viewDistance);
         }
+        Gizmos.DrawWireSphere(transform.position, viewDistance);
     }
 
 }

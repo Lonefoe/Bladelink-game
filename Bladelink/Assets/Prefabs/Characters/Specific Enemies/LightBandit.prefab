@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightBandit
       objectReference: {fileID: 0}
+    - target: {fileID: 5388339173156662529, guid: 8ce65c4933f5b174ea7d8170c33b548e,
+        type: 3}
+      propertyPath: attackDetectionRange
+      value: 1.13
+      objectReference: {fileID: 0}
     - target: {fileID: 6094197210466387073, guid: 8ce65c4933f5b174ea7d8170c33b548e,
         type: 3}
       propertyPath: Stats.damage

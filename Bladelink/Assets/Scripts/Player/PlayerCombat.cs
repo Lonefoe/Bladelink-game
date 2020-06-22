@@ -14,7 +14,7 @@ public class PlayerCombat : MonoBehaviour
     public CombatMode Mode = new CombatMode();
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackRange = 0.5f;
-    private bool attacking, deflecting, rememberDeflect;
+    private bool attacking, deflecting, porting, rememberDeflect;
     [SerializeField] private LayerMask enemyLayer, grassLayer;
     public CinemachineVirtualCamera combatCam;
 
@@ -35,17 +35,7 @@ public class PlayerCombat : MonoBehaviour
 
     #endregion
 
-    public bool CanReturn
-    {
-        get
-        {
-            return canReturn;
-        }
-        set
-        {
-            canReturn = value;
-        }
-    }
+    public bool CanReturn { get { return canReturn; } set { canReturn = value; } }
 
     private void Awake()
     {
@@ -74,7 +64,7 @@ public class PlayerCombat : MonoBehaviour
     //=====================================================  
     private void HandleAttack()
     {     
-        if(GameManager.Instance.IsGamePaused()) return;
+        if(GameManager.Instance.IsGamePaused() || !enabled) return;
 
         if (chainAttack && mySword == null && canAttack)
         {
@@ -87,7 +77,7 @@ public class PlayerCombat : MonoBehaviour
             AudioManager.Instance.PlayOneShot("Slash");
         }
         else if (!chainAttack && mySword == null && canAttack) rememberChain = true;
-        else if (mySword != null) StartCoroutine(PortToSword());
+        else if (mySword != null && !porting) StartCoroutine(PortToSword());
     }
 
     #region ATTACK
@@ -110,6 +100,7 @@ public class PlayerCombat : MonoBehaviour
         {
             if (hitEnemies.Contains(enemy.gameObject)) return; // Don't register multiple hits on one enemy
             hitEnemies.Add(enemy.gameObject);
+
             if (enemy.GetComponent<Enemy>()) HitEnemy(enemy);
             else if (enemy.GetComponent<Grass>()) enemy.GetComponent<Grass>().GetSlashed();
         }
@@ -131,6 +122,7 @@ public class PlayerCombat : MonoBehaviour
     //=====================================================  
     public void StartDeflect()
     {
+        if(!enabled) return;
         if (!canDeflect) { rememberDeflect = true; return; }
         else rememberDeflect = false;
         if (!CanDeflect()) return;
@@ -158,7 +150,7 @@ public class PlayerCombat : MonoBehaviour
     //=====================================================  
     public void Deflect(Enemy enemy)
     {
-        CameraEffects.Instance.Shake(0.18f, 1.6f);
+        CameraEffects.Instance.Shake("HitShake", 0.18f, 1.6f);
         AudioManager.Instance.PlayOneShot("Deflect");
         InputManager.Instance.Vibrate(0.18f, 0.28f, 0.3f);
         EffectsManager.Instance.SpawnParticles("Deflect", shield.transform.position);
@@ -183,6 +175,7 @@ public class PlayerCombat : MonoBehaviour
     //=====================================================  
     private void SwordThrow()
     {
+        if(!enabled) return;
         if (mySword == null && PlayerSword.Instance == null)
         {
             if (!CanThrowSword()) return;
@@ -192,6 +185,8 @@ public class PlayerCombat : MonoBehaviour
             Player.Anim.SetTrigger("throw");
             StartCoroutine(CameraEffects.Instance.Slowmotion(.4f, 0.2f));
             AudioManager.Instance.Play("SwordSwoosh");
+            attacking = true;
+            chainAttack = false;  
 
             Player.Movement.Knockback(150f);
         }
@@ -199,6 +194,7 @@ public class PlayerCombat : MonoBehaviour
         {
             if (!CanReturnSword()) return;
 
+            canReturn = false;
             Player.Controller.Face(mySword);
             mySword.GetComponent<PlayerSword>().Return();
             Player.Anim.SetTrigger("return");
@@ -223,9 +219,11 @@ public class PlayerCombat : MonoBehaviour
     // Second part of the ability - player ports to the sword and absorbs it
     private IEnumerator PortToSword()
     {
+        porting = true;
         AudioManager.Instance.Play("SwordPort");
         StartCoroutine(CameraEffects.Instance.Slowmotion());
         yield return new WaitForSeconds(0.2f);
+        porting = false;
         transform.position = mySword.transform.position + new Vector3(0f, 0.5f, 0f);
         Destroy(mySword.gameObject);
     }
@@ -239,12 +237,12 @@ public class PlayerCombat : MonoBehaviour
     {
         enemy.GetComponent<Enemy>().TakeDamage(attackDamage);   // We call for the enemy to take damage
         Player.AddRandomSoulPoints(0.1f, 0.3f);
-        CameraEffects.Instance.Shake(0.16f, 1.2f);
+        if(Player.Controller.IsFacingRight()) CameraEffects.Instance.Shake("HitShakeRight");
+        else CameraEffects.Instance.Shake("HitShakeLeft");
         InputManager.Instance.Vibrate(0.12f, 0.25f, 0.4f);
         if(pause) StartCoroutine(CameraEffects.Instance.PauseEffect(0.13f));
-        EffectsManager.Instance.SpawnParticles("CircleHit", enemy.transform.position + new Vector3(Random.Range(0f, 0.25f), Random.Range(0.5f, 0.75f), 0), Vector3.zero, Vector3.one, true);
+        EffectsManager.Instance.SpawnParticles("CircleHit", enemy.transform.position + new Vector3(Random.Range(0f, 0.25f), 0, 0), Vector3.zero, Vector3.one, true);
         EffectsManager.Instance.SpawnParticles("SlashFX", attackPoint.position + new Vector3(0.2f, 0f, 0f), Vector3.zero, new Vector3(1*Player.Movement.GetDirection(), 1f, 1f));
-        Player.Movement.Knockback(38f);
     }
 
     //=====================================================
@@ -271,6 +269,10 @@ public class PlayerCombat : MonoBehaviour
         if (rememberChain) { HandleAttack(); rememberChain = false; }
     }
 
+    private void OnDisable() {
+        
+    }
+
     public bool IsDeflecting() { return shield.IsShielding(); }
 
     public bool IsAttacking() { return attacking; }
@@ -293,7 +295,7 @@ public class PlayerCombat : MonoBehaviour
     }
     private bool CanReturnSword()
     {
-            if (GameManager.Instance.IsGamePaused() || Player.Controller.IsClimbingLedge() || Player.Instance.IsDead()) return false;
+            if (GameManager.Instance.IsGamePaused() || Player.Controller.IsClimbingLedge() || Player.Instance.IsDead() || !canReturn) return false;
             else return true;
     }
 

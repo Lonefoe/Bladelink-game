@@ -41,6 +41,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background 8
+    uniqueID: 4156324539
+    locked: 0
   - name: Background 7
     uniqueID: 349698107
     locked: 0

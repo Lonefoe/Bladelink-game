@@ -28,7 +28,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 200908981002760659}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4633777522271313405
 GameObject:
@@ -55,13 +55,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4633777522271313405}
-  m_LocalRotation: {x: -0, y: -0, z: -0.3627325, w: 0.9318933}
-  m_LocalPosition: {x: 0.132, y: -0.077, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.22937033, w: 0.9733392}
+  m_LocalPosition: {x: 0.258, y: -0.093, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 200908981002760659}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -42.536003}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -26.52}
 --- !u!70 &8182020694223720321
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -118,9 +118,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 200908981002760659}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6489118917456883027
+--- !u!1 &5988610687270928561
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,27 +128,27 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1839703025070307345}
+  - component: {fileID: 346400647719316882}
   m_Layer: 9
-  m_Name: AttackPoint
+  m_Name: AttackSpot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1839703025070307345
+--- !u!4 &346400647719316882
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6489118917456883027}
+  m_GameObject: {fileID: 5988610687270928561}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.283, y: -0.104, z: 0}
+  m_LocalPosition: {x: 0.39, y: -0.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 200908981002760659}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6694896727286374470
 GameObject:
@@ -204,7 +204,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8251833539124859770}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5403, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5747, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 200908981002760659}
@@ -248,10 +248,10 @@ Transform:
   m_Children:
   - {fileID: 3494430065993938186}
   - {fileID: 1717774612814786657}
-  - {fileID: 1839703025070307345}
   - {fileID: 9053021302005265029}
   - {fileID: 311585381538718209}
   - {fileID: 1754040919872140716}
+  - {fileID: 346400647719316882}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -294,13 +294,13 @@ SpriteRenderer:
   m_SortingLayerID: -2057231465
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -3316437661583186769, guid: 833c412f353965541afca17dc72ac2df,
+  m_Sprite: {fileID: -2786322997913444276, guid: e4a44eb9bc527b84c80e02ec3fedfc81,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.5625, y: 1.15625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -407,10 +407,11 @@ MonoBehaviour:
   ledgeCheck: {fileID: 1754040919872140716}
   ledgeClimbOffset: {x: 0.22, y: 0.5}
   ledgeOffsetStart: {x: 0, y: 0}
-  fJumpPressedRememberTime: 0.15
+  fJumpPressedRememberTime: 0.11
   fGroundedRememberTime: 0.09
   fCutJumpHeight: 0.4
   ledgeJumpMultiplier: 1.18
+  fallStunHeight: 5.5
 --- !u!114 &3747368193666487877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,7 +439,7 @@ MonoBehaviour:
     emptyHeart: {fileID: 1890589076777525882, guid: b596c3d15bf10534aa2fc098ad436f64,
       type: 3}
   Stats:
-    maxHealth: 5
+    maxHealth: 3
     maxPoise: 2
     maxSoulPoints: 1
 --- !u!114 &2793365201235559372
@@ -468,8 +469,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDamage: 1
   throwForce: 76.666664
-  attackPoint: {fileID: 1839703025070307345}
-  attackRange: 0.43
+  attackPoint: {fileID: 346400647719316882}
+  attackRange: 0.49
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -477,7 +478,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   combatCam: {fileID: 0}
-  startParryTime: 0.145
+  startParryTime: 0.16
   launchForce: 24
   swordPrefab: {fileID: 1575309502313035274, guid: 80cbbb3b7d1163149acdc03f0997637b,
     type: 3}

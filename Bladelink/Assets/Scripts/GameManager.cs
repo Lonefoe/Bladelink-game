@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [Range(0, 2f)] public float speed = 1.0f;
     [SerializeField] private float gravityMultiplier = 1f;      // Tweaker for gravity, multiplies the WORLD gravity
     [SerializeField] private bool pauseInEditor = false;
+    [SerializeField] private Transform devPort;
     public bool hideHUD = false;
     [SerializeField] private bool useDevTools = true;
     private bool gamePaused = false;
@@ -37,9 +38,14 @@ public class GameManager : MonoBehaviour
             DevTools.ReloadLevel();
             DevTools.GiveSoulPoints();
             DevTools.AddEnemy();
+            if(Input.GetKeyDown(KeyCode.G))
+            {
+                Player.Instance.transform.position = devPort.position;
+            }
         }
 
         UIManager.Instance.HideHUD(hideHUD);
+        
     }
 
     private void Start()

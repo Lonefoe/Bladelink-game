@@ -12,17 +12,22 @@ public class AI : MonoBehaviour
 
     public IdleState idleState;
     public PatrolState patrolState;
+    public WanderState wanderState;
     public ChaseState chaseState;
+    public DeadState deadState;
+    public AttackState attackState;
     #endregion
+
+    public ChaseState_Data chaseState_Data;
 
     #region VARIABLES
     private Enemy enemy;
     public MovementType movementType = MovementType.Walker;
     public EnemySight sight;
-    public float chaseRange = 7f;
 
     public EnemyPath path;
     public int startPathIndex = 1;
+    public float timeSinceLastAttack { get; set; }
 
     public List<float> waitTimes;
 
@@ -40,9 +45,12 @@ public class AI : MonoBehaviour
 
         idleState = new IdleState(this, stateMachine, waitTimes);
         patrolState = new PatrolState(this, stateMachine, movementType, path, startPathIndex);
-        chaseState = new ChaseState(this, stateMachine, chaseRange);
+        wanderState = new WanderState(this, stateMachine);
+        chaseState = new ChaseState(this, stateMachine, chaseState_Data);
+        deadState = new DeadState(this, stateMachine);
+        attackState = new AttackState(this, stateMachine);
 
-        chaseState.attackEvent += OnAttack;
+        attackState.attackEvent += OnAttack;
 
         stateMachine.Initialize(patrolState);
 
@@ -53,6 +61,8 @@ public class AI : MonoBehaviour
     private void Update()
     {
         stateMachine.Update();
+
+        timeSinceLastAttack += Time.deltaTime;
     }
 
     void OnDeath()
@@ -68,11 +78,14 @@ public class AI : MonoBehaviour
     void OnAttack()
     {
         attackEvent();
+        timeSinceLastAttack = 0f;
     }
-
+ 
     public void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, chaseRange);
+        Gizmos.DrawWireSphere(transform.position, chaseState_Data.chaseRange);
     }
+
+
 }
