@@ -15,6 +15,8 @@ public class PlayerController : CharacterController
     [SerializeField] float fJumpPressedRememberTime, fGroundedRememberTime;
     [Range(0,1)][SerializeField] float fCutJumpHeight;
     [SerializeField] float ledgeJumpMultiplier = 1f;
+    public int maxJumps = 2;
+    private int currentJumps;
     private bool jumpKeyDown;
     private Vector2 prejumpPos;
     private bool fallStun = false;
@@ -65,6 +67,7 @@ public class PlayerController : CharacterController
         {
             fJumpPressedRemember = 0;
             fGroundedRemember = 0f;
+            currentJumps++;
             m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_JumpForce); // Jump
             if(!jumpKeyDown) CutJump();
             EffectsManager.Instance.SpawnParticles("SmokePuff", m_GroundCheck.position + new Vector3(0, 0.35f, 0));
@@ -82,6 +85,7 @@ public class PlayerController : CharacterController
     // When we press jump button
     public override void Jump()
     {
+        if(GameManager.Instance.IsGamePaused() || Player.Instance.IsControlDisabled()) return;
         fJumpPressedRemember = fJumpPressedRememberTime;
         jumpKeyDown = true;
     }
@@ -102,6 +106,7 @@ public class PlayerController : CharacterController
     {
         EffectsManager.Instance.SpawnParticles("SmokePuff", m_GroundCheck.position + new Vector3(0, 0.2f, 0));
         AudioManager.Instance.PlayOneShot("PlayerFootstep");
+        currentJumps = 0;
     }
 
     //=====================================================
@@ -139,17 +144,20 @@ public class PlayerController : CharacterController
             Collider2D ledgeCol = Physics2D.OverlapCircle(new Vector2(wallCheck.position.x + 0.4f * Player.Movement.GetDirection(), wallCheck.position.y), 0.4f, m_WhatIsGround);
             if (ledgeCol != null && ledgeCol.gameObject.CompareTag("Ledge"))
             {
-                ledgeClimbOffset = ledgeOffsetStart + ledgeCol.GetComponent<Ledge>().UpdateLedgeOffset();
-            } else ledgeClimbOffset = ledgeOffsetStart;
-
-            if (IsFacingRight())
-            {
-                ledgePos = new Vector2(Mathf.Floor(ledgePosBot.x + 0.5f) - ledgeClimbOffset.x, Mathf.Floor(ledgePosBot.y) + ledgeClimbOffset.y);
-            }
-            else
-            {
-                ledgePos = new Vector2(Mathf.Ceil(ledgePosBot.x - 0.5f) + ledgeClimbOffset.x, Mathf.Floor(ledgePosBot.y) + ledgeClimbOffset.y);
-            }
+                ledgePos = ledgeCol.GetComponent<Ledge>().UpdateLedgePos() - new Vector2(0.26f * GetDir(), 0.4f);
+            } else {
+                ledgeClimbOffset = ledgeOffsetStart;
+                
+                // GRID SNAP
+                if (IsFacingRight())
+                {
+                    ledgePos = new Vector2(Mathf.Floor(ledgePosBot.x + 0.5f) - ledgeClimbOffset.x, Mathf.Floor(ledgePosBot.y) + ledgeClimbOffset.y);
+                }
+                else
+                {
+                    ledgePos = new Vector2(Mathf.Ceil(ledgePosBot.x - 0.5f) + ledgeClimbOffset.x, Mathf.Floor(ledgePosBot.y) + ledgeClimbOffset.y);
+                }
+            }         
 
             transform.position = ledgePos;
             FreezePosition(true);
@@ -201,9 +209,9 @@ public class PlayerController : CharacterController
     private IEnumerator Stun()
     {
         FreezePosition(true, true);
-        Player.DisableControl(true);
+        Player.Instance.DisableControl(true);
         yield return new WaitForSeconds(2f);
-        Player.DisableControl(false);
+        Player.Instance.DisableControl(false);
         FreezePosition(false);
     }
 

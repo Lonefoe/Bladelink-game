@@ -10,7 +10,6 @@ public class PlayerCombat : MonoBehaviour
 
     [Header("Attacking")]
     public int attackDamage = 20;
-    public float throwForce = 10f;
     public CombatMode Mode = new CombatMode();
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackRange = 0.5f;
@@ -27,6 +26,7 @@ public class PlayerCombat : MonoBehaviour
 
     [Header("Sword")]
     [SerializeField] GameObject swordPrefab;
+    public float throwForce = 10f;
     [SerializeField] float swordThrowCost = 1;
     private GameObject mySword;
     private bool canReturn = false;
@@ -101,7 +101,7 @@ public class PlayerCombat : MonoBehaviour
             if (hitEnemies.Contains(enemy.gameObject)) return; // Don't register multiple hits on one enemy
             hitEnemies.Add(enemy.gameObject);
 
-            if (enemy.GetComponent<Enemy>()) HitEnemy(enemy);
+            if (enemy.GetComponent<Enemy>()) HitEnemy(enemy, true, true);
             else if (enemy.GetComponent<Grass>()) enemy.GetComponent<Grass>().GetSlashed();
         }
     }
@@ -233,16 +233,16 @@ public class PlayerCombat : MonoBehaviour
     //=====================================================
     // Things that happen when enemy's hit
     //=====================================================  
-    public void HitEnemy(Collider2D enemy, bool pause = true)
+    public void HitEnemy(Collider2D enemy, bool pause = true, bool meleeAttack = false)
     {
         enemy.GetComponent<Enemy>().TakeDamage(attackDamage);   // We call for the enemy to take damage
-        Player.AddRandomSoulPoints(0.1f, 0.3f);
+        if(meleeAttack) Player.AddRandomSoulPoints(1f, 1f);
         if(Player.Controller.IsFacingRight()) CameraEffects.Instance.Shake("HitShakeRight");
         else CameraEffects.Instance.Shake("HitShakeLeft");
         InputManager.Instance.Vibrate(0.12f, 0.25f, 0.4f);
         if(pause) StartCoroutine(CameraEffects.Instance.PauseEffect(0.13f));
         EffectsManager.Instance.SpawnParticles("CircleHit", enemy.transform.position + new Vector3(Random.Range(0f, 0.25f), 0, 0), Vector3.zero, Vector3.one, true);
-        EffectsManager.Instance.SpawnParticles("SlashFX", attackPoint.position + new Vector3(0.2f, 0f, 0f), Vector3.zero, new Vector3(1*Player.Movement.GetDirection(), 1f, 1f));
+        EffectsManager.Instance.SpawnParticles("SlashFX", enemy.transform.position + new Vector3(Random.Range(0f, 0.25f),0 ,0), Vector3.zero, new Vector3(1*Player.Movement.GetDirection(), 1f, 1f));
     }
 
     //=====================================================

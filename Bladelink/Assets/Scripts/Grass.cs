@@ -5,6 +5,7 @@ using UnityEngine;
 public class Grass : MonoBehaviour
 {
     private Animator animator;
+    private bool slashed;
 
     void Awake() => animator = GetComponent<Animator>();
 
@@ -18,7 +19,9 @@ public class Grass : MonoBehaviour
 
     public void GetSlashed()
     {
+        if(slashed) return;
         animator.SetTrigger("slash");
+        slashed = true;
         AudioManager.Instance.PlayOneShot("GrassCut");
     }
 

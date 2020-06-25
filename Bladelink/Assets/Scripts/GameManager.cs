@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        UIManager.Instance.HideHUD(hideHUD);
+    if(UIManager.Instance != null) UIManager.Instance.HideHUD(hideHUD);
         
     }
 

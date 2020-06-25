@@ -210,6 +210,12 @@ public class CharacterController : MonoBehaviour
 		}
 	}
 
+	public int GetDir()
+	{
+		if(IsFacingRight()) return 1;
+		else return -1;
+	}
+
 	public bool IsFacingRight()
 	{
 		return m_FacingRight;

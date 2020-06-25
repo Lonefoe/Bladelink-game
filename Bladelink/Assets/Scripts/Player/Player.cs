@@ -26,6 +26,7 @@ public class Player : MonoBehaviour, IDamageable<int>
     private Vector2 savedPos;
     private bool isDead = false;
     private bool flashing;
+    private bool controlDisabled;
 
     #endregion
 
@@ -77,7 +78,7 @@ public class Player : MonoBehaviour, IDamageable<int>
     public void Die()
     {
         Anim.SetBool("Dead", true);
-        Player.DisableControl(true);
+        Player.Instance.DisableControl(true);
         Controller.FreezePosition(true, true);
         isDead = true;
         Invoke("Respawn", 4f);
@@ -86,7 +87,7 @@ public class Player : MonoBehaviour, IDamageable<int>
     void Respawn()
     {
         transform.position = savedPos;
-        Player.DisableControl(false);
+        Player.Instance.DisableControl(false);
         Controller.FreezePosition(false);
         isDead = false;
         Player.Combat.ResetCombo();
@@ -140,19 +141,21 @@ public class Player : MonoBehaviour, IDamageable<int>
         return isDead;
     }
 
-    public static void DisableControl(bool disable)
+    public void DisableControl(bool disable)
     {
         if (disable)
         {
         Combat.enabled = false;
         Movement.DisableMovement();
-        Controller.enabled = false;
+        controlDisabled = true;
         }
         else
         {
         Combat.enabled = true;
         Movement.EnableMovement();
-        Controller.enabled = true;  
+        controlDisabled = false;
         }
     }
+
+    public bool IsControlDisabled() { return controlDisabled; }
 }

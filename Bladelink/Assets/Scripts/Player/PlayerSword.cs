@@ -6,6 +6,7 @@ public class PlayerSword : MonoBehaviour
 {
 	public static PlayerSword Instance { get; private set; }
 	public LayerMask groundLayer;
+	public float dragAfterHit;
 
 	// All sword variables
 	private List<GameObject> hitEnemies = new List<GameObject>();
@@ -109,7 +110,7 @@ public class PlayerSword : MonoBehaviour
 			Player.Combat.HitEnemy(other, false);
 			hitEnemies.Add(other.gameObject);
 			m_Rigidbody2D.AddTorque(120 * -direction, ForceMode2D.Force);
-			m_Rigidbody2D.drag = 20;
+			m_Rigidbody2D.drag = dragAfterHit;
 
 			triggerCollider.enabled = false;
 			groundCollider.enabled = true;

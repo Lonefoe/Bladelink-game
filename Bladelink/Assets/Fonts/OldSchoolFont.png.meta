@@ -1,0 +1,2594 @@
+fileFormatVersion: 2
+guid: 164e414c239c9d8458410e9ccb909b47
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1033275548348107957
+    second: OldSchoolFont_0
+  - first:
+      213: 5256655090897126839
+    second: OldSchoolFont_1
+  - first:
+      213: 4394059358035023716
+    second: OldSchoolFont_2
+  - first:
+      213: -8305838334866179575
+    second: OldSchoolFont_3
+  - first:
+      213: 2208744419408393086
+    second: OldSchoolFont_4
+  - first:
+      213: -9100233631680811658
+    second: OldSchoolFont_5
+  - first:
+      213: 4226263623468644357
+    second: OldSchoolFont_6
+  - first:
+      213: 1719161001311423058
+    second: OldSchoolFont_7
+  - first:
+      213: -45743044968585493
+    second: OldSchoolFont_8
+  - first:
+      213: 2903255405315976319
+    second: OldSchoolFont_9
+  - first:
+      213: 4946671449408187228
+    second: OldSchoolFont_10
+  - first:
+      213: -5806324089369196972
+    second: OldSchoolFont_11
+  - first:
+      213: 3147943825713100075
+    second: OldSchoolFont_12
+  - first:
+      213: -1356174708097312893
+    second: OldSchoolFont_13
+  - first:
+      213: -6390367698058954182
+    second: OldSchoolFont_14
+  - first:
+      213: -7151667440355441253
+    second: OldSchoolFont_15
+  - first:
+      213: -3909337069356008946
+    second: OldSchoolFont_16
+  - first:
+      213: 7075712675153631367
+    second: OldSchoolFont_17
+  - first:
+      213: -4356753045547474079
+    second: OldSchoolFont_18
+  - first:
+      213: 3348366769948339554
+    second: OldSchoolFont_19
+  - first:
+      213: -4251136978288769563
+    second: OldSchoolFont_20
+  - first:
+      213: 5984915387837930875
+    second: OldSchoolFont_21
+  - first:
+      213: 3989756875977671677
+    second: OldSchoolFont_22
+  - first:
+      213: -3649398633540992079
+    second: OldSchoolFont_23
+  - first:
+      213: -2725557130369293062
+    second: OldSchoolFont_24
+  - first:
+      213: 6446977848401490196
+    second: OldSchoolFont_25
+  - first:
+      213: 8242863886957809859
+    second: OldSchoolFont_26
+  - first:
+      213: -38870079688469387
+    second: OldSchoolFont_27
+  - first:
+      213: -8949803712157845870
+    second: OldSchoolFont_28
+  - first:
+      213: -6783342457701039816
+    second: OldSchoolFont_29
+  - first:
+      213: -7471812304765138703
+    second: OldSchoolFont_30
+  - first:
+      213: -5018741251887149352
+    second: OldSchoolFont_31
+  - first:
+      213: -3481118551320123550
+    second: OldSchoolFont_32
+  - first:
+      213: 3784969161488873645
+    second: OldSchoolFont_33
+  - first:
+      213: -3389547428474499025
+    second: OldSchoolFont_34
+  - first:
+      213: -4424487103126988607
+    second: OldSchoolFont_35
+  - first:
+      213: -6632929729909880563
+    second: OldSchoolFont_36
+  - first:
+      213: -3424884487325895142
+    second: OldSchoolFont_37
+  - first:
+      213: 942010889436392918
+    second: OldSchoolFont_38
+  - first:
+      213: -3840797430930637175
+    second: OldSchoolFont_39
+  - first:
+      213: 8783289770047530557
+    second: OldSchoolFont_40
+  - first:
+      213: 6687171096964436031
+    second: OldSchoolFont_41
+  - first:
+      213: 1962913218741980891
+    second: OldSchoolFont_42
+  - first:
+      213: -8608116778238050385
+    second: OldSchoolFont_43
+  - first:
+      213: -1970183097587764991
+    second: OldSchoolFont_44
+  - first:
+      213: -7994250911636481325
+    second: OldSchoolFont_45
+  - first:
+      213: -6760865491241661665
+    second: OldSchoolFont_46
+  - first:
+      213: 1551113199933557999
+    second: OldSchoolFont_47
+  - first:
+      213: -7208943208491538232
+    second: OldSchoolFont_48
+  - first:
+      213: 3492663093161003832
+    second: OldSchoolFont_49
+  - first:
+      213: -5320587932036518477
+    second: OldSchoolFont_50
+  - first:
+      213: -1352929079757442152
+    second: OldSchoolFont_51
+  - first:
+      213: -8621876902689382239
+    second: OldSchoolFont_52
+  - first:
+      213: 2603588105535118958
+    second: OldSchoolFont_53
+  - first:
+      213: 6935975707326935565
+    second: OldSchoolFont_54
+  - first:
+      213: -379059781005632040
+    second: OldSchoolFont_55
+  - first:
+      213: -2907668348974800681
+    second: OldSchoolFont_56
+  - first:
+      213: 5011349875709196625
+    second: OldSchoolFont_57
+  - first:
+      213: -7272424239056644900
+    second: OldSchoolFont_58
+  - first:
+      213: 3955438400750529365
+    second: OldSchoolFont_59
+  - first:
+      213: 6770037059210943810
+    second: OldSchoolFont_60
+  - first:
+      213: 9206576468619440507
+    second: OldSchoolFont_61
+  - first:
+      213: -2944388904884075990
+    second: OldSchoolFont_62
+  - first:
+      213: 5386463441488743804
+    second: OldSchoolFont_63
+  - first:
+      213: -8947455480628250271
+    second: OldSchoolFont_64
+  - first:
+      213: 7916505435609915386
+    second: OldSchoolFont_65
+  - first:
+      213: 8143716043453771824
+    second: OldSchoolFont_66
+  - first:
+      213: -4192806158286261750
+    second: OldSchoolFont_67
+  - first:
+      213: -5775112470047366870
+    second: OldSchoolFont_68
+  - first:
+      213: -9366460621434439
+    second: OldSchoolFont_69
+  - first:
+      213: -6518476776363343911
+    second: OldSchoolFont_70
+  - first:
+      213: -4781063459634714263
+    second: OldSchoolFont_71
+  - first:
+      213: 2665180915831372835
+    second: OldSchoolFont_0
+  - first:
+      213: 6254418259445231131
+    second: OldSchoolFont_1
+  - first:
+      213: -1620594260486934072
+    second: OldSchoolFont_2
+  - first:
+      213: 2529277720879309286
+    second: OldSchoolFont_3
+  - first:
+      213: 8817130929146127848
+    second: OldSchoolFont_4
+  - first:
+      213: 7126508543304533143
+    second: OldSchoolFont_5
+  - first:
+      213: -6631103737353061909
+    second: OldSchoolFont_6
+  - first:
+      213: -3572782196329541805
+    second: OldSchoolFont_7
+  - first:
+      213: 4390263395909170263
+    second: OldSchoolFont_8
+  - first:
+      213: 4285687644841313292
+    second: OldSchoolFont_9
+  - first:
+      213: 7215713646827477331
+    second: OldSchoolFont_10
+  - first:
+      213: -8330524957766565774
+    second: OldSchoolFont_11
+  - first:
+      213: 6295428893529537468
+    second: OldSchoolFont_12
+  - first:
+      213: -1875921646640725545
+    second: OldSchoolFont_13
+  - first:
+      213: -3458434175814064671
+    second: OldSchoolFont_14
+  - first:
+      213: 4472479400221244291
+    second: OldSchoolFont_15
+  - first:
+      213: -3419885737875812844
+    second: OldSchoolFont_16
+  - first:
+      213: 6393206120714869111
+    second: OldSchoolFont_17
+  - first:
+      213: 2112531167797764773
+    second: OldSchoolFont_18
+  - first:
+      213: -385350593627188903
+    second: OldSchoolFont_19
+  - first:
+      213: 1311137174467573420
+    second: OldSchoolFont_20
+  - first:
+      213: 3597286273042846284
+    second: OldSchoolFont_21
+  - first:
+      213: -5225856917830737518
+    second: OldSchoolFont_22
+  - first:
+      213: -1709650703324920670
+    second: OldSchoolFont_23
+  - first:
+      213: 6493447537490486874
+    second: OldSchoolFont_24
+  - first:
+      213: -8761714002765802799
+    second: OldSchoolFont_25
+  - first:
+      213: -7981300618617432275
+    second: OldSchoolFont_26
+  - first:
+      213: -2499906101045182064
+    second: OldSchoolFont_27
+  - first:
+      213: -3401889973205432403
+    second: OldSchoolFont_28
+  - first:
+      213: 4469440500428608806
+    second: OldSchoolFont_29
+  - first:
+      213: -4194277086607934958
+    second: OldSchoolFont_30
+  - first:
+      213: -1094002220307068536
+    second: OldSchoolFont_31
+  - first:
+      213: 7696182186543925607
+    second: OldSchoolFont_32
+  - first:
+      213: -297975689802051767
+    second: OldSchoolFont_33
+  - first:
+      213: -7378935673620541401
+    second: OldSchoolFont_34
+  - first:
+      213: -3042000547249292165
+    second: OldSchoolFont_35
+  - first:
+      213: 2813672433227663898
+    second: OldSchoolFont_36
+  - first:
+      213: -1123432256343892657
+    second: OldSchoolFont_37
+  - first:
+      213: -4315858101435025269
+    second: OldSchoolFont_38
+  - first:
+      213: 4541798139535991267
+    second: OldSchoolFont_39
+  - first:
+      213: 7868294536389002269
+    second: OldSchoolFont_40
+  - first:
+      213: -6327420948615541676
+    second: OldSchoolFont_41
+  - first:
+      213: -7082534841888631440
+    second: OldSchoolFont_42
+  - first:
+      213: -3447414666332071346
+    second: OldSchoolFont_43
+  - first:
+      213: 5352289509192843419
+    second: OldSchoolFont_44
+  - first:
+      213: 8300015999653193213
+    second: OldSchoolFont_45
+  - first:
+      213: -1449000376384201981
+    second: OldSchoolFont_46
+  - first:
+      213: 70277402294742994
+    second: OldSchoolFont_47
+  - first:
+      213: 2313485756141354599
+    second: OldSchoolFont_48
+  - first:
+      213: -5104487693910982088
+    second: OldSchoolFont_49
+  - first:
+      213: -7785135595875921889
+    second: OldSchoolFont_50
+  - first:
+      213: 657163853665656730
+    second: OldSchoolFont_51
+  - first:
+      213: -5609338809616532703
+    second: OldSchoolFont_52
+  - first:
+      213: -3649304652058424731
+    second: OldSchoolFont_53
+  - first:
+      213: 351715301621158611
+    second: OldSchoolFont_54
+  - first:
+      213: -4194915372965924909
+    second: OldSchoolFont_55
+  - first:
+      213: 5790844873704057543
+    second: OldSchoolFont_56
+  - first:
+      213: 3029170333280070658
+    second: OldSchoolFont_57
+  - first:
+      213: -7031007376993961151
+    second: OldSchoolFont_58
+  - first:
+      213: -4788390282729948096
+    second: OldSchoolFont_59
+  - first:
+      213: -3118571779165476232
+    second: OldSchoolFont_60
+  - first:
+      213: 649445370994821935
+    second: OldSchoolFont_61
+  - first:
+      213: -1402624371177130711
+    second: OldSchoolFont_62
+  - first:
+      213: 804683603204781106
+    second: OldSchoolFont_63
+  - first:
+      213: 4858402406405112566
+    second: OldSchoolFont_64
+  - first:
+      213: 3666448480554276521
+    second: OldSchoolFont_65
+  - first:
+      213: -5958289688333126226
+    second: OldSchoolFont_66
+  - first:
+      213: -7814448098631809300
+    second: OldSchoolFont_67
+  - first:
+      213: -5107874612490700636
+    second: OldSchoolFont_68
+  - first:
+      213: 3070199881513276001
+    second: OldSchoolFont_69
+  - first:
+      213: 2955673907108326465
+    second: OldSchoolFont_70
+  - first:
+      213: -6058136835212127873
+    second: OldSchoolFont_71
+  - first:
+      213: -2629069873798597284
+    second: OldSchoolFont_72
+  - first:
+      213: -5018703013306367778
+    second: OldSchoolFont_73
+  - first:
+      213: -8902018936931650935
+    second: OldSchoolFont_74
+  - first:
+      213: -2017704788349002946
+    second: OldSchoolFont_75
+  - first:
+      213: -6828582869814098431
+    second: OldSchoolFont_76
+  - first:
+      213: 1377549772156050593
+    second: OldSchoolFont_77
+  - first:
+      213: 646624581663674335
+    second: OldSchoolFont_78
+  - first:
+      213: -3212873242891108910
+    second: OldSchoolFont_79
+  - first:
+      213: 6300818318196117826
+    second: OldSchoolFont_80
+  - first:
+      213: 7382469451714134015
+    second: OldSchoolFont_81
+  - first:
+      213: 1142558501946591489
+    second: OldSchoolFont_82
+  - first:
+      213: -7283988876282202632
+    second: OldSchoolFont_83
+  - first:
+      213: 6608309334777625531
+    second: OldSchoolFont_84
+  - first:
+      213: 7177770935084246490
+    second: OldSchoolFont_85
+  - first:
+      213: -3969622558498666708
+    second: OldSchoolFont_86
+  - first:
+      213: 958069296609734397
+    second: OldSchoolFont_87
+  - first:
+      213: 779658600390730550
+    second: OldSchoolFont_88
+  - first:
+      213: 2815036614514205415
+    second: OldSchoolFont_89
+  - first:
+      213: 7897976327520437248
+    second: OldSchoolFont_90
+  - first:
+      213: -6693559826971083687
+    second: OldSchoolFont_91
+  - first:
+      213: 3304432253359711384
+    second: OldSchoolFont_92
+  - first:
+      213: 7542076068318199675
+    second: OldSchoolFont_93
+  - first:
+      213: -7791982379689326283
+    second: OldSchoolFont_72
+  - first:
+      213: -5158717535754297113
+    second: OldSchoolFont_73
+  - first:
+      213: -3022134340022566847
+    second: OldSchoolFont_74
+  - first:
+      213: -4428757449837464935
+    second: OldSchoolFont_75
+  - first:
+      213: 8417178103423524792
+    second: OldSchoolFont_76
+  - first:
+      213: 1434583362795748614
+    second: OldSchoolFont_77
+  - first:
+      213: 8328195858915984570
+    second: OldSchoolFont_78
+  - first:
+      213: 719303536291079740
+    second: OldSchoolFont_79
+  - first:
+      213: 1628029558586071759
+    second: OldSchoolFont_80
+  - first:
+      213: -2945240529212436826
+    second: OldSchoolFont_81
+  - first:
+      213: 7905622228094436427
+    second: OldSchoolFont_82
+  - first:
+      213: -5989223135655037273
+    second: OldSchoolFont_83
+  - first:
+      213: -3917989207363967583
+    second: OldSchoolFont_84
+  - first:
+      213: -3707169730419430178
+    second: OldSchoolFont_85
+  - first:
+      213: 6168973863062850215
+    second: OldSchoolFont_86
+  - first:
+      213: -7012835320234370256
+    second: OldSchoolFont_87
+  - first:
+      213: 5546796660607628684
+    second: OldSchoolFont_88
+  - first:
+      213: 7784709878409821220
+    second: OldSchoolFont_89
+  - first:
+      213: 5689452492957313124
+    second: OldSchoolFont_90
+  - first:
+      213: 2394964787514701507
+    second: OldSchoolFont_91
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: OldSchoolFont_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 56
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32c77461cef9cf420800000000000000
+      internalID: 2665180915831372835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_1
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 56
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1e23f605482cc650800000000000000
+      internalID: 6254418259445231131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_2
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 56
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c1b3aa3b1e7289e0800000000000000
+      internalID: -1620594260486934072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_3
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 56
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e1225bbfacc91320800000000000000
+      internalID: 2529277720879309286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_4
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 56
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e56dd96dddbc5a70800000000000000
+      internalID: 8817130929146127848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_5
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 56
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 794047423c176e260800000000000000
+      internalID: 7126508543304533143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_6
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 56
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be93e42b84699f3a0800000000000000
+      internalID: -6631103737353061909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_7
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 56
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35f00f7958dea6ec0800000000000000
+      internalID: -3572782196329541805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_8
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 56
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 754f0974c495dec30800000000000000
+      internalID: 4390263395909170263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_9
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 56
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c040c09d432d97b30800000000000000
+      internalID: 4285687644841313292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_10
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 56
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3591710d45d532460800000000000000
+      internalID: 7215713646827477331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_11
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 56
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2704ccb10b7046c80800000000000000
+      internalID: -8330524957766565774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_12
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 56
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbbfe8b593bdd5750800000000000000
+      internalID: 6295428893529537468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_13
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 56
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d18381933367f5e0800000000000000
+      internalID: -1875921646640725545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_14
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 56
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e5288fc07c2100d0800000000000000
+      internalID: -3458434175814064671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_15
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 56
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38b707b7150711e30800000000000000
+      internalID: 4472479400221244291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41ecc7d6a002a80d0800000000000000
+      internalID: -3419885737875812844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_17
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 48
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7791019181b39b850800000000000000
+      internalID: 6393206120714869111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_18
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 48
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a2e68987e7315d10800000000000000
+      internalID: 2112531167797764773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_19
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 48
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9519dd04da5f6aaf0800000000000000
+      internalID: -385350593627188903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_20
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 48
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca6f2ff3058123210800000000000000
+      internalID: 1311137174467573420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_21
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 48
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c429b1c5ec02ce130800000000000000
+      internalID: 3597286273042846284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_22
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 48
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2916ead22d60a77b0800000000000000
+      internalID: -5225856917830737518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_23
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 48
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a442525eb91648e0800000000000000
+      internalID: -1709650703324920670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_24
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 48
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5661cfa12c5d1a50800000000000000
+      internalID: 6493447537490486874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_25
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 48
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d214993983286680800000000000000
+      internalID: -8761714002765802799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_26
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 48
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d27d3b5cf59bc3190800000000000000
+      internalID: -7981300618617432275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_27
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 48
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 091ce5b65ac8e4dd0800000000000000
+      internalID: -2499906101045182064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_28
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 48
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da78026e71f0ac0d0800000000000000
+      internalID: -3401889973205432403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_29
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 48
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6259acc7474a60e30800000000000000
+      internalID: 4469440500428608806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_30
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 48
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21a7c23463feac5c0800000000000000
+      internalID: -4194277086607934958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_31
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 48
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 889cb13e6c251d0f0800000000000000
+      internalID: -1094002220307068536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 40
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 769c3ab2ce45eca60800000000000000
+      internalID: 7696182186543925607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_33
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 40
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94f85a950b06ddbf0800000000000000
+      internalID: -297975689802051767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_34
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 40
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 720d361a911c89990800000000000000
+      internalID: -7378935673620541401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_35
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 40
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7c79a69e94a8c5d0800000000000000
+      internalID: -3042000547249292165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_36
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 40
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1a08d8ab2c2c0720800000000000000
+      internalID: 2813672433227663898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_37
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 40
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4d1867a054c860f0800000000000000
+      internalID: -1123432256343892657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_38
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 40
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8839f25cedfa14c0800000000000000
+      internalID: -4315858101435025269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_39
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 40
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e1a29c2855b70f30800000000000000
+      internalID: 4541798139535991267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_40
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 40
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d140d9d513cc13d60800000000000000
+      internalID: 7868294536389002269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_41
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 40
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45cc76ddb2c7038a0800000000000000
+      internalID: -6327420948615541676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_42
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 40
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07596ef0618c5bd90800000000000000
+      internalID: -7082534841888631440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_43
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 40
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4a1ecb40a25820d0800000000000000
+      internalID: -3447414666332071346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_44
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 40
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b904d7273f6274a40800000000000000
+      internalID: 5352289509192843419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_45
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 40
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df5236983949f2370800000000000000
+      internalID: 8300015999653193213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_46
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 40
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30b5636b5dd14ebe0800000000000000
+      internalID: -1449000376384201981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_47
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 40
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dfe38fcceca9f000800000000000000
+      internalID: 70277402294742994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76e3bbfa9072b1020800000000000000
+      internalID: 2313485756141354599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_49
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 32
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8324514bc773929b0800000000000000
+      internalID: -5104487693910982088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_50
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1011974c64a5f390800000000000000
+      internalID: -7785135595875921889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_51
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 32
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9fd7f80b07be1900800000000000000
+      internalID: 657163853665656730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_52
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12b7efb7210a722b0800000000000000
+      internalID: -5609338809616532703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_53
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 32
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56a80e8f0c01b5dc0800000000000000
+      internalID: -3649304652058424731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_54
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 32
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d2d23f043b81e400800000000000000
+      internalID: 351715301621158611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_55
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 32
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3df6a83a1baa8c5c0800000000000000
+      internalID: -4194915372965924909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_56
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7caa58e3bb63d5050800000000000000
+      internalID: 5790844873704057543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_57
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 32
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20c6f4f6e56c90a20800000000000000
+      internalID: 3029170333280070658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_58
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 32
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14bbf11ea08dc6e90800000000000000
+      internalID: -7031007376993961151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_59
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 32
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04cf2f768683c8db0800000000000000
+      internalID: -4788390282729948096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_60
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87aa8406d7b98b4d0800000000000000
+      internalID: -3118571779165476232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_61
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 32
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2b0b2fbf1b430900800000000000000
+      internalID: 649445370994821935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_62
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 32
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9257eaad090e88ce0800000000000000
+      internalID: -1402624371177130711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_63
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 32
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2343a95497fca2b00800000000000000
+      internalID: 804683603204781106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_64
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 24
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f20ea96f338c6340800000000000000
+      internalID: 4858402406405112566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_65
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 24
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a655b6a777d1e230800000000000000
+      internalID: 3666448480554276521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_66
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 24
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea5f70ac817ef4da0800000000000000
+      internalID: -5958289688333126226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_67
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 24
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce603556bd08d8390800000000000000
+      internalID: -7814448098631809300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_68
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 24
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a871454a1f2d19b0800000000000000
+      internalID: -5107874612490700636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_69
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 24
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1629b0f868a8b9a20800000000000000
+      internalID: 3070199881513276001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_70
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 24
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14c251932c9a40920800000000000000
+      internalID: 2955673907108326465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_71
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 24
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f71d87055ac2deba0800000000000000
+      internalID: -6058136835212127873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_72
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 24
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 539c3823f415dd390800000000000000
+      internalID: -7791982379689326283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_73
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 24
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e069c8bbbd8868b0800000000000000
+      internalID: -5158717535754297113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_74
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 24
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 140027764d83f06d0800000000000000
+      internalID: -3022134340022566847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_75
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 24
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 992b21e5094e982c0800000000000000
+      internalID: -4428757449837464935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_76
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 24
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bf51c193e2dfc470800000000000000
+      internalID: 8417178103423524792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_77
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 24
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60d302cb7f9a8e310800000000000000
+      internalID: 1434583362795748614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_78
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 24
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab4019e4202b39370800000000000000
+      internalID: 8328195858915984570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_79
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 24
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c36ef4651ca7bf900800000000000000
+      internalID: 719303536291079740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_80
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcadb53024ce79610800000000000000
+      internalID: 1628029558586071759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_81
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 16
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ae853ed7576027d0800000000000000
+      internalID: -2945240529212436826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_82
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b44400ad78966bd60800000000000000
+      internalID: 7905622228094436427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_83
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 16
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a6fab65a4102eca0800000000000000
+      internalID: -5989223135655037273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_84
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a5a145039180a9c0800000000000000
+      internalID: -3917989207363967583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_85
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 16
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edce44885cc7d8cc0800000000000000
+      internalID: -3707169730419430178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_86
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 16
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7aac7883b099c9550800000000000000
+      internalID: 6168973863062850215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_87
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 16
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03b1e1d8e676dae90800000000000000
+      internalID: -7012835320234370256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_88
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 16
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8537d4bc2e2afc40800000000000000
+      internalID: 5546796660607628684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_89
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 16
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42c7716a368d80c60800000000000000
+      internalID: 7784709878409821220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_90
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 16
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4686e29f5eef4fe40800000000000000
+      internalID: 5689452492957313124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OldSchoolFont_91
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 16
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c6f16109cf9c3120800000000000000
+      internalID: 2394964787514701507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

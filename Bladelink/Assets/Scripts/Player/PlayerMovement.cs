@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private float horizontalMove = 0f;
     private bool doRun = false;
     private int direction = 1;
+    private bool disabled;
 
     private void Awake()
     {
@@ -19,10 +20,7 @@ public class PlayerMovement : MonoBehaviour
     // We handle everything input-based in here
     void Update()
     {
-        if(GameManager.Instance.IsGamePaused()) return;
-
-        if (!doRun) horizontalMove = InputManager.Instance.moveInput.x * moveSpeed * moveMultiplier;        // Getting our mov. input and boosting that input with our speed variable
-        else horizontalMove = moveSpeed * moveMultiplier;
+        if(GameManager.Instance.IsGamePaused()) return; // If game's paused, don't update movement
 
         Player.Anim.SetFloat("Speed", Mathf.Abs(horizontalMove));          // Transfers our input to Speed variable inside of animator
         Player.Anim.SetBool("isInAir", !Player.Controller.m_Grounded);     // We take the grounded property from controller and send it to animator
@@ -31,9 +29,12 @@ public class PlayerMovement : MonoBehaviour
         if(Utils.IsBetween(Player.Controller.GetRigidbody().velocity.y, 1f, -6f)) airState = 1;
         else if (Player.Controller.GetRigidbody().velocity.y > 1f) airState = 0;
         else if (Player.Controller.GetRigidbody().velocity.y < -6f) airState = 2;
-        
-
         Player.Anim.SetInteger("airState", airState);
+ 
+        if (disabled) return;
+
+        if (!doRun) horizontalMove = InputManager.Instance.moveInput.x * moveSpeed * moveMultiplier;        // Getting our mov. input and boosting that input with our speed variable
+        else horizontalMove = moveSpeed * moveMultiplier;
 
         if (Player.Controller.IsFacingRight()) direction = 1;
         else direction = -1;
@@ -43,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
     // Where we call the movement logic from the controller
     void FixedUpdate()
     {
+        if(disabled) return;
         Player.Controller.Move(horizontalMove * Time.fixedDeltaTime, false);     // We call for a function from the character controller
     }
 
@@ -71,12 +73,13 @@ public class PlayerMovement : MonoBehaviour
     public void DisableMovement()
     {
         Player.Rigidbody.velocity = Vector2.zero;
-        enabled = false;
+        horizontalMove = 0;
+        disabled = true;
     }
 
     public void EnableMovement()
     {
-        enabled = true;
+        disabled = false;
     }
 
 }

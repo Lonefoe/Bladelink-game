@@ -81,6 +81,14 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ControlDialogue"",
+                    ""type"": ""Button"",
+                    ""id"": ""d500210f-bacb-4e92-beba-3267cfdbd13e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -402,6 +410,28 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""action"": ""OpenBackpack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9f23e38f-bc4e-4163-81bf-ea2c690f12b6"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and mouse"",
+                    ""action"": ""ControlDialogue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fd1a1699-29c1-49a0-9178-03eebe49286f"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ControlDialogue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -446,6 +476,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_Deflect = m_Player.FindAction("Deflect", throwIfNotFound: true);
         m_Player_ActionButton = m_Player.FindAction("ActionButton", throwIfNotFound: true);
         m_Player_OpenBackpack = m_Player.FindAction("OpenBackpack", throwIfNotFound: true);
+        m_Player_ControlDialogue = m_Player.FindAction("ControlDialogue", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -503,6 +534,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Deflect;
     private readonly InputAction m_Player_ActionButton;
     private readonly InputAction m_Player_OpenBackpack;
+    private readonly InputAction m_Player_ControlDialogue;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -515,6 +547,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         public InputAction @Deflect => m_Wrapper.m_Player_Deflect;
         public InputAction @ActionButton => m_Wrapper.m_Player_ActionButton;
         public InputAction @OpenBackpack => m_Wrapper.m_Player_OpenBackpack;
+        public InputAction @ControlDialogue => m_Wrapper.m_Player_ControlDialogue;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -548,6 +581,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @OpenBackpack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenBackpack;
                 @OpenBackpack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenBackpack;
                 @OpenBackpack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenBackpack;
+                @ControlDialogue.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnControlDialogue;
+                @ControlDialogue.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnControlDialogue;
+                @ControlDialogue.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnControlDialogue;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -576,6 +612,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @OpenBackpack.started += instance.OnOpenBackpack;
                 @OpenBackpack.performed += instance.OnOpenBackpack;
                 @OpenBackpack.canceled += instance.OnOpenBackpack;
+                @ControlDialogue.started += instance.OnControlDialogue;
+                @ControlDialogue.performed += instance.OnControlDialogue;
+                @ControlDialogue.canceled += instance.OnControlDialogue;
             }
         }
     }
@@ -608,5 +647,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnDeflect(InputAction.CallbackContext context);
         void OnActionButton(InputAction.CallbackContext context);
         void OnOpenBackpack(InputAction.CallbackContext context);
+        void OnControlDialogue(InputAction.CallbackContext context);
     }
 }
