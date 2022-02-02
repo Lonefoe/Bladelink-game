@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        InputManager.controls.Player.OpenBackpack.performed += ctx => ToggleBackpack();
+     //   InputManager.controls.Player.OpenBackpack.performed += ctx => ToggleBackpack();
     }
 
     public void HideHUD(bool hide)

@@ -8,7 +8,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject pausePanel;
 
     public void Awake() {
-        InputManager.controls.Player.PauseGame.started += ctx => HandlePause();
+        InputManager.controls.Player.PauseGame.started += ctx => ExitGame();
     }
 
     public void Start()
@@ -41,6 +41,11 @@ public class PauseMenu : MonoBehaviour
         GameManager.Instance.FreezeScreen();
         UIManager.Instance.anyMenuActive = false;
         //enable the scripts again
+    }
+
+    void ExitGame()
+    {
+        Application.Quit();
     }
  
 }

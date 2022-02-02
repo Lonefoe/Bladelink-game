@@ -71,7 +71,7 @@ public class Enemy : MonoBehaviour, IDamageable<int>
         dead = true;
         Animator.SetBool("Dead", true);
         transform.Find("AntiPlayerForce").gameObject.SetActive(false);
-        Player.Instance.RestoreHealth(1);
+        
         Rigidbody.isKinematic = true;
 
         Collider2D[] colliders = GetComponents<Collider2D>();

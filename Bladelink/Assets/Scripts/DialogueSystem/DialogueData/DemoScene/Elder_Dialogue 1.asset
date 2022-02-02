@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8abf25c1c960e74c93dab52d3f33d8b, type: 3}
+  m_Name: Elder_Dialogue 1
+  m_EditorClassIdentifier: 
+  dialogueID: Elder_Dialogue1
+  speaker: 0
+  dialogue:
+  - Yet another lost soul.
+  - Tell me boy, are you searching for something?
+  responseOptions:
+  - reply: Yes.
+    dialogueObject: {fileID: 11400000, guid: b7ead6d4de4a8ce46aaaab377b33ec1c, type: 2}
+  - reply: No.
+    dialogueObject: {fileID: 11400000, guid: b7ead6d4de4a8ce46aaaab377b33ec1c, type: 2}

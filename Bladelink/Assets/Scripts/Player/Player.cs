@@ -20,6 +20,7 @@ public class Player : MonoBehaviour, IDamageable<int>
 
     [Header("Stats")]
     public PlayerStats Stats = new PlayerStats();    
+    public Transform startPos;
     public static int currentHealth;
     public static int currentPoise;
     public static float currentSoulPoints;
@@ -27,6 +28,7 @@ public class Player : MonoBehaviour, IDamageable<int>
     private bool isDead = false;
     private bool flashing;
     private bool controlDisabled;
+    public bool HasStatue { get; set; }
 
     #endregion
 
@@ -46,6 +48,7 @@ public class Player : MonoBehaviour, IDamageable<int>
         currentHealth = Stats.maxHealth;
         currentPoise = Stats.maxPoise;
         currentSoulPoints = Stats.maxSoulPoints;
+        transform.position = startPos.position;
         savedPos = transform.position;
     }
 
@@ -65,14 +68,16 @@ public class Player : MonoBehaviour, IDamageable<int>
         currentHealth -= damage;
         if (!flashing) StartCoroutine(Flasher(Color.clear, Renderer.color));
         AudioManager.Instance.PlayOneShot("Hit");
+        
+        if (currentHealth <= 0)
+        {
+            Die();
+            return;
+        }
 
         if (currentPoise <= 0) { currentPoise = Stats.maxPoise; Anim.SetBool("Hurt", true); Controller.FreezePosition(true, true); }
         else currentPoise -= damage;
 
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
     }
 
     public void Die()
@@ -92,6 +97,7 @@ public class Player : MonoBehaviour, IDamageable<int>
         isDead = false;
         Player.Combat.ResetCombo();
         currentHealth = Stats.maxHealth;
+        currentPoise = Stats.maxPoise;
         Anim.SetBool("Dead", false);
     }
 

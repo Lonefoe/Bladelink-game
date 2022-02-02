@@ -190,15 +190,19 @@ public class PlayerCombat : MonoBehaviour
 
             Player.Movement.Knockback(150f);
         }
+        /*
         else if (canReturn == true)
         {
             if (!CanReturnSword()) return;
 
             canReturn = false;
             Player.Controller.Face(mySword);
+            
             mySword.GetComponent<PlayerSword>().Return();
             Player.Anim.SetTrigger("return");
         }
+        */
+        else if (mySword != null && !porting) StartCoroutine(PortToSword());
 
     }
 
@@ -236,7 +240,7 @@ public class PlayerCombat : MonoBehaviour
     public void HitEnemy(Collider2D enemy, bool pause = true, bool meleeAttack = false)
     {
         enemy.GetComponent<Enemy>().TakeDamage(attackDamage);   // We call for the enemy to take damage
-        if(meleeAttack) Player.AddRandomSoulPoints(1f, 1f);
+        if(meleeAttack) Player.AddRandomSoulPoints(0.25f, 0.25f);
         if(Player.Controller.IsFacingRight()) CameraEffects.Instance.Shake("HitShakeRight");
         else CameraEffects.Instance.Shake("HitShakeLeft");
         InputManager.Instance.Vibrate(0.12f, 0.25f, 0.4f);

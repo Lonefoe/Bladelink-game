@@ -374,7 +374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b87e61c87403d134093fe53b991ebf6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 11
+  m_JumpForce: 12
   fallMultiplier: 2.5
   m_CrouchSpeed: 0.36
   m_MovementSmoothing: 0.068
@@ -411,6 +411,7 @@ MonoBehaviour:
   fGroundedRememberTime: 0.09
   fCutJumpHeight: 0.4
   ledgeJumpMultiplier: 1.18
+  maxJumps: 2
   fallStunHeight: 5.5
 --- !u!114 &3747368193666487877
 MonoBehaviour:
@@ -442,6 +443,7 @@ MonoBehaviour:
     maxHealth: 3
     maxPoise: 2
     maxSoulPoints: 1
+  startPos: {fileID: 0}
 --- !u!114 &2793365201235559372
 MonoBehaviour:
   m_ObjectHideFlags: 0

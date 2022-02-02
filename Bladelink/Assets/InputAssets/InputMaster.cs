@@ -72,7 +72,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""id"": ""0d2b08b7-3fa2-4a90-9dc8-afbf44683c89"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": ""Hold""
+                    ""interactions"": """"
                 },
                 {
                     ""name"": ""OpenBackpack"",
